@@ -497,8 +497,9 @@ footer b { color: #f3c65f; font-size: 15px; }
 </header>
 
 <div class="search-bar-wrap">
-  <div class="search-box">
-    <input type="text" id="searchInput" oninput="renderPosts()" placeholder="লেখা খুঁজুন (যেমন: বিসিএস, পড়াশোনা, ইসলাম, বৃত্তি)...">
+  <div class="search-box" style="display:flex;gap:6px;">
+  <input type="text" id="searchInput" oninput="renderPosts()" placeholder="লেখা খুঁজুন (যেমন: বিসিএস, পড়াশোনা, ইসলাম, বৃত্তি)...">
+  <button onclick="renderPosts()" style="background:var(--primary);color:#fff;border:0;padding:0 18px;border-radius:25px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;flex-shrink:0;">খুঁজুন</button>
   </div>
 </div>
 
