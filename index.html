@@ -426,35 +426,50 @@ async function askGemini() {
   box.innerHTML += `<div class="ai-msg bot" id="${loadingId}">উত্তর তৈরি হচ্ছে...</div>`;
   box.scrollTop = box.scrollHeight;
 
-  if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("এখানে_আপনার")) {
-    document.getElementById(loadingId).innerText = "কোডের ভেতরে এখনো API Key বসানো হয়নি।";
+  const cleanKey = (GEMINI_API_KEY || "").trim();
+  if (!cleanKey || cleanKey.includes("এখানে_আপনার")) {
+    document.getElementById(loadingId).innerText = "কোডের ভেতরে এখনো API Key বসানো হয়নি।";
     return;
   }
 
   const promptText = activeArticleContext
-    ? `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। নিচের আর্টিকেলটির তথ্যের ওপর ভিত্তি করে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও:\n\nশিরোনাম: ${activeArticleContext.title}\nবিস্তারিত লেখা: ${activeArticleContext.content}\n\nশিক্ষার্থীর প্রশ্ন: ${q}`
-    : `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। পড়াশোনা, বিসিএস, ক্যারিয়ার বা সাধারণ বিষয়ে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও।\n\nপ্রশ্ন: ${q}`;
+    ? `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। নিচের আর্টিকেলটির তথ্যের ওপর ভিত্তি করে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও:\n\nশিরোনাম: ${activeArticleContext.title}\nবিস্তারিত লেখা: ${activeArticleContext.content}\n\nশিক্ষার্থীর প্রশ্ন: ${q}`
+    : `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। পড়াশোনা, বিসিএস, ক্যারিয়ার বা সাধারণ বিষয়ে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও।\n\nপ্রশ্ন: ${q}`;
 
-  const models = ["gemini-2.5-flash", "gemini-2.0-flash"];
+  const isVertex = cleanKey.startsWith("AQ.");
+  const endpoints = isVertex
+    ? [
+        `https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(cleanKey)}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(cleanKey)}`
+      ]
+    : [
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(cleanKey)}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(cleanKey)}`
+      ];
+
   let reply = "";
-  for (const m of models) {
+  let lastError = "";
+  for (const url of endpoints) {
     try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(GEMINI_API_KEY)}`, {
+      const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
       });
       const data = await res.json();
-      if (data && data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+      if (data?.candidates?.[0]?.content?.parts?.[0]?.text) {
         reply = data.candidates[0].content.parts[0].text;
         break;
+      } else if (data?.error?.message) {
+        lastError = data.error.message;
       }
-    } catch (e) {}
+    } catch (e) {
+      lastError = e.message;
+    }
   }
-  document.getElementById(loadingId).innerText = reply || "দুঃখিত, এই মুহূর্তে উত্তর আনা সম্ভব হয়নি। ইন্টারনেট সংযোগ বা API Key যাচাই করুন।";
+  document.getElementById(loadingId).innerText = reply || ("সমস্যা: " + (lastError || "API Key বা ইন্টারনেট সংযোগ যাচাই করুন।"));
   box.scrollTop = box.scrollHeight;
 }
-
 /* Secret Admin & Gallery Upload */
 function handleSecretTap() {
   tapCount++;
