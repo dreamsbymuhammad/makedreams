@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -34,566 +33,210 @@ body.dark {
   --shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Hind Siliguri', 'Noto Serif Bengali', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.75;
-  transition: background 0.25s, color 0.25s;
-}
-header {
-  text-align: center;
-  padding: 16px 12px 14px;
-  background: var(--card);
-  border-bottom: 3px solid var(--accent);
-  position: relative;
-  box-shadow: var(--shadow);
-}
-.top-controls {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  display: flex;
-  gap: 6px;
-}
-.icon-btn {
-  background: var(--primary);
-  color: #fff;
-  border: 0;
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.logo-wrap {
-  max-width: 240px;
-  margin: 4px auto 2px;
-}
-.logo-wrap svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+body { font-family: 'Hind Siliguri', 'Noto Serif Bengali', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; transition: background 0.25s, color 0.25s; }
+header { text-align: center; padding: 16px 12px 14px; background: var(--card); border-bottom: 3px solid var(--accent); position: relative; box-shadow: var(--shadow); }
+.top-controls { position: absolute; right: 12px; top: 12px; display: flex; gap: 6px; }
+.icon-btn { background: var(--primary); color: #fff; border: 0; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.logo-wrap { max-width: 240px; margin: 4px auto 2px; cursor: pointer; user-select: none; }
+.logo-wrap svg { width: 100%; height: auto; display: block; }
 body.dark .logo-wrap svg .logo-title { fill: #f1f5f9; }
 body.dark .logo-wrap svg .logo-sub { fill: #cbd5e1; }
-.slogan {
-  color: var(--muted);
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 2px;
-}
-.search-bar-wrap {
-  background: linear-gradient(90deg, var(--primary-light), var(--pink-soft));
-  padding: 12px 14px 6px;
-}
-.search-box {
-  max-width: 600px;
-  margin: 0 auto;
-  position: relative;
-}
-.search-box input {
-  width: 100%;
-  padding: 10px 16px;
-  border-radius: 25px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
-  font-family: inherit;
-  font-size: 14px;
-  outline: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  justify-content: center;
-  padding: 10px 12px 14px;
-  background: linear-gradient(90deg, var(--primary-light), var(--pink-soft));
-  border-bottom: 1px solid var(--border);
-}
-nav button {
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-nav button.active {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
-}
-.container {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 16px 14px;
-}
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
-}
-.section-head h3 {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 18px;
-  color: var(--primary);
-}
-.admin-trigger {
-  font-size: 12px;
-  border: 1px dashed var(--muted);
-  background: transparent;
-  color: var(--muted);
-  padding: 4px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 14px;
-  margin-bottom: 15px;
-  display: flex;
-  gap: 14px;
-  box-shadow: var(--shadow);
-  transition: transform 0.18s;
-}
+.slogan { color: var(--muted); font-family: 'Noto Serif Bengali', serif; font-size: 14px; font-weight: 600; margin-top: 2px; }
+.search-bar-wrap { background: linear-gradient(90deg, var(--primary-light), var(--pink-soft)); padding: 12px 14px 6px; }
+.search-box { max-width: 600px; margin: 0 auto; display: flex; gap: 6px; }
+.search-box input { flex: 1; padding: 10px 16px; border-radius: 25px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-family: inherit; font-size: 14px; outline: none; }
+.search-btn { background: var(--primary); color: #fff; border: 0; padding: 0 18px; border-radius: 25px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+nav { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; padding: 10px 12px 14px; background: linear-gradient(90deg, var(--primary-light), var(--pink-soft)); border-bottom: 1px solid var(--border); }
+nav button { border: 1px solid var(--border); background: var(--card); color: var(--text); padding: 6px 13px; border-radius: 20px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+nav button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.bani-box { max-width: 852px; margin: 14px auto 2px; background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px; padding: 11px 15px; display: flex; align-items: flex-start; gap: 10px; box-shadow: var(--shadow); }
+.bani-badge { background: var(--accent); color: #111; font-family: 'Noto Serif Bengali', serif; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 20px; flex-shrink: 0; margin-top: 2px; }
+.bani-text { font-family: 'Noto Serif Bengali', serif; font-size: 14.5px; color: var(--text); line-height: 1.65; }
+.container { max-width: 880px; margin: 0 auto; padding: 14px; }
+.section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.section-head h3 { font-family: 'Noto Serif Bengali', serif; font-size: 18px; color: var(--primary); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 15px; display: flex; gap: 14px; box-shadow: var(--shadow); transition: transform 0.18s; }
 .card:hover { transform: translateY(-2px); }
-.card-img {
-  width: 115px;
-  height: 95px;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-  cursor: pointer;
-  background: var(--primary-light);
-}
+.card-img { width: 115px; height: 95px; object-fit: cover; border-radius: 10px; flex-shrink: 0; cursor: pointer; background: var(--primary-light); }
 .card-body { flex: 1; min-width: 0; }
-.meta {
-  font-size: 11.5px;
-  color: var(--muted);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-}
-.card-title {
-  font-family: 'Noto Serif Bengali', serif;
-  font-weight: 700;
-  font-size: 16.5px;
-  margin: 4px 0 6px;
-  color: var(--text);
-  cursor: pointer;
-  line-height: 1.45;
-}
-.card-title:hover { color: var(--primary); }
-.card-excerpt {
-  font-size: 13.5px;
-  color: var(--muted);
-  line-height: 1.6;
-}
+.meta { font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.bm-btn { background: var(--primary-light); color: var(--primary); border: 1px solid var(--border); padding: 2px 8px; border-radius: 14px; font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 600; }
+.bm-btn.saved { background: var(--accent); color: #111; border-color: var(--accent); }
+.card-title { font-family: 'Noto Serif Bengali', serif; font-weight: 700; font-size: 16.5px; margin: 4px 0 6px; color: var(--text); cursor: pointer; line-height: 1.45; }
+.card-excerpt { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
 .tags { margin-top: 7px; }
-.tags span {
-  background: var(--primary-light);
-  color: var(--primary);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 12px;
-  margin-right: 4px;
-  display: inline-block;
-  margin-top: 3px;
-}
-.card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  gap: 8px;
-}
-.read-btn {
-  background: var(--primary);
-  color: #fff;
-  border: 0;
-  padding: 5px 12px;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 12.5px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.share a, .share button {
-  font-size: 11.5px;
-  color: #fff;
-  text-decoration: none;
-  padding: 4px 9px;
-  border-radius: 5px;
-  margin-left: 4px;
-  display: inline-block;
-  border: 0;
-  cursor: pointer;
-  font-family: inherit;
-}
-.fb { background: #1877f2; }
-.wa { background: #25d366; }
-.cp { background: #5a6577; }
-
-/* Full Article Modal */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.68);
-  z-index: 100;
-  overflow-y: auto;
-  padding: 16px 10px;
-}
+.tags span { background: var(--primary-light); color: var(--primary); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; margin-right: 4px; display: inline-block; margin-top: 3px; }
+.card-actions { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 10px; gap: 8px; }
+.read-btn { background: var(--primary); color: #fff; border: 0; padding: 5px 12px; border-radius: 6px; font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; }
+.share a, .share button { font-size: 11.5px; color: #fff; text-decoration: none; padding: 4px 9px; border-radius: 5px; margin-left: 4px; display: inline-block; border: 0; cursor: pointer; font-family: inherit; }
+.fb { background: #1877f2; } .wa { background: #25d366; } .cp { background: #5a6577; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.72); z-index: 100; overflow-y: auto; padding: 16px 10px; }
 .modal-overlay.open { display: block; }
-.modal-box {
-  max-width: 740px;
-  margin: 10px auto 30px;
-  background: var(--card);
-  color: var(--text);
-  border-radius: 16px;
-  padding: 20px;
-  position: relative;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-}
-.modal-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 10px;
-  margin-bottom: 14px;
-}
-.font-controls button {
-  background: var(--primary-light);
-  color: var(--primary);
-  border: 0;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-weight: 700;
-  cursor: pointer;
-  margin-right: 4px;
-}
-.close-modal {
-  background: #d32f2f;
-  color: #fff;
-  border: 0;
-  padding: 5px 12px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.modal-banner {
-  width: 100%;
-  max-height: 280px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 14px;
-}
-.modal-title {
-  font-family: 'Noto Serif Bengali', serif;
-  font-size: 22px;
-  line-height: 1.45;
-  margin-bottom: 8px;
-}
-.modal-content {
-  font-size: 16px;
-  line-height: 1.9;
-  white-space: pre-line;
-  margin-top: 14px;
-}
-
-/* Admin & Login */
-#loginBox, #adminPanel {
-  display: none;
-  max-width: 720px;
-  margin: 20px auto;
-  background: var(--card);
-  border: 2px solid var(--accent);
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-}
+.modal-box { max-width: 740px; margin: 10px auto 30px; background: var(--card); color: var(--text); border-radius: 16px; padding: 20px; position: relative; box-shadow: 0 12px 35px rgba(0,0,0,0.3); }
+.modal-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 14px; gap: 8px; }
+.font-controls { display: flex; align-items: center; gap: 5px; }
+.font-controls button { background: var(--primary-light); color: var(--primary); border: 0; padding: 5px 10px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.article-ai-btn { background: linear-gradient(135deg, #0d3b36, #1b6b61) !important; color: #ffd97d !important; border: 1px solid var(--accent) !important; font-size: 15px; padding: 4px 12px !important; border-radius: 20px !important; }
+.close-modal { background: #d32f2f; color: #fff; border: 0; padding: 5px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; }
+.modal-banner { width: 100%; max-height: 280px; object-fit: cover; border-radius: 12px; margin-bottom: 14px; }
+.modal-title { font-family: 'Noto Serif Bengali', serif; font-size: 22px; line-height: 1.45; margin-bottom: 8px; }
+.modal-content { font-size: 16px; line-height: 1.9; white-space: pre-line; margin-top: 14px; }
+.ai-fab { position: fixed; right: 18px; bottom: 20px; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, #0d3b36, #185c54); color: #ffd97d; border: 2px solid var(--accent); font-size: 22px; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.28); z-index: 150; display: flex; align-items: center; justify-content: center; }
+.ai-window { display: none; position: fixed; right: 14px; bottom: 82px; width: calc(100vw - 28px); max-width: 370px; height: 440px; max-height: 72vh; background: var(--card); border: 2px solid var(--accent); border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.35); z-index: 200; flex-direction: column; overflow: hidden; }
+.ai-window.open { display: flex; }
+.ai-head { background: #0d3b36; color: #fff; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 14px; }
+.ai-context-chip { background: var(--primary-light); color: var(--primary); font-size: 11.5px; padding: 5px 10px; border-bottom: 1px solid var(--border); display: none; justify-content: space-between; align-items: center; gap: 6px; font-weight: 600; }
+.ai-messages { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; font-size: 13.5px; }
+.ai-msg { padding: 9px 12px; border-radius: 12px; max-width: 86%; line-height: 1.55; white-space: pre-line; }
+.ai-msg.bot { background: var(--primary-light); color: var(--text); align-self: flex-start; border-bottom-left-radius: 3px; }
+.ai-msg.user { background: var(--primary); color: #fff; align-self: flex-end; border-bottom-right-radius: 3px; }
+.ai-input-row { display: flex; gap: 6px; padding: 9px; border-top: 1px solid var(--border); background: var(--bg); }
+.ai-input-row input { flex: 1; padding: 8px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-family: inherit; font-size: 13.5px; outline: none; }
+.ai-input-row button { background: var(--primary); color: #fff; border: 0; padding: 0 14px; border-radius: 20px; font-weight: 700; cursor: pointer; }
+#loginBox, #adminPanel { display: none; max-width: 720px; margin: 20px auto; background: var(--card); border: 2px solid var(--accent); padding: 20px; border-radius: 14px; box-shadow: var(--shadow); }
 #loginBox.open, #adminPanel.open { display: block; }
 #loginBox { text-align: center; max-width: 400px; }
-#adminPanel input, #adminPanel textarea, #loginBox input {
-  width: 100%;
-  padding: 11px;
-  margin: 7px 0;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--text);
-  font-family: inherit;
-  font-size: 14px;
-}
-.cat-check {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin: 10px 0;
-}
-.cat-check label {
-  background: var(--primary-light);
-  color: var(--primary);
-  padding: 5px 11px;
-  border-radius: 20px;
-  font-size: 12.5px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.cat-check input { width: auto !important; margin: 0 !important; }
-.btn-full {
-  width: 100%;
-  padding: 12px;
-  border: 0;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  margin-top: 8px;
-}
-.btn-publish { background: #0d3b36; color: #fff; }
-.btn-copy-code { background: #d4a24c; color: #111; }
-.btn-close-admin { background: var(--border); color: var(--text); }
-.admin-post-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  margin-top: 6px;
-  gap: 8px;
-  font-size: 13px;
-}
-.admin-post-item button {
-  border: 0;
-  padding: 4px 9px;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 12px;
-}
-footer {
-  background: #0b2421;
-  color: #cbd5e1;
-  text-align: center;
-  padding: 30px 14px;
-  margin-top: 36px;
-  font-size: 13px;
-  line-height: 1.8;
-}
+#adminPanel input[type="text"], #adminPanel textarea, #loginBox input { width: 100%; padding: 11px; margin: 7px 0; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-family: inherit; font-size: 14px; }
+.upload-label { display: block; text-align: center; background: var(--primary-light); color: var(--primary); border: 1.5px dashed var(--primary); padding: 10px; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; margin: 7px 0; }
+.cat-check { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0; }
+.cat-check label { background: var(--primary-light); color: var(--primary); padding: 5px 11px; border-radius: 20px; font-size: 12.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.btn-full { width: 100%; padding: 11px; border: 0; border-radius: 8px; font-family: inherit; font-size: 14.5px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+.btn-publish { background: #0d3b36; color: #fff; } .btn-copy-code { background: #d4a24c; color: #111; } .btn-close-admin { background: var(--border); color: var(--text); }
+.admin-post-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; margin-top: 6px; gap: 8px; font-size: 13px; }
+.admin-post-item button { border: 0; padding: 4px 9px; border-radius: 5px; color: #fff; cursor: pointer; font-size: 12px; }
+footer { background: #0b2421; color: #cbd5e1; text-align: center; padding: 30px 14px; margin-top: 36px; font-size: 13px; line-height: 1.8; }
 footer b { color: #f3c65f; font-size: 15px; }
-@media (max-width: 540px) {
-  .card { flex-direction: column; }
-  .card-img { width: 100%; height: 165px; }
-}
+@media (max-width: 540px) { .card { flex-direction: column; } .card-img { width: 100%; height: 165px; } .bani-box { margin: 12px 14px 2px; } }
 </style>
 </head>
 <body>
-
 <header>
   <div class="top-controls">
-    <button class="icon-btn" onclick="toggleDark()" id="darkBtn" title="ডার্ক মোড">🌙</button>
+    <button class="icon-btn" onclick="toggleDark()" id="darkBtn">🌙</button>
     <button class="icon-btn" onclick="toggleLang()" id="langBtn">EN</button>
   </div>
-  <div class="logo-wrap">
-    <!-- Custom Built-in Make Dreams Mahmud Logo -->
+  <div class="logo-wrap" onclick="handleSecretTap()">
     <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Make Dreams Mahmud Logo">
       <defs>
-        <radialGradient id="sunGlow" cx="50%" cy="60%" r="50%">
-          <stop offset="0%" stop-color="#fff3b0"/>
-          <stop offset="55%" stop-color="#f2c45a"/>
-          <stop offset="100%" stop-color="#d49b35"/>
-        </radialGradient>
-        <linearGradient id="rayGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="#dfa944" stop-opacity="0.95"/>
-          <stop offset="100%" stop-color="#f7dc88" stop-opacity="0.1"/>
-        </linearGradient>
-        <linearGradient id="bookCover" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#144d46"/>
-          <stop offset="100%" stop-color="#092925"/>
-        </linearGradient>
+        <radialGradient id="sunGlow" cx="50%" cy="60%" r="50%"><stop offset="0%" stop-color="#fff3b0"/><stop offset="55%" stop-color="#f2c45a"/><stop offset="100%" stop-color="#d49b35"/></radialGradient>
+        <linearGradient id="rayGrad" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#dfa944" stop-opacity="0.95"/><stop offset="100%" stop-color="#f7dc88" stop-opacity="0.1"/></linearGradient>
+        <linearGradient id="bookCover" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#144d46"/><stop offset="100%" stop-color="#092925"/></linearGradient>
       </defs>
-
-      <!-- Sun Rays -->
-      <g fill="url(#rayGrad)">
-        <polygon points="180,72 176,12 184,12"/>
-        <polygon points="180,72 158,15 166,13"/>
-        <polygon points="180,72 194,13 202,15"/>
-        <polygon points="180,72 140,22 148,19"/>
-        <polygon points="180,72 212,19 220,22"/>
-        <polygon points="180,72 123,32 131,28"/>
-        <polygon points="180,72 229,28 237,32"/>
-        <polygon points="180,72 108,45 115,40"/>
-        <polygon points="180,72 245,40 252,45"/>
-        <polygon points="180,72 95,60 101,54"/>
-        <polygon points="180,72 259,54 265,60"/>
-      </g>
-
-      <!-- Rising Sun -->
+      <g fill="url(#rayGrad)"><polygon points="180,72 176,12 184,12"/><polygon points="180,72 158,15 166,13"/><polygon points="180,72 194,13 202,15"/><polygon points="180,72 140,22 148,19"/><polygon points="180,72 212,19 220,22"/><polygon points="180,72 123,32 131,28"/><polygon points="180,72 229,28 237,32"/><polygon points="180,72 108,45 115,40"/><polygon points="180,72 245,40 252,45"/><polygon points="180,72 95,60 101,54"/><polygon points="180,72 259,54 265,60"/></g>
       <circle cx="180" cy="70" r="24" fill="url(#sunGlow)"/>
-
-      <!-- Outer Book Cover -->
       <path d="M98,68 C132,68 162,74 180,86 C198,74 228,68 262,68 L268,128 C232,126 202,132 180,144 C158,132 128,126 92,128 Z" fill="url(#bookCover)"/>
-
-      <!-- Layered Page Edges -->
       <path d="M102,64 C134,64 163,71 180,83 C197,71 226,64 258,64 L263,123 C230,121 201,127 180,139 C159,127 130,121 97,123 Z" fill="#1e635a"/>
       <path d="M106,60 C136,60 164,68 180,80 C196,68 224,60 254,60 L258,118 C228,116 200,122 180,134 C160,122 132,116 102,118 Z" fill="#dce8e2"/>
-
-      <!-- Left White Page -->
       <path d="M110,56 C138,56 164,65 180,78 L180,130 C161,118 134,112 106,114 Z" fill="#ffffff" stroke="#0d3b36" stroke-width="1.4"/>
-      <!-- Left Page Inner Frame -->
       <path d="M115,62 C139,62 161,69 175,80 L175,122 C159,112 136,107 112,109 Z" fill="none" stroke="#0d3b36" stroke-width="1.3"/>
-
-      <!-- Right White Page -->
       <path d="M250,56 C222,56 196,65 180,78 L180,130 C199,118 226,112 254,114 Z" fill="#ffffff" stroke="#0d3b36" stroke-width="1.4"/>
-      <!-- Right Page Inner Frame -->
       <path d="M245,62 C221,62 199,69 185,80 L185,122 C201,112 224,107 248,109 Z" fill="none" stroke="#0d3b36" stroke-width="1.3"/>
-
-      <!-- Center Spine Line -->
       <line x1="180" y1="78" x2="180" y2="132" stroke="#0d3b36" stroke-width="1.8"/>
-
-      <!-- Left Page Text: ALLAH SAID -->
-      <g transform="translate(143, 86) rotate(9)">
-        <text x="0" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="700" fill="#0d3b36">ALLAH</text>
-        <text x="0" y="13" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="700" fill="#0d3b36">SAID</text>
-      </g>
-
-      <!-- Right Page Text: IQRA -->
-      <g transform="translate(216, 93) rotate(-9)">
-        <text x="0" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#0d3b36">IQRA</text>
-      </g>
-
-      <!-- Brand Title: Make Dreams -->
+      <g transform="translate(143, 86) rotate(9)"><text x="0" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="700" fill="#0d3b36">ALLAH</text><text x="0" y="13" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="700" fill="#0d3b36">SAID</text></g>
+      <g transform="translate(216, 93) rotate(-9)"><text x="0" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#0d3b36">IQRA</text></g>
       <text x="180" y="172" text-anchor="middle" class="logo-title" font-family="Georgia, 'Times New Roman', serif" font-size="29" font-weight="700" fill="#0b192c">Make Dreams</text>
-
-      <!-- Golden Accent Line -->
       <line x1="88" y1="183" x2="272" y2="183" stroke="#d4a24c" stroke-width="1.6"/>
-
-      <!-- Subtitle: M A H M U D -->
       <text x="180" y="206" text-anchor="middle" class="logo-sub" font-family="Arial, sans-serif" font-size="13.5" font-weight="600" letter-spacing="6" fill="#1e293b">M A H M U D</text>
     </svg>
   </div>
   <div class="slogan" id="slogan">স্বপ্নীল যাত্রার সহায়িকা</div>
 </header>
-
 <div class="search-bar-wrap">
-  <div class="search-box" style="display:flex;gap:6px;">
-  <input type="text" id="searchInput" oninput="renderPosts()" placeholder="লেখা খুঁজুন (যেমন: বিসিএস, পড়াশোনা, ইসলাম, বৃত্তি)...">
-  <button onclick="renderPosts()" style="background:var(--primary);color:#fff;border:0;padding:0 18px;border-radius:25px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;flex-shrink:0;">খুঁজুন</button>
+  <div class="search-box">
+    <input type="text" id="searchInput" oninput="renderPosts()" placeholder="লেখা খুঁজুন (যেমন: বিসিএস, পড়াশোনা, ইসলাম, বৃত্তি)...">
+    <button class="search-btn" onclick="renderPosts()">খুঁজুন</button>
   </div>
 </div>
-
 <nav id="catNav"></nav>
-
+<div id="baniContainer"></div>
 <div class="container">
-  <div class="section-head">
-    <h3 id="latestTitle">সর্বশেষ লেখা</h3>
-    <button class="admin-trigger" onclick="showLogin()">Admin</button>
-  </div>
+  <div class="section-head"><h3 id="latestTitle">সর্বশেষ লেখা</h3></div>
   <div id="posts"></div>
 </div>
-
-<!-- Full Article Reader Modal -->
 <div class="modal-overlay" id="readerModal" onclick="closeReaderOutside(event)">
   <div class="modal-box">
     <div class="modal-top">
       <div class="font-controls">
-        <button onclick="changeFont(-1)" title="লেখা ছোট করুন">A-</button>
-        <button onclick="changeFont(1)" title="লেখা বড় করুন">A+</button>
+        <button onclick="changeFont(-1)">A-</button>
+        <button onclick="changeFont(1)">A+</button>
+        <button class="article-ai-btn" onclick="openArticleAI()">✨</button>
       </div>
       <button class="close-modal" onclick="closeReader()">বন্ধ করুন ✕</button>
     </div>
-    <img id="mImg" class="modal-banner" src="" alt="Article Cover">
+    <img id="mImg" class="modal-banner" src="" alt="Cover">
     <div class="meta" id="mMeta"></div>
     <h2 class="modal-title" id="mTitle"></h2>
     <div class="tags" id="mTags"></div>
     <div class="modal-content" id="mContent"></div>
     <div class="card-actions" style="margin-top:20px;border-top:1px solid var(--border);padding-top:12px;">
-      <span style="font-size:13px;color:var(--muted);">লেখাটি শেয়ার করুন:</span>
+      <span style="font-size:13px;color:var(--muted);">লেখাটি শেয়ার করুন:</span>
       <div class="share" id="mShare"></div>
     </div>
   </div>
 </div>
-
-<!-- Secret Admin Login -->
+<button class="ai-fab" onclick="toggleAIWindow()">✨</button>
+<div class="ai-window" id="aiWindow">
+  <div class="ai-head"><span>✨ Make Dreams AI</span><button onclick="toggleAIWindow()" style="background:none;border:0;color:#fff;font-size:16px;cursor:pointer;">✕</button></div>
+  <div class="ai-context-chip" id="aiContextChip"><span id="aiContextTitle" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span><button onclick="clearArticleContext()" style="background:none;border:0;color:#d32f2f;font-weight:700;cursor:pointer;">✕</button></div>
+  <div class="ai-messages" id="aiMessages"><div class="ai-msg bot">আসসালামু আলাইকুম! পড়াশোনা, বিসিএস, স্কলারশিপ বা যেকোনো বিষয়ে প্রশ্ন করতে পারেন।</div></div>
+  <div class="ai-input-row"><input type="text" id="aiPrompt" placeholder="আপনার প্রশ্ন লিখুন..." onkeydown="if(event.key==='Enter')askGemini()"><button onclick="askGemini()">➤</button></div>
+</div>
 <div id="loginBox">
   <h3 style="font-family:'Noto Serif Bengali',serif;color:var(--primary);">Admin Login</h3>
-  <p style="font-size:12.5px;color:var(--muted);margin-bottom:8px;">শুধুমাত্র অ্যাডমিনের প্রবেশাধিকার</p>
   <input type="password" id="passInput" placeholder="গোপন পাসওয়ার্ড লিখুন">
   <button class="btn-full btn-publish" onclick="checkPass()">প্রবেশ করুন</button>
   <button class="btn-full btn-close-admin" onclick="closeLogin()">বাতিল</button>
   <p id="msg" style="color:#d32f2f;font-size:13px;margin-top:8px;"></p>
 </div>
-
-<!-- Admin Panel -->
 <div id="adminPanel">
   <h3 id="adminFormTitle" style="font-family:'Noto Serif Bengali',serif;color:var(--primary);margin-bottom:8px;">নতুন লেখা যোগ করুন</h3>
   <input type="hidden" id="editIndex" value="-1">
-  <input id="title" placeholder="শিরোনাম লিখুন (আবশ্যক)">
-  <input id="img" placeholder="ছবির লিংক দিন (খালি রাখলে সুন্দর ডিফল্ট ছবি বসবে)">
+  <input type="text" id="title" placeholder="শিরোনাম লিখুন (আবশ্যক)">
+  <label class="upload-label" for="imgFile">📷 গ্যালারি থেকে ছবি নির্বাচন করুন</label>
+  <input type="file" id="imgFile" accept="image/*" style="display:none;" onchange="handleImageUpload(this)">
+  <div id="uploadStatus" style="font-size:12px;color:var(--primary);text-align:center;font-weight:600;"></div>
+  <img id="imgPreview" style="display:none;max-height:110px;border-radius:8px;margin:6px auto;" alt="Preview">
+  <input type="text" id="img" placeholder="অথবা ছবির লিংক দিন (ঐচ্ছিক)">
   <div style="font-size:13px;font-weight:600;margin-top:6px;">ক্যাটাগরি নির্বাচন করুন (একাধিক নির্বাচন করা যাবে):</div>
   <div class="cat-check" id="catCheck"></div>
-  <textarea id="content" rows="7" placeholder="এখানে আপনার বিস্তারিত লেখা বা প্রতিবেদন পেস্ট করুন..."></textarea>
+  <textarea id="content" rows="6" placeholder="এখানে আপনার বিস্তারিত লেখা বা প্রতিবেদন পেস্ট করুন..."></textarea>
   <button class="btn-full btn-publish" id="pubBtn" onclick="publishPost()">পাবলিশ করুন</button>
-
+  <div style="background:var(--bg);padding:12px;border-radius:10px;margin-top:14px;border:1px solid var(--border);">
+    <div style="font-size:13.5px;font-weight:700;color:var(--primary);margin-bottom:4px;">বাণী বার পরিচালনা (যখন খুশি পরিবর্তন বা মুছুন):</div>
+    <textarea id="baniInput" rows="2" placeholder="এখানে বাণী লিখুন (মুছুন চাপলে বাণী বারটি বন্ধ থাকবে)..."></textarea>
+    <div style="display:flex;gap:6px;">
+      <button class="btn-full btn-publish" style="margin-top:2px;" onclick="saveBani()">বাণী সেভ করুন</button>
+      <button class="btn-full btn-close-admin" style="margin-top:2px;" onclick="deleteBani()">বাণী মুছুন</button>
+    </div>
+  </div>
   <div style="background:var(--primary-light);padding:12px;border-radius:10px;margin-top:14px;border:1px solid var(--accent);">
-    <div style="font-size:13px;font-weight:700;color:var(--primary);margin-bottom:4px;">সব শিক্ষার্থীর জন্য লাইভ আপডেট:</div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">নতুন লেখা যোগ বা এডিট করার পর নিচের বাটনে চেপে কোডটি কপি করুন এবং GitHub-এর index.html ফাইলে পেস্ট করে Save করুন।</div>
+    <div style="font-size:12.5px;font-weight:700;color:var(--primary);margin-bottom:4px;">সব শিক্ষার্থীর জন্য লাইভ আপডেট:</div>
     <button class="btn-full btn-copy-code" onclick="copyFullCode()">📋 GitHub-এ আপডেট করার জন্য সম্পূর্ণ কোড কপি করুন</button>
   </div>
-
-  <div style="margin-top:16px;">
-    <h4 style="font-size:14px;margin-bottom:6px;">প্রকাশিত লেখাসমূহ (এডিট বা ডিলিট করুন):</h4>
-    <div id="adminPostList"></div>
-  </div>
-
+  <div style="margin-top:14px;"><h4 style="font-size:14px;margin-bottom:6px;">প্রকাশিত লেখাসমূহ:</h4><div id="adminPostList"></div></div>
   <button class="btn-full btn-close-admin" style="margin-top:14px;" onclick="hideAdmin()">অ্যাডমিন প্যানেল বন্ধ করুন</button>
 </div>
-
-<footer>
-  <b>Make Dreams - স্বপ্নীল যাত্রার সহায়িকা</b><br>
-  নিজের স্বপ্ন পূরণ করতে চাই (ইনশাআল্লাহ), পাশাপাশি অন্যের স্বপ্নযাত্রায় সহায়তা, উৎসাহ এবং পাথেয় যোগাতে চাই।<br><br>
-  © 2026 Make Dreams by Mahmud | All Rights Reserved
-</footer>
-
+<footer><b>Make Dreams - স্বপ্নীল যাত্রার সহায়িকা</b><br>নিজের স্বপ্ন পূরণ করতে চাই (ইনশাআল্লাহ), পাশাপাশি অন্যের স্বপ্নযাত্রায় সহায়তা, উৎসাহ এবং পাথেয় যোগাতে চাই।<br><br>© 2026 Make Dreams by Mahmud | All Rights Reserved</footer>
 <script>
-const categories = [
-  "পড়াশোনা-উচ্চশিক্ষা",
-  "বিসিএস-চাকরি-বাকরি",
-  "সাফল্য-স্বপ্নপূরণ",
-  "পরিশ্রম-মেধা",
-  "ইসলাম-দ্বীনী জিন্দেগি",
-  "আন্তর্জাতিক /বৃত্তি"
-];
+const GEMINI_API_KEY = "AQ.Ab8RN6Jt4IwuqOxcykkrfCb8xmL4RKLGS9mihxy6LsPZvrGW0Q";
 
+const categories = ["পড়াশোনা-উচ্চশিক্ষা","বিসিএস-চাকরি-বাকরি","সাফল্য-স্বপ্নপূরণ","পরিশ্রম-মেধা","পরীক্ষা-প্রতিযোগিতা","ইসলাম-দ্বীনী জিন্দেগি","আন্তর্জাতিক /বৃত্তি"];
 const PASS = "mahmud09@8";
 const DEFAULT_IMG = "https://images.unsplash.com/photo-1456513080510-7bf3a84b4173?w=600&q=80";
 let currentCat = "All";
 let bn = true;
 let readerFontSize = 16;
+let uploadedGalleryDataUrl = "";
+let currentOpenPost = null;
+let activeArticleContext = null;
+let tapCount = 0;
+let tapTimer = null;
+
+const initialQuote = /*QUOTE_START*/"পড়ো তোমার প্রতিপালকের নামে, যিনি সৃষ্টি করেছেন।"/*QUOTE_END*/;
 
 const initialPosts = /*POSTS_START*/[
   {
+    "id": "p1",
     "title": "পড়াশোনায় মনোযোগ বাড়ানোর ৫টি কার্যকরী উপায়",
     "cats": ["পড়াশোনা-উচ্চশিক্ষা", "পরিশ্রম-মেধা"],
     "content": "স্বপ্ন পূরণের প্রথম এবং সবচেয়ে গুরুত্বপূর্ণ ধাপ হলো নিয়মিত ও মনোযোগী পড়াশোনা। আমাদের অনেকেরই পড়তে বসলে মোবাইল ফোন বা অপ্রয়োজনীয় চিন্তায় মনোযোগ নষ্ট হয়ে যায়।\n\n১. পড়ার টেবিল থেকে মোবাইল দূরে রাখুন অথবা ফ্লাইট মোড চালু করুন।\n২. পোমোডোরো টেকনিক অনুসরণ করুন: টানা ৪৫ মিনিট গভীর মনোযোগে পড়ে ১০ মিনিট বিরতি নিন।\n৩. প্রতিদিনের পড়ার একটি ছোট ও বাস্তবসম্মত লক্ষ্য (To-Do List) খাতায় লিখে রাখুন।\n৪. ফজরের নামাজের পরের সময়টিকে সবচেয়ে কঠিন বিষয় পড়ার জন্য বেছে নিন, কারণ তখন মস্তিষ্ক সবচেয়ে সতেজ থাকে।\n৫. আল্লাহর কাছে ইলম ও বরকতের জন্য দোয়া করুন।",
@@ -601,6 +244,7 @@ const initialPosts = /*POSTS_START*/[
     "date": "১১ নভেম্বর ২০২৬"
   },
   {
+    "id": "p2",
     "title": "মানবিক বিভাগ থেকে বিসিএস - কীভাবে শুরু করবেন?",
     "cats": ["বিসিএস-চাকরি-বাকরি", "পড়াশোনা-উচ্চশিক্ষা"],
     "content": "মানবিক বিভাগ থেকে বিসিএস ক্যাডার হওয়া কঠিন বলে অনেকের মাঝে একটি ভুল ধারণা কাজ করে। অথচ সঠিক পরিকল্পনা, নিয়মিত অনুশীলন এবং আত্মবিশ্বাস থাকলে যেকোনো বিভাগ থেকেই শীর্ষস্থান অর্জন করা সম্ভব।\n\nশুরুতেই বিগত ১০ বছরের বিসিএস প্রিলিমিনারি প্রশ্নব্যাংক ভালোভাবে বিশ্লেষণ করুন। এতে কোন বিষয় থেকে কেমন প্রশ্ন আসে সে সম্পর্কে স্পষ্ট ধারণা তৈরি হবে। বাংলা, ইংরেজি ও সাধারণ জ্ঞানে আপনার যেহেতু আগে থেকেই ভালো ভিত্তি রয়েছে, তাই গণিত ও বিজ্ঞানে প্রতিদিন অন্তত ২ ঘণ্টা করে সময় দিলে আপনি অন্যদের চেয়ে এগিয়ে থাকবেন।",
@@ -608,6 +252,7 @@ const initialPosts = /*POSTS_START*/[
     "date": "১০ নভেম্বর ২০২৬"
   },
   {
+    "id": "p3",
     "title": "ইসলামে পরিশ্রম ও অধ্যবসায়ের মর্যাদা",
     "cats": ["ইসলাম-দ্বীনী জিন্দেগি", "পরিশ্রম-মেধা"],
     "content": "ইসলাম কখনোই অলসতা ও কর্মবিমুখতাকে সমর্থন করে না। পবিত্র কুরআনে মহান আল্লাহ তাআলা ঘোষণা করেছেন, মানুষ তাই পায় যা সে চেষ্টা ও পরিশ্রম করে।\n\nহালাল উপায়ে জ্ঞান অর্জন করা, নিজের ও পরিবারের কল্যাণে পরিশ্রম করা এবং মানুষের উপকারে নিজেকে নিয়োজিত রাখাও ইবাদতের অংশ। তাই হতাশ না হয়ে আল্লাহর ওপর পূর্ণ ভরসা (তাওয়াক্কুল) রেখে নিজের সর্বোচ্চ চেষ্টা চালিয়ে যান—সফলতা আসবেই, ইনশাআল্লাহ।",
@@ -618,69 +263,92 @@ const initialPosts = /*POSTS_START*/[
 
 function getPosts() {
   try {
-    const saved = localStorage.getItem("md_mahmud_posts_v2");
+    const saved = localStorage.getItem("md_mahmud_posts_v3");
     if (saved) {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      if (Array.isArray(parsed)) return parsed;
     }
   } catch (e) {}
   return initialPosts;
 }
+function savePosts(posts) { localStorage.setItem("md_mahmud_posts_v3", JSON.stringify(posts)); }
 
-function savePosts(posts) {
-  localStorage.setItem("md_mahmud_posts_v2", JSON.stringify(posts));
+function getBani() {
+  const saved = localStorage.getItem("md_mahmud_bani_v1");
+  return saved !== null ? saved : initialQuote;
+}
+function renderBani() {
+  const q = getBani().trim();
+  const box = document.getElementById("baniContainer");
+  if (!q) { box.innerHTML = ""; return; }
+  box.innerHTML = `<div class="bani-box"><span class="bani-badge">বাণী</span><div class="bani-text">${escapeHtml(q)}</div></div>`;
+}
+function saveBani() {
+  const val = document.getElementById("baniInput").value.trim();
+  localStorage.setItem("md_mahmud_bani_v1", val);
+  renderBani();
+  alert("বাণী সেভ হয়েছে! সবার জন্য লাইভ করতে নিচের হলুদ বাটনে চেপে কোড কপি করে GitHub-এ সেভ করুন।");
+}
+function deleteBani() {
+  localStorage.setItem("md_mahmud_bani_v1", "");
+  document.getElementById("baniInput").value = "";
+  renderBani();
+  alert("বাণী মুছে ফেলা হয়েছে! সবার কাছ থেকে সরাতে নিচের হলুদ বাটনে চেপে কোড কপি করে GitHub-এ সেভ করুন।");
 }
 
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+function getBookmarks() {
+  try { return JSON.parse(localStorage.getItem("md_mahmud_bm_v1") || "[]"); } catch (e) { return []; }
 }
-
-function renderNav() {
-  const nav = document.getElementById("catNav");
-  nav.innerHTML =
-    `<button onclick="filterCat('All')" class="${currentCat === 'All' ? 'active' : ''}">${bn ? 'সব লেখা' : 'All Posts'}</button>` +
-    categories.map(c => `<button onclick="filterCat('${c}')" class="${currentCat === c ? 'active' : ''}">${c}</button>`).join("");
-
-  document.getElementById("catCheck").innerHTML = categories
-    .map(c => `<label><input type="checkbox" value="${c}"> ${c}</label>`)
-    .join("");
-}
-
-function filterCat(c) {
-  currentCat = c;
+function toggleBookmark(id, e) {
+  if (e) e.stopPropagation();
+  let bms = getBookmarks();
+  if (bms.includes(id)) bms = bms.filter(x => x !== id);
+  else bms.push(id);
+  localStorage.setItem("md_mahmud_bm_v1", JSON.stringify(bms));
   renderNav();
   renderPosts();
 }
 
+function escapeHtml(str) {
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function renderNav() {
+  const nav = document.getElementById("catNav");
+  const bmCount = getBookmarks().length;
+  nav.innerHTML =
+    `<button onclick="filterCat('All')" class="${currentCat === 'All' ? 'active' : ''}">${bn ? 'সব লেখা' : 'All'}</button>` +
+    `<button onclick="filterCat('BOOKMARKS')" class="${currentCat === 'BOOKMARKS' ? 'active' : ''}">🔖 ${bn ? 'সংরক্ষিত' : 'Saved'} (${bmCount})</button>` +
+    categories.map(c => `<button onclick="filterCat('${c}')" class="${currentCat === c ? 'active' : ''}">${c}</button>`).join("");
+  document.getElementById("catCheck").innerHTML = categories.map(c => `<label><input type="checkbox" value="${c}"> ${c}</label>`).join("");
+}
+
+function filterCat(c) { currentCat = c; renderNav(); renderPosts(); }
+
 function calcReadTime(text) {
-  const words = text.trim().split(/\s+/).length;
-  const mins = Math.max(1, Math.ceil(words / 160));
+  const mins = Math.max(1, Math.ceil(text.trim().split(/\s+/).length / 160));
   return bn ? `${mins} মিনিট পাঠ` : `${mins} min read`;
 }
 
 function renderPosts() {
   const posts = getPosts();
+  const bms = getBookmarks();
   const query = document.getElementById("searchInput").value.trim().toLowerCase();
 
-  const filtered = posts
-    .map((p, idx) => ({ ...p, originalIndex: idx }))
-    .filter(p => {
-      const matchCat = currentCat === "All" || (p.cats && p.cats.includes(currentCat));
-      const matchQuery = !query || p.title.toLowerCase().includes(query) || p.content.toLowerCase().includes(query);
-      return matchCat && matchQuery;
-    });
+  const filtered = posts.map((p, idx) => ({ ...p, id: p.id || ("post_" + idx), originalIndex: idx })).filter(p => {
+    const matchCat = currentCat === "All" ? true : (currentCat === "BOOKMARKS" ? bms.includes(p.id) : (p.cats && p.cats.includes(currentCat)));
+    const matchQuery = !query || p.title.toLowerCase().includes(query) || p.content.toLowerCase().includes(query);
+    return matchCat && matchQuery;
+  });
 
   const container = document.getElementById("posts");
   if (filtered.length === 0) {
-    container.innerHTML = `<div style="text-align:center;padding:30px;color:var(--muted);">কোনো লেখা খুঁজে পাওয়া যায়নি।</div>`;
+    container.innerHTML = `<div style="text-align:center;padding:30px;color:var(--muted);">${currentCat === 'BOOKMARKS' ? 'এখনো কোনো লেখা সংরক্ষণ (বুকমার্ক) করা হয়নি।' : 'কোনো লেখা খুঁজে পাওয়া যায়নি।'}</div>`;
     return;
   }
 
   container.innerHTML = filtered.map(p => {
+    const isSaved = bms.includes(p.id);
     const imgUrl = escapeHtml(p.img || DEFAULT_IMG);
     const safeTitle = escapeHtml(p.title);
     const excerpt = escapeHtml(p.content.replace(/\s+/g, ' ').substring(0, 130)) + (p.content.length > 130 ? "..." : "");
@@ -692,7 +360,8 @@ function renderPosts() {
         <img class="card-img" src="${imgUrl}" onerror="this.src='${DEFAULT_IMG}'" onclick="openReader(${p.originalIndex})" alt="${safeTitle}">
         <div class="card-body">
           <div class="meta">
-            <span>📅 ${escapeHtml(p.date)}</span> • <span>⏱ ${calcReadTime(p.content)}</span>
+            <span>📅 ${escapeHtml(p.date)} • ⏱ ${calcReadTime(p.content)}</span>
+            <button class="bm-btn ${isSaved ? 'saved' : ''}" onclick="toggleBookmark('${p.id}', event)">🔖 ${isSaved ? 'সংরক্ষিত' : ''}</button>
           </div>
           <div class="card-title" onclick="openReader(${p.originalIndex})">${safeTitle}</div>
           <div class="card-excerpt">${excerpt}</div>
@@ -706,8 +375,7 @@ function renderPosts() {
             </div>
           </div>
         </div>
-      </div>
-    `;
+      </div>`;
   }).join("");
 }
 
@@ -715,81 +383,127 @@ function openReader(index) {
   const posts = getPosts();
   const p = posts[index];
   if (!p) return;
-
+  currentOpenPost = p;
   document.getElementById("mImg").src = p.img || DEFAULT_IMG;
-  document.getElementById("mMeta").innerHTML = `📅 ${escapeHtml(p.date)} • ⏱ ${calcReadTime(p.content)}`;
+  document.getElementById("mMeta").innerHTML = `<span>📅 ${escapeHtml(p.date)} • ⏱ ${calcReadTime(p.content)}</span>`;
   document.getElementById("mTitle").innerText = p.title;
   document.getElementById("mTags").innerHTML = (p.cats || []).map(t => `<span>#${escapeHtml(t)}</span>`).join("");
   const contentEl = document.getElementById("mContent");
   contentEl.innerText = p.content;
   contentEl.style.fontSize = readerFontSize + "px";
-
   const shareUrl = encodeURIComponent(location.href);
   const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + location.href);
-  document.getElementById("mShare").innerHTML = `
-    <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a>
-    <a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>
-  `;
-
+  document.getElementById("mShare").innerHTML = `<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a><a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>`;
   document.getElementById("readerModal").classList.add("open");
   document.body.style.overflow = "hidden";
 }
+function closeReader() { document.getElementById("readerModal").classList.remove("open"); document.body.style.overflow = ""; }
+function closeReaderOutside(e) { if (e.target.id === "readerModal") closeReader(); }
+function changeFont(delta) { readerFontSize = Math.min(24, Math.max(13, readerFontSize + delta)); document.getElementById("mContent").style.fontSize = readerFontSize + "px"; }
+function copyShareLink(title) { if (navigator.clipboard) navigator.clipboard.writeText(`${title} - Make Dreams\n${location.href}`).then(() => alert("লিংক কপি হয়েছে!")); }
 
-function closeReader() {
-  document.getElementById("readerModal").classList.remove("open");
-  document.body.style.overflow = "";
+/* AI Assistant */
+function toggleAIWindow() { document.getElementById("aiWindow").classList.toggle("open"); }
+function openArticleAI() {
+  if (!currentOpenPost) return;
+  activeArticleContext = { title: currentOpenPost.title, content: currentOpenPost.content };
+  document.getElementById("aiContextTitle").innerText = "📄 " + currentOpenPost.title;
+  document.getElementById("aiContextChip").style.display = "flex";
+  document.getElementById("aiWindow").classList.add("open");
 }
-
-function closeReaderOutside(e) {
-  if (e.target.id === "readerModal") closeReader();
+function clearArticleContext() {
+  activeArticleContext = null;
+  document.getElementById("aiContextChip").style.display = "none";
 }
+async function askGemini() {
+  const input = document.getElementById("aiPrompt");
+  const q = input.value.trim();
+  if (!q) return;
+  const box = document.getElementById("aiMessages");
+  box.innerHTML += `<div class="ai-msg user">${escapeHtml(q)}</div>`;
+  input.value = "";
+  const loadingId = "ai_load_" + Date.now();
+  box.innerHTML += `<div class="ai-msg bot" id="${loadingId}">উত্তর তৈরি হচ্ছে...</div>`;
+  box.scrollTop = box.scrollHeight;
 
-function changeFont(delta) {
-  readerFontSize = Math.min(24, Math.max(13, readerFontSize + delta));
-  document.getElementById("mContent").style.fontSize = readerFontSize + "px";
-}
-
-function copyShareLink(title) {
-  const text = `${title} - Make Dreams\n${location.href}`;
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(() => alert("লিংক কপি হয়েছে!"));
+  if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("এখানে_আপনার")) {
+    document.getElementById(loadingId).innerText = "কোডের ভেতরে এখনো API Key বসানো হয়নি।";
+    return;
   }
+
+  const promptText = activeArticleContext
+    ? `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। নিচের আর্টিকেলটির তথ্যের ওপর ভিত্তি করে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও:\n\nশিরোনাম: ${activeArticleContext.title}\nবিস্তারিত লেখা: ${activeArticleContext.content}\n\nশিক্ষার্থীর প্রশ্ন: ${q}`
+    : `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। পড়াশোনা, বিসিএস, ক্যারিয়ার বা সাধারণ বিষয়ে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও।\n\nপ্রশ্ন: ${q}`;
+
+  const models = ["gemini-2.5-flash", "gemini-2.0-flash"];
+  let reply = "";
+  for (const m of models) {
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(GEMINI_API_KEY)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
+      });
+      const data = await res.json();
+      if (data && data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+        reply = data.candidates[0].content.parts[0].text;
+        break;
+      }
+    } catch (e) {}
+  }
+  document.getElementById(loadingId).innerText = reply || "দুঃখিত, এই মুহূর্তে উত্তর আনা সম্ভব হয়নি। ইন্টারনেট সংযোগ বা API Key যাচাই করুন।";
+  box.scrollTop = box.scrollHeight;
 }
 
-/* Admin Functions */
-function showLogin() {
-  const box = document.getElementById("loginBox");
-  box.classList.add("open");
-  box.scrollIntoView({ behavior: "smooth" });
+/* Secret Admin & Gallery Upload */
+function handleSecretTap() {
+  tapCount++;
+  clearTimeout(tapTimer);
+  tapTimer = setTimeout(() => { tapCount = 0; }, 2000);
+  if (tapCount >= 3) { tapCount = 0; showLogin(); }
 }
-
-function closeLogin() {
-  document.getElementById("loginBox").classList.remove("open");
-  document.getElementById("msg").innerText = "";
-}
-
+function showLogin() { const b = document.getElementById("loginBox"); b.classList.add("open"); b.scrollIntoView({ behavior: "smooth" }); }
+function closeLogin() { document.getElementById("loginBox").classList.remove("open"); document.getElementById("msg").innerText = ""; }
 function checkPass() {
-  const val = document.getElementById("passInput").value;
-  if (val === PASS) {
+  if (document.getElementById("passInput").value === PASS) {
     document.getElementById("loginBox").classList.remove("open");
     document.getElementById("passInput").value = "";
     document.getElementById("msg").innerText = "";
     openAdmin();
-  } else {
-    document.getElementById("msg").innerText = "ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।";
-  }
+  } else { document.getElementById("msg").innerText = "ভুল পাসওয়ার্ড!"; }
 }
-
 function openAdmin() {
-  const panel = document.getElementById("adminPanel");
-  panel.classList.add("open");
+  const p = document.getElementById("adminPanel");
+  p.classList.add("open");
+  document.getElementById("baniInput").value = getBani();
   renderAdminList();
-  panel.scrollIntoView({ behavior: "smooth" });
+  p.scrollIntoView({ behavior: "smooth" });
 }
+function hideAdmin() { document.getElementById("adminPanel").classList.remove("open"); resetAdminForm(); }
 
-function hideAdmin() {
-  document.getElementById("adminPanel").classList.remove("open");
-  resetAdminForm();
+function handleImageUpload(input) {
+  const file = input.files && input.files[0];
+  if (!file) return;
+  document.getElementById("uploadStatus").innerText = "ছবি প্রস্তুত হচ্ছে...";
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      const maxW = 720;
+      const scale = Math.min(1, maxW / img.width);
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+      uploadedGalleryDataUrl = canvas.toDataURL("image/jpeg", 0.72);
+      const prev = document.getElementById("imgPreview");
+      prev.src = uploadedGalleryDataUrl;
+      prev.style.display = "block";
+      document.getElementById("uploadStatus").innerText = "✅ গ্যালারি থেকে ছবি যুক্ত হয়েছে";
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
 }
 
 function resetAdminForm() {
@@ -798,6 +512,10 @@ function resetAdminForm() {
   document.getElementById("pubBtn").innerText = "পাবলিশ করুন";
   document.getElementById("title").value = "";
   document.getElementById("img").value = "";
+  document.getElementById("imgFile").value = "";
+  uploadedGalleryDataUrl = "";
+  document.getElementById("imgPreview").style.display = "none";
+  document.getElementById("uploadStatus").innerText = "";
   document.getElementById("content").value = "";
   document.querySelectorAll("#catCheck input").forEach(cb => cb.checked = false);
 }
@@ -805,7 +523,7 @@ function resetAdminForm() {
 function publishPost() {
   const t = document.getElementById("title").value.trim();
   const c = document.getElementById("content").value.trim();
-  const im = document.getElementById("img").value.trim() || DEFAULT_IMG;
+  const imUrl = document.getElementById("img").value.trim();
   const checkedCats = [...document.querySelectorAll("#catCheck input:checked")].map(i => i.value);
   const editIdx = parseInt(document.getElementById("editIndex").value, 10);
 
@@ -816,26 +534,15 @@ function publishPost() {
 
   const posts = getPosts();
   if (editIdx >= 0 && editIdx < posts.length) {
-    posts[editIdx] = {
-      ...posts[editIdx],
-      title: t,
-      cats: checkedCats,
-      content: c,
-      img: im
-    };
+    const finalImg = uploadedGalleryDataUrl || imUrl || posts[editIdx].img || DEFAULT_IMG;
+    posts[editIdx] = { ...posts[editIdx], title: t, cats: checkedCats, content: c, img: finalImg };
     alert("লেখাটি আপডেট হয়েছে! সবার জন্য লাইভ করতে নিচের হলুদ বাটনে চেপে কোড কপি করে GitHub-এ সেভ করুন।");
   } else {
+    const finalImg = uploadedGalleryDataUrl || imUrl || DEFAULT_IMG;
     const today = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
-    posts.unshift({
-      title: t,
-      cats: checkedCats,
-      content: c,
-      img: im,
-      date: today
-    });
+    posts.unshift({ id: "p_" + Date.now(), title: t, cats: checkedCats, content: c, img: finalImg, date: today });
     alert("নতুন লেখা যোগ হয়েছে! সবার জন্য লাইভ করতে নিচের হলুদ বাটনে চেপে কোড কপি করে GitHub-এ সেভ করুন।");
   }
-
   savePosts(posts);
   resetAdminForm();
   renderPosts();
@@ -851,25 +558,28 @@ function renderAdminList() {
         <button style="background:#1976d2;" onclick="editPost(${idx})">এডিট</button>
         <button style="background:#d32f2f;" onclick="deletePost(${idx})">মুছুন</button>
       </div>
-    </div>
-  `).join("");
+    </div>`).join("");
 }
 
 function editPost(idx) {
-  const posts = getPosts();
-  const p = posts[idx];
+  const p = getPosts()[idx];
   if (!p) return;
-
   document.getElementById("editIndex").value = idx;
   document.getElementById("adminFormTitle").innerText = "লেখা সম্পাদনা (Edit) করুন";
   document.getElementById("pubBtn").innerText = "পরিবর্তন সেভ করুন";
   document.getElementById("title").value = p.title;
-  document.getElementById("img").value = p.img === DEFAULT_IMG ? "" : p.img;
+  uploadedGalleryDataUrl = "";
+  document.getElementById("uploadStatus").innerText = "";
+  if (p.img && p.img.startsWith("data:image")) {
+    document.getElementById("img").value = "";
+    document.getElementById("imgPreview").src = p.img;
+    document.getElementById("imgPreview").style.display = "block";
+  } else {
+    document.getElementById("img").value = p.img === DEFAULT_IMG ? "" : (p.img || "");
+    document.getElementById("imgPreview").style.display = "none";
+  }
   document.getElementById("content").value = p.content;
-
-  document.querySelectorAll("#catCheck input").forEach(cb => {
-    cb.checked = (p.cats || []).includes(cb.value);
-  });
+  document.querySelectorAll("#catCheck input").forEach(cb => { cb.checked = (p.cats || []).includes(cb.value); });
   document.getElementById("adminPanel").scrollIntoView({ behavior: "smooth" });
 }
 
@@ -884,34 +594,38 @@ function deletePost(idx) {
 
 function copyFullCode() {
   const posts = getPosts();
+  const quote = getBani();
   const adminPanel = document.getElementById("adminPanel");
   const loginBox = document.getElementById("loginBox");
   const readerModal = document.getElementById("readerModal");
+  const aiWindow = document.getElementById("aiWindow");
 
-  // Temporarily hide overlays before capturing clean HTML
   adminPanel.classList.remove("open");
   loginBox.classList.remove("open");
   readerModal.classList.remove("open");
+  aiWindow.classList.remove("open");
   document.body.classList.remove("dark");
+  document.getElementById("catNav").innerHTML = "";
+  document.getElementById("baniContainer").innerHTML = "";
+  document.getElementById("posts").innerHTML = "";
 
   let fullHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
 
-  // Restore admin panel state
   adminPanel.classList.add("open");
+  renderNav();
+  renderBani();
+  renderPosts();
 
-  const safeJson = JSON.stringify(posts, null, 2).replace(/<\//g, "<\\/");
-  fullHtml = fullHtml.replace(
-    /\/\*POSTS_START\*\/[\s\S]*?\/\*POSTS_END\*\//,
-    () => `/*POSTS_START*/${safeJson}/*POSTS_END*/`
-  );
+  const safePostsJson = JSON.stringify(posts, null, 2).replace(/<\//g, "<\\/");
+  const safeQuoteJson = JSON.stringify(quote).replace(/<\//g, "<\\/");
+  fullHtml = fullHtml.replace(/\/\*POSTS_START\*\/[\s\S]*?\/\*POSTS_END\*\//, () => `/*POSTS_START*/${safePostsJson}/*POSTS_END*/`);
+  fullHtml = fullHtml.replace(/\/\*QUOTE_START\*\/[\s\S]*?\/\*QUOTE_END\*\//, () => `/*QUOTE_START*/${safeQuoteJson}/*QUOTE_END*/`);
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(fullHtml).then(() => {
       alert("সম্পূর্ণ আপডেটেড কোড কপি হয়েছে! এখন GitHub-এ আপনার index.html ফাইল এডিট করে আগের সব কোড মুছে এটি পেস্ট করে Commit changes দিন।");
     }).catch(() => fallbackCopy(fullHtml));
-  } else {
-    fallbackCopy(fullHtml);
-  }
+  } else { fallbackCopy(fullHtml); }
 }
 
 function fallbackCopy(text) {
@@ -929,22 +643,18 @@ function toggleLang() {
   document.getElementById("langBtn").innerText = bn ? "EN" : "BN";
   document.getElementById("slogan").innerText = bn ? "স্বপ্নীল যাত্রার সহায়িকা" : "A Companion for Your Dreamy Journey";
   document.getElementById("latestTitle").innerText = bn ? "সর্বশেষ লেখা" : "Latest Writings";
-  document.getElementById("searchInput").placeholder = bn
-    ? "লেখা খুঁজুন (যেমন: বিসিএস, পড়াশোনা, ইসলাম, বৃত্তি)..."
-    : "Search articles (e.g. BCS, Study, Islam, Scholarship)...";
+  document.getElementById("searchInput").placeholder = bn ? "লেখা খুঁজুন (যেমন: বিসিএস, পড়াশোনা, ইসলাম, বৃত্তি)..." : "Search articles...";
   renderNav();
   renderPosts();
 }
-
 function toggleDark() {
   document.body.classList.toggle("dark");
   document.getElementById("darkBtn").innerText = document.body.classList.contains("dark") ? "☀️" : "🌙";
 }
 
-if (location.search.includes("admin")) {
-  showLogin();
-}
+if (location.search.includes("admin")) showLogin();
 renderNav();
+renderBani();
 renderPosts();
 </script>
 </body>
