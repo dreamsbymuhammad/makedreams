@@ -249,7 +249,7 @@ const initialPosts = /*POSTS_START*/[
     "cats": ["বিসিএস-চাকরি-বাকরি", "পড়াশোনা-উচ্চশিক্ষা"],
     "content": "মানবিক বিভাগ থেকে বিসিএস ক্যাডার হওয়া কঠিন বলে অনেকের মাঝে একটি ভুল ধারণা কাজ করে। অথচ সঠিক পরিকল্পনা, নিয়মিত অনুশীলন এবং আত্মবিশ্বাস থাকলে যেকোনো বিভাগ থেকেই শীর্ষস্থান অর্জন করা সম্ভব।\n\nশুরুতেই বিগত ১০ বছরের বিসিএস প্রিলিমিনারি প্রশ্নব্যাংক ভালোভাবে বিশ্লেষণ করুন। এতে কোন বিষয় থেকে কেমন প্রশ্ন আসে সে সম্পর্কে স্পষ্ট ধারণা তৈরি হবে। বাংলা, ইংরেজি ও সাধারণ জ্ঞানে আপনার যেহেতু আগে থেকেই ভালো ভিত্তি রয়েছে, তাই গণিত ও বিজ্ঞানে প্রতিদিন অন্তত ২ ঘণ্টা করে সময় দিলে আপনি অন্যদের চেয়ে এগিয়ে থাকবেন।",
     "img": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80",
-    "date": "10 November 2026"
+    "date": "১০ নভেম্বর ২০২৬"
   },
   {
     "id": "p3",
@@ -257,7 +257,7 @@ const initialPosts = /*POSTS_START*/[
     "cats": ["ইসলাম-দ্বীনী জিন্দেগি", "পরিশ্রম-মেধা"],
     "content": "ইসলাম কখনোই অলসতা ও কর্মবিমুখতাকে সমর্থন করে না। পবিত্র কুরআনে মহান আল্লাহ তাআলা ঘোষণা করেছেন, মানুষ তাই পায় যা সে চেষ্টা ও পরিশ্রম করে।\n\nহালাল উপায়ে জ্ঞান অর্জন করা, নিজের ও পরিবারের কল্যাণে পরিশ্রম করা এবং মানুষের উপকারে নিজেকে নিয়োজিত রাখাও ইবাদতের অংশ। তাই হতাশ না হয়ে আল্লাহর ওপর পূর্ণ ভরসা (তাওয়াক্কুল) রেখে নিজের সর্বোচ্চ চেষ্টা চালিয়ে যান—সফলতা আসবেই, ইনশাআল্লাহ।",
     "img": "https://images.unsplash.com/photo-1585036156171-4853e7eec6a3?w=600&q=80",
-    "date": "9 November 2026"
+    "date": "৯ নভেম্বর ২০২৬"
   }
 ]/*POSTS_END*/;
 
@@ -402,7 +402,7 @@ function closeReaderOutside(e) { if (e.target.id === "readerModal") closeReader(
 function changeFont(delta) { readerFontSize = Math.min(24, Math.max(13, readerFontSize + delta)); document.getElementById("mContent").style.fontSize = readerFontSize + "px"; }
 function copyShareLink(title) { if (navigator.clipboard) navigator.clipboard.writeText(`${title} - Make Dreams\n${location.href}`).then(() => alert("লিংক কপি হয়েছে!")); }
 
-/* AI Assistant */
+/* AI Assistant (Supports AQ. Auth Keys via x-goog-api-key Header & Interactions API) */
 function toggleAIWindow() { document.getElementById("aiWindow").classList.toggle("open"); }
 function openArticleAI() {
   if (!currentOpenPost) return;
@@ -434,52 +434,68 @@ async function askGemini() {
 
   const promptText = activeArticleContext
     ? `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। নিচের আর্টিকেলটির তথ্যের ওপর ভিত্তি করে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও:\n\nশিরোনাম: ${activeArticleContext.title}\nবিস্তারিত লেখা: ${activeArticleContext.content}\n\nশিক্ষার্থীর প্রশ্ন: ${q}`
-    : `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। পড়াশোনা, বিসিএস, ক্যারিয়ার বা সাধারণ বিষয়ে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও።\n\nপ্রশ্ন: ${q}`;
+    : `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। পড়াশোনা, বিসিএস, ক্যারিয়ার বা সাধারণ বিষয়ে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও।\n\nপ্রশ্ন: ${q}`;
 
-  const isVertex = cleanKey.startsWith("AQ.");
-  const models = isVertex ? ["gemini-3.8-flash", "gemini-2.5-flash"] : ["gemini-2.5-flash", "gemini-2.5-flash-lite"];
-  
   let reply = "";
   let lastError = "";
 
-  for (const m of models) {
+  // পদ্ধতি ১: Google AI Studio-র নতুন Interactions API (x-goog-api-key হেডারসহ)
+  for (const m of ["gemini-3.8-flash", "gemini-2.5-flash"]) {
     try {
-      const url = isVertex
-        ? `https://aiplatform.googleapis.com/v1/publishers/google/models/${m}:generateContent?key=${encodeURIComponent(cleanKey)}`
-        : `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${encodeURIComponent(cleanKey)}`;
-
-      const res = await fetch(url, {
+      const res1 = await fetch("https://generativelanguage.googleapis.com/v1beta/interactions", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": cleanKey
+        },
+        body: JSON.stringify({
+          model: m,
+          input: promptText
+        })
       });
-      const data = await res.json();
-      if (data?.candidates?.[0]?.content?.parts?.[0]?.text) {
-        reply = data.candidates[0].content.parts[0].text;
+      const data1 = await res1.json();
+      if (Array.isArray(data1?.outputs)) {
+        const textOut = [...data1.outputs].reverse().find(o => typeof o?.text === "string" && o.text.trim());
+        if (textOut) { reply = textOut.text.trim(); break; }
+      } else if (typeof data1?.output === "string" && data1.output.trim()) {
+        reply = data1.output.trim();
         break;
-      } else if (data?.error?.message) {
-        lastError = data.error.message;
+      } else if (data1?.candidates?.[0]?.content?.parts?.[0]?.text) {
+        reply = data1.candidates[0].content.parts[0].text.trim();
+        break;
+      } else if (data1?.error?.message) {
+        lastError = data1.error.message;
       }
     } catch (e) {
       lastError = e.message;
     }
   }
 
-  // Fallback for Vertex AI Endpoint if standard URL fails
-  if (!reply && isVertex) {
-    try {
-      const fallbackRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(cleanKey)}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
-      });
-      const fallbackData = await fallbackRes.json();
-      if (fallbackData?.candidates?.[0]?.content?.parts?.[0]?.text) {
-        reply = fallbackData.candidates[0].content.parts[0].text;
-      } else if (fallbackData?.error?.message) {
-        lastError = fallbackData.error.message;
+  // পদ্ধতি ২: generateContent API (x-goog-api-key হেডারসহ, লিংকের শেষে ?key= ছাড়া)
+  if (!reply) {
+    for (const m of ["gemini-3.8-flash", "gemini-2.5-flash"]) {
+      try {
+        const res2 = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": cleanKey
+          },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: promptText }] }]
+          })
+        });
+        const data2 = await res2.json();
+        if (data2?.candidates?.[0]?.content?.parts?.[0]?.text) {
+          reply = data2.candidates[0].content.parts[0].text.trim();
+          break;
+        } else if (data2?.error?.message) {
+          lastError = data2.error.message;
+        }
+      } catch (e) {
+        lastError = e.message;
       }
-    } catch (e) {}
+    }
   }
 
   document.getElementById(loadingId).innerText = reply || ("সমস্যা: " + (lastError || "API Key বা ইন্টারনেট সংযোগ যাচাই করুন।"));
