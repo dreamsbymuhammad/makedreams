@@ -33,11 +33,20 @@ body.dark {
   --shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Hind Siliguri', 'Noto Serif Bengali', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; transition: background 0.25s, color 0.25s; }
+body { font-family: 'Hind Siliguri', 'Noto Serif Bengali', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; transition: background 0.25s, color 0.25s; top: 0 !important; }
+.goog-te-banner-frame, .skiptranslate > iframe { display: none !important; }
+#goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
 header { text-align: center; padding: 16px 12px 14px; background: var(--card); border-bottom: 3px solid var(--accent); position: relative; box-shadow: var(--shadow); }
-.top-controls { position: absolute; right: 12px; top: 12px; display: flex; gap: 6px; }
-.icon-btn { background: var(--primary); color: #fff; border: 0; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; }
-.logo-wrap { max-width: 240px; margin: 4px auto 2px; cursor: pointer; user-select: none; }
+.top-controls { position: absolute; right: 12px; top: 12px; display: flex; gap: 5px; z-index: 60; }
+.icon-btn { background: var(--primary); color: #fff; border: 0; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.t-btn { background: var(--accent); color: #111; }
+.translate-menu { display: none; position: absolute; right: 12px; top: 46px; background: var(--card); border: 1.5px solid var(--accent); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); z-index: 90; overflow: hidden; min-width: 155px; text-align: left; }
+.translate-menu.open { display: block; }
+.translate-menu button { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid var(--border); padding: 9px 14px; text-align: left; font-family: inherit; font-size: 13.5px; font-weight: 600; color: var(--text); cursor: pointer; }
+.translate-menu button:last-child { border-bottom: 0; }
+.translate-menu button:hover { background: var(--primary-light); color: var(--primary); }
+.logo-wrap { max-width: 240px; margin: 14px auto 2px; cursor: pointer; user-select: none; }
 .logo-wrap svg { width: 100%; height: auto; display: block; }
 body.dark .logo-wrap svg .logo-title { fill: #f1f5f9; }
 body.dark .logo-wrap svg .logo-sub { fill: #cbd5e1; }
@@ -82,17 +91,6 @@ nav button.active { background: var(--primary); color: #fff; border-color: var(-
 .modal-title { font-family: 'Noto Serif Bengali', serif; font-size: 22px; line-height: 1.45; margin-bottom: 8px; }
 .modal-content { font-size: 16px; line-height: 1.9; white-space: pre-line; margin-top: 14px; }
 .ai-fab { position: fixed; right: 18px; bottom: 20px; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, #0d3b36, #185c54); color: #ffd97d; border: 2px solid var(--accent); font-size: 22px; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.28); z-index: 150; display: flex; align-items: center; justify-content: center; }
-.ai-window { display: none; position: fixed; right: 14px; bottom: 82px; width: calc(100vw - 28px); max-width: 370px; height: 440px; max-height: 72vh; background: var(--card); border: 2px solid var(--accent); border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.35); z-index: 200; flex-direction: column; overflow: hidden; }
-.ai-window.open { display: flex; }
-.ai-head { background: #0d3b36; color: #fff; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 14px; }
-.ai-context-chip { background: var(--primary-light); color: var(--primary); font-size: 11.5px; padding: 5px 10px; border-bottom: 1px solid var(--border); display: none; justify-content: space-between; align-items: center; gap: 6px; font-weight: 600; }
-.ai-messages { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; font-size: 13.5px; }
-.ai-msg { padding: 9px 12px; border-radius: 12px; max-width: 86%; line-height: 1.55; white-space: pre-line; }
-.ai-msg.bot { background: var(--primary-light); color: var(--text); align-self: flex-start; border-bottom-left-radius: 3px; }
-.ai-msg.user { background: var(--primary); color: #fff; align-self: flex-end; border-bottom-right-radius: 3px; }
-.ai-input-row { display: flex; gap: 6px; padding: 9px; border-top: 1px solid var(--border); background: var(--bg); }
-.ai-input-row input { flex: 1; padding: 8px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-family: inherit; font-size: 13.5px; outline: none; }
-.ai-input-row button { background: var(--primary); color: #fff; border: 0; padding: 0 14px; border-radius: 20px; font-weight: 700; cursor: pointer; }
 #loginBox, #adminPanel { display: none; max-width: 720px; margin: 20px auto; background: var(--card); border: 2px solid var(--accent); padding: 20px; border-radius: 14px; box-shadow: var(--shadow); }
 #loginBox.open, #adminPanel.open { display: block; }
 #loginBox { text-align: center; max-width: 400px; }
@@ -111,11 +109,20 @@ footer b { color: #f3c65f; font-size: 15px; }
 </head>
 <body>
 <header>
-  <div class="top-controls">
+  <div class="top-controls notranslate">
     <button class="icon-btn" onclick="toggleDark()" id="darkBtn">🌙</button>
     <button class="icon-btn" onclick="toggleLang()" id="langBtn">EN</button>
+    <button class="icon-btn t-btn" onclick="toggleTranslateMenu(event)">T</button>
   </div>
-  <div class="logo-wrap" onclick="handleSecretTap()">
+  <div class="translate-menu notranslate" id="translateMenu">
+    <button onclick="applyGoogleTranslate('bn')">বাংলা (মূল ভাষা)</button>
+    <button onclick="applyGoogleTranslate('en')">English</button>
+    <button onclick="applyGoogleTranslate('ar')">العربية (আরবি)</button>
+    <button onclick="applyGoogleTranslate('ur')">اردو (উর্দু)</button>
+    <button onclick="applyGoogleTranslate('hi')">हिन्दी (হিন্দি)</button>
+  </div>
+  <div id="google_translate_element" style="display:none;"></div>
+  <div class="logo-wrap notranslate" onclick="handleSecretTap()">
     <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Make Dreams Mahmud Logo">
       <defs>
         <radialGradient id="sunGlow" cx="50%" cy="60%" r="50%"><stop offset="0%" stop-color="#fff3b0"/><stop offset="55%" stop-color="#f2c45a"/><stop offset="100%" stop-color="#d49b35"/></radialGradient>
@@ -155,11 +162,11 @@ footer b { color: #f3c65f; font-size: 15px; }
 </div>
 <div class="modal-overlay" id="readerModal" onclick="closeReaderOutside(event)">
   <div class="modal-box">
-    <div class="modal-top">
+    <div class="modal-top notranslate">
       <div class="font-controls">
         <button onclick="changeFont(-1)">A-</button>
         <button onclick="changeFont(1)">A+</button>
-        <button class="article-ai-btn" onclick="openArticleAI()">✨</button>
+        <button class="article-ai-btn" onclick="openArticleGemini()">✨</button>
       </div>
       <button class="close-modal" onclick="closeReader()">বন্ধ করুন ✕</button>
     </div>
@@ -174,21 +181,15 @@ footer b { color: #f3c65f; font-size: 15px; }
     </div>
   </div>
 </div>
-<button class="ai-fab" onclick="toggleAIWindow()">✨</button>
-<div class="ai-window" id="aiWindow">
-  <div class="ai-head"><span>✨ Make Dreams AI</span><button onclick="toggleAIWindow()" style="background:none;border:0;color:#fff;font-size:16px;cursor:pointer;">✕</button></div>
-  <div class="ai-context-chip" id="aiContextChip"><span id="aiContextTitle" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span><button onclick="clearArticleContext()" style="background:none;border:0;color:#d32f2f;font-weight:700;cursor:pointer;">✕</button></div>
-  <div class="ai-messages" id="aiMessages"><div class="ai-msg bot">আসসালামু আলাইকুম! পড়াশোনা, বিসিএস, স্কলারশিপ বা যেকোনো বিষয়ে প্রশ্ন করতে পারেন।</div></div>
-  <div class="ai-input-row"><input type="text" id="aiPrompt" placeholder="আপনার প্রশ্ন লিখুন..." onkeydown="if(event.key==='Enter')askGemini()"><button onclick="askGemini()">➤</button></div>
-</div>
-<div id="loginBox">
+<button class="ai-fab notranslate" onclick="openDirectGemini()">✨</button>
+<div id="loginBox" class="notranslate">
   <h3 style="font-family:'Noto Serif Bengali',serif;color:var(--primary);">Admin Login</h3>
-  <input type="password" id="passInput" placeholder="গোপন পাসওয়ার্ড লিখুন">
+  <input type="password" id="passInput" placeholder="গোপন পাসওয়ার্ড লিখুন" onkeydown="if(event.key==='Enter')checkPass()">
   <button class="btn-full btn-publish" onclick="checkPass()">প্রবেশ করুন</button>
   <button class="btn-full btn-close-admin" onclick="closeLogin()">বাতিল</button>
   <p id="msg" style="color:#d32f2f;font-size:13px;margin-top:8px;"></p>
 </div>
-<div id="adminPanel">
+<div id="adminPanel" class="notranslate">
   <h3 id="adminFormTitle" style="font-family:'Noto Serif Bengali',serif;color:var(--primary);margin-bottom:8px;">নতুন লেখা যোগ করুন</h3>
   <input type="hidden" id="editIndex" value="-1">
   <input type="text" id="title" placeholder="শিরোনাম লিখুন (আবশ্যক)">
@@ -218,17 +219,14 @@ footer b { color: #f3c65f; font-size: 15px; }
 </div>
 <footer><b>Make Dreams - স্বপ্নীল যাত্রার সহায়িকা</b><br>নিজের স্বপ্ন পূরণ করতে চাই (ইনশাআল্লাহ), পাশাপাশি অন্যের স্বপ্নযাত্রায় সহায়তা, উৎসাহ এবং পাথেয় যোগাতে চাই।<br><br>© 2026 Make Dreams by Mahmud | All Rights Reserved</footer>
 <script>
-const GEMINI_API_KEY = "AQ.Ab8RN6IDdNsA5n1nVsWEGtbSMUg0hlQkjjiqMC37b3M69bQ-Hg";
-
 const categories = ["পড়াশোনা-উচ্চশিক্ষা","বিসিএস-চাকরি-বাকরি","সাফল্য-স্বপ্নপূরণ","পরিশ্রম-মেধা","ইসলাম-দ্বীনী জিন্দেগি","আন্তর্জাতিক /বৃত্তি","পরীক্ষা এবং প্রতিযোগিতা"];
-const PASS = "mahmud09@8";
+const AUTH_SIG = "c337423-15839e11";
 const DEFAULT_IMG = "https://images.unsplash.com/photo-1456513080510-7bf3a84b4173?w=600&q=80";
 let currentCat = "All";
 let bn = true;
 let readerFontSize = 16;
 let uploadedGalleryDataUrl = "";
 let currentOpenPost = null;
-let activeArticleContext = null;
 let tapCount = 0;
 let tapTimer = null;
 
@@ -260,6 +258,16 @@ const initialPosts = /*POSTS_START*/[
     "date": "৯ নভেম্বর ২০২৬"
   }
 ]/*POSTS_END*/;
+
+function verifySecret(s) {
+  let h1 = 5381, h2 = 7919;
+  for (let i = 0; i < s.length; i++) {
+    const c = s.charCodeAt(i);
+    h1 = (h1 * 33 + c) % 1000000007;
+    h2 = (h2 * 37 + c) % 1000000009;
+  }
+  return (h1.toString(16) + "-" + h2.toString(16)) === AUTH_SIG;
+}
 
 function getPosts() {
   try {
@@ -402,104 +410,55 @@ function closeReaderOutside(e) { if (e.target.id === "readerModal") closeReader(
 function changeFont(delta) { readerFontSize = Math.min(24, Math.max(13, readerFontSize + delta)); document.getElementById("mContent").style.fontSize = readerFontSize + "px"; }
 function copyShareLink(title) { if (navigator.clipboard) navigator.clipboard.writeText(`${title} - Make Dreams\n${location.href}`).then(() => alert("লিংক কপি হয়েছে!")); }
 
-/* AI Assistant (Supports AQ. Auth Keys via x-goog-api-key Header & Interactions API) */
-function toggleAIWindow() { document.getElementById("aiWindow").classList.toggle("open"); }
-function openArticleAI() {
-  if (!currentOpenPost) return;
-  activeArticleContext = { title: currentOpenPost.title, content: currentOpenPost.content };
-  document.getElementById("aiContextTitle").innerText = "📄 " + currentOpenPost.title;
-  document.getElementById("aiContextChip").style.display = "flex";
-  document.getElementById("aiWindow").classList.add("open");
+/* Direct Gemini Live Links (No API Key Needed) */
+function openDirectGemini() {
+  window.open("https://gemini.google.com/app", "_blank", "noopener");
 }
-function clearArticleContext() {
-  activeArticleContext = null;
-  document.getElementById("aiContextChip").style.display = "none";
+function openArticleGemini() {
+  if (!currentOpenPost) { openDirectGemini(); return; }
+  const promptToCopy = `নিচের আর্টিকেলটি পড়ে আমাকে সহজভাবে বুঝিয়ে বলো এবং এ বিষয়ে আমার পরবর্তী প্রশ্নগুলোর উত্তর দাও:\n\nশিরোনাম: ${currentOpenPost.title}\nবিস্তারিত: ${currentOpenPost.content}`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(promptToCopy).then(() => {
+      alert("লেখাটি কপি হয়েছে! এখন Gemini পেজ খুলবে—সেখানে গিয়ে শুধু Paste চাপুন।");
+      openDirectGemini();
+    }).catch(() => openDirectGemini());
+  } else {
+    openDirectGemini();
+  }
 }
-async function askGemini() {
-  const input = document.getElementById("aiPrompt");
-  const q = input.value.trim();
-  if (!q) return;
-  const box = document.getElementById("aiMessages");
-  box.innerHTML += `<div class="ai-msg user">${escapeHtml(q)}</div>`;
-  input.value = "";
-  const loadingId = "ai_load_" + Date.now();
-  box.innerHTML += `<div class="ai-msg bot" id="${loadingId}">উত্তর তৈরি হচ্ছে...</div>`;
-  box.scrollTop = box.scrollHeight;
 
-  const cleanKey = (GEMINI_API_KEY || "").trim();
-  if (!cleanKey || cleanKey.includes("এখানে_আপনার")) {
-    document.getElementById(loadingId).innerText = "কোডের ভেতরে এখনো API Key বসানো হয়নি।";
+/* Online Google Translate Widget (T Button) */
+function toggleTranslateMenu(e) {
+  if (e) e.stopPropagation();
+  document.getElementById("translateMenu").classList.toggle("open");
+}
+document.addEventListener("click", function() {
+  const m = document.getElementById("translateMenu");
+  if (m) m.classList.remove("open");
+});
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'bn',
+    includedLanguages: 'bn,en,ar,ur,hi',
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+function applyGoogleTranslate(lang) {
+  document.getElementById("translateMenu").classList.remove("open");
+  if (lang === "bn") {
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + location.hostname + ";";
+    location.reload();
     return;
   }
-
-  const promptText = activeArticleContext
-    ? `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। নিচের আর্টিকেলটির তথ্যের ওপর ভিত্তি করে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও:\n\nশিরোনাম: ${activeArticleContext.title}\nবিস্তারিত লেখা: ${activeArticleContext.content}\n\nশিক্ষার্থীর প্রশ্ন: ${q}`
-    : `তুমি 'Make Dreams' শিক্ষামূলক প্ল্যাটফর্মের AI সহায়িকা। পড়াশোনা, বিসিএস, ক্যারিয়ার বা সাধারণ বিষয়ে শিক্ষার্থীকে সহজ ও স্পষ্ট বাংলায় উত্তর দাও।\n\nপ্রশ্ন: ${q}`;
-
-  let reply = "";
-  let lastError = "";
-
-  // পদ্ধতি ১: Google AI Studio-র নতুন Interactions API (x-goog-api-key হেডারসহ)
-  for (const m of ["gemini-3.8-flash", "gemini-2.5-flash"]) {
-    try {
-      const res1 = await fetch("https://generativelanguage.googleapis.com/v1beta/interactions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-goog-api-key": cleanKey
-        },
-        body: JSON.stringify({
-          model: m,
-          input: promptText
-        })
-      });
-      const data1 = await res1.json();
-      if (Array.isArray(data1?.outputs)) {
-        const textOut = [...data1.outputs].reverse().find(o => typeof o?.text === "string" && o.text.trim());
-        if (textOut) { reply = textOut.text.trim(); break; }
-      } else if (typeof data1?.output === "string" && data1.output.trim()) {
-        reply = data1.output.trim();
-        break;
-      } else if (data1?.candidates?.[0]?.content?.parts?.[0]?.text) {
-        reply = data1.candidates[0].content.parts[0].text.trim();
-        break;
-      } else if (data1?.error?.message) {
-        lastError = data1.error.message;
-      }
-    } catch (e) {
-      lastError = e.message;
-    }
+  const select = document.querySelector(".goog-te-combo");
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event("change"));
+  } else {
+    document.cookie = `googtrans=/bn/${lang}; path=/;`;
+    location.reload();
   }
-
-  // পদ্ধতি ২: generateContent API (x-goog-api-key হেডারসহ, লিংকের শেষে ?key= ছাড়া)
-  if (!reply) {
-    for (const m of ["gemini-3.8-flash", "gemini-2.5-flash"]) {
-      try {
-        const res2 = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-goog-api-key": cleanKey
-          },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: promptText }] }]
-          })
-        });
-        const data2 = await res2.json();
-        if (data2?.candidates?.[0]?.content?.parts?.[0]?.text) {
-          reply = data2.candidates[0].content.parts[0].text.trim();
-          break;
-        } else if (data2?.error?.message) {
-          lastError = data2.error.message;
-        }
-      } catch (e) {
-        lastError = e.message;
-      }
-    }
-  }
-
-  document.getElementById(loadingId).innerText = reply || ("সমস্যা: " + (lastError || "API Key বা ইন্টারনেট সংযোগ যাচাই করুন।"));
-  box.scrollTop = box.scrollHeight;
 }
 
 /* Secret Admin & Gallery Upload */
@@ -512,7 +471,7 @@ function handleSecretTap() {
 function showLogin() { const b = document.getElementById("loginBox"); b.classList.add("open"); b.scrollIntoView({ behavior: "smooth" }); }
 function closeLogin() { document.getElementById("loginBox").classList.remove("open"); document.getElementById("msg").innerText = ""; }
 function checkPass() {
-  if (document.getElementById("passInput").value === PASS) {
+  if (verifySecret(document.getElementById("passInput").value)) {
     document.getElementById("loginBox").classList.remove("open");
     document.getElementById("passInput").value = "";
     document.getElementById("msg").innerText = "";
@@ -645,18 +604,25 @@ function copyFullCode() {
   const adminPanel = document.getElementById("adminPanel");
   const loginBox = document.getElementById("loginBox");
   const readerModal = document.getElementById("readerModal");
-  const aiWindow = document.getElementById("aiWindow");
+  const translateMenu = document.getElementById("translateMenu");
 
   adminPanel.classList.remove("open");
   loginBox.classList.remove("open");
   readerModal.classList.remove("open");
-  aiWindow.classList.remove("open");
+  translateMenu.classList.remove("open");
   document.body.classList.remove("dark");
   document.getElementById("catNav").innerHTML = "";
   document.getElementById("baniContainer").innerHTML = "";
   document.getElementById("posts").innerHTML = "";
 
-  let fullHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+  const clone = document.documentElement.cloneNode(true);
+  clone.removeAttribute("class");
+  clone.removeAttribute("style");
+  clone.querySelectorAll(".skiptranslate, #goog-gt-tt, .goog-te-spinner-pos").forEach(el => el.remove());
+  const gtEl = clone.querySelector("#google_translate_element");
+  if (gtEl) gtEl.innerHTML = "";
+
+  let fullHtml = "<!DOCTYPE html>\n" + clone.outerHTML;
 
   adminPanel.classList.add("open");
   renderNav();
@@ -704,5 +670,6 @@ renderNav();
 renderBani();
 renderPosts();
 </script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
