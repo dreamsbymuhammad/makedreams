@@ -79,6 +79,9 @@ nav button.active { background: var(--primary); color: #fff; border-color: var(-
 .read-btn { background: var(--primary); color: #fff; border: 0; padding: 5px 12px; border-radius: 6px; font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; }
 .share a, .share button { font-size: 11.5px; color: #fff; text-decoration: none; padding: 4px 9px; border-radius: 5px; margin-left: 4px; display: inline-block; border: 0; cursor: pointer; font-family: inherit; }
 .fb { background: #1877f2; } .wa { background: #25d366; } .cp { background: #5a6577; }
+.load-more-wrap { text-align: center; margin: 18px 0 8px; }
+.load-more-btn { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); padding: 9px 26px; border-radius: 25px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow); transition: all 0.2s; }
+.load-more-btn:hover { background: var(--primary); color: #fff; }
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.72); z-index: 100; overflow-y: auto; padding: 16px 10px; }
 .modal-overlay.open { display: block; }
 .modal-box { max-width: 740px; margin: 10px auto 30px; background: var(--card); color: var(--text); border-radius: 16px; padding: 20px; position: relative; box-shadow: 0 12px 35px rgba(0,0,0,0.3); }
@@ -185,6 +188,9 @@ footer b { color: #f3c65f; font-size: 15px; }
     <span class="cloud-status notranslate" id="cloudStatus">☁️ লোড হচ্ছে...</span>
   </div>
   <div id="posts"></div>
+  <div id="loadMoreWrap" class="load-more-wrap" style="display:none;">
+    <button class="load-more-btn" id="loadMoreBtn" onclick="loadMorePosts()">আরও লেখা দেখুন ↓</button>
+  </div>
 </div>
 <div class="modal-overlay" id="readerModal" onclick="closeReaderOutside(event)">
   <div class="modal-box">
@@ -260,7 +266,7 @@ footer b { color: #f3c65f; font-size: 15px; }
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getFirestore, collection, doc, setDoc, addDoc, updateDoc, deleteDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore, collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyALJtM2GV-jcWyTYlUlWiKi3ohD-qtzuB0",
@@ -325,8 +331,21 @@ let currentUser = null;
 let tapCount = 0;
 let tapTimer = null;
 
+/* Pagination & Load More Variables */
+const PAGE_STEP = 10;
+let visibleLimit = PAGE_STEP;
+let cloudQueryLimit = 20;
+let unsubscribePosts = null;
+let initialUrlPostChecked = false;
+
 function getActivePosts() {
   return hasCloudPosts ? cloudPosts : SAMPLE_POSTS;
+}
+
+/* Unique Permanent Link Builder for Each Article */
+function getPostShareUrl(postId) {
+  const base = location.origin + location.pathname;
+  return postId ? `${base}?post=${encodeURIComponent(postId)}` : location.href;
 }
 
 function escapeHtml(str) {
@@ -372,11 +391,26 @@ function renderNav() {
   ).join("");
 }
 
-function filterCat(c) { currentCat = c; renderNav(); renderPosts(); }
+function filterCat(c) {
+  currentCat = c;
+  visibleLimit = PAGE_STEP;
+  renderNav();
+  renderPosts();
+}
 
 function calcReadTime(text) {
   const mins = Math.max(1, Math.ceil((text || "").trim().split(/\s+/).length / 160));
   return bn ? `${mins} মিনিট পাঠ` : `${mins} min read`;
+}
+
+function loadMorePosts() {
+  visibleLimit += PAGE_STEP;
+  if (hasCloudPosts && visibleLimit >= cloudQueryLimit && cloudPosts.length >= cloudQueryLimit) {
+    cloudQueryLimit += 20;
+    subscribeToPosts();
+  } else {
+    renderPosts();
+  }
 }
 
 function renderPosts() {
@@ -391,19 +425,35 @@ function renderPosts() {
   });
 
   const container = document.getElementById("posts");
+  const loadMoreWrap = document.getElementById("loadMoreWrap");
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+
   if (filtered.length === 0) {
     container.innerHTML = `<div style="text-align:center;padding:30px;color:var(--muted);">${currentCat === 'BOOKMARKS' ? 'এখনো কোনো লেখা সংরক্ষণ (বুকমার্ক) করা হয়নি।' : 'কোনো লেখা খুঁজে পাওয়া যায়নি।'}</div>`;
+    loadMoreWrap.style.display = "none";
     return;
   }
 
-  container.innerHTML = filtered.map(p => {
+  const visiblePosts = filtered.slice(0, visibleLimit);
+  const hasMoreLocal = filtered.length > visibleLimit;
+  const hasMoreCloud = hasCloudPosts && cloudPosts.length >= cloudQueryLimit && currentCat === "All" && !queryText;
+
+  if (hasMoreLocal || hasMoreCloud) {
+    loadMoreWrap.style.display = "block";
+    loadMoreBtn.innerText = bn ? "আরও লেখা দেখুন ↓" : "Load More ↓";
+  } else {
+    loadMoreWrap.style.display = "none";
+  }
+
+  container.innerHTML = visiblePosts.map(p => {
     const isSaved = bms.includes(p.id);
     const imgUrl = escapeHtml(p.img || DEFAULT_IMG);
     const safeTitle = escapeHtml(p.title);
     const plainContent = (p.content || "").replace(/\s+/g, ' ');
     const excerpt = escapeHtml(plainContent.substring(0, 130)) + (plainContent.length > 130 ? "..." : "");
-    const shareUrl = encodeURIComponent(location.href);
-    const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + location.href);
+    const postLink = getPostShareUrl(p.id);
+    const shareUrl = encodeURIComponent(postLink);
+    const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + postLink);
 
     return `
       <div class="card">
@@ -421,7 +471,7 @@ function renderPosts() {
             <div class="share">
               <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a>
               <a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>
-              <button class="cp" onclick="copyShareLink('${safeTitle.replace(/'/g, "\\'")}')">Copy</button>
+              <button class="cp" onclick="copyShareLink('${safeTitle.replace(/'/g, "\\'")}', '${p.id}')">Copy</button>
             </div>
           </div>
         </div>
@@ -456,11 +506,23 @@ function renderRecCards(list) {
     </div>`).join("");
 }
 
-function openReader(postId) {
+async function openReader(postId, skipHistory = false) {
   const allPosts = getActivePosts();
-  const p = allPosts.find(item => item.id === postId);
+  let p = allPosts.find(item => item.id === postId);
+
+  /* যদি পুরনো কোনো লেখার লিংক হয় যা প্রথম ২০টির বাইরে, তবে সরাসরি সার্ভার থেকে নিয়ে আসবে */
+  if (!p && postId && !postId.startsWith("sample_")) {
+    try {
+      const snap = await getDoc(doc(db, "posts", postId));
+      if (snap.exists()) p = { id: snap.id, ...snap.data() };
+    } catch (e) {}
+  }
   if (!p) return;
   currentOpenPost = p;
+
+  if (!skipHistory) {
+    try { history.pushState({ postId: p.id }, "", "?post=" + encodeURIComponent(p.id)); } catch (e) {}
+  }
 
   const others = allPosts.filter(item => item.id !== p.id);
   const latestList = others.slice(0, 3);
@@ -482,9 +544,14 @@ function openReader(postId) {
   contentEl.innerHTML = buildArticleBodyWithInlineRelated(p.content, relatedList[0]);
   contentEl.style.fontSize = readerFontSize + "px";
 
-  const shareUrl = encodeURIComponent(location.href);
-  const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + location.href);
-  document.getElementById("mShare").innerHTML = `<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a><a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>`;
+  const postLink = getPostShareUrl(p.id);
+  const shareUrl = encodeURIComponent(postLink);
+  const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + postLink);
+  const safeTitle = escapeHtml(p.title).replace(/'/g, "\\'");
+  document.getElementById("mShare").innerHTML = `
+    <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a>
+    <a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>
+    <button class="cp" onclick="copyShareLink('${safeTitle}', '${p.id}')">Copy</button>`;
 
   const recWrap = document.getElementById("mRecommendations");
   if (others.length > 0) {
@@ -509,10 +576,48 @@ function openReader(postId) {
   document.body.style.overflow = "hidden";
 }
 
-function closeReader() { document.getElementById("readerModal").classList.remove("open"); document.body.style.overflow = ""; }
+function closeReader(skipHistory = false) {
+  document.getElementById("readerModal").classList.remove("open");
+  document.body.style.overflow = "";
+  currentOpenPost = null;
+  if (!skipHistory && location.search.includes("post=")) {
+    try { history.pushState(null, "", window.location.pathname); } catch (e) {}
+  }
+}
+
 function closeReaderOutside(e) { if (e.target.id === "readerModal") closeReader(); }
 function changeFont(delta) { readerFontSize = Math.min(24, Math.max(13, readerFontSize + delta)); document.getElementById("mContent").style.fontSize = readerFontSize + "px"; }
-function copyShareLink(title) { if (navigator.clipboard) navigator.clipboard.writeText(`${title} - Make Dreams\n${location.href}`).then(() => alert("লিংক কপি হয়েছে!")); }
+
+function copyShareLink(title, postId) {
+  const link = getPostShareUrl(postId);
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(`${title} - Make Dreams\n${link}`).then(() => alert("লেখার লিংক কপি হয়েছে!"));
+  }
+}
+
+/* Browser Back/Forward Button Support for Article Links */
+window.addEventListener("popstate", () => {
+  const params = new URLSearchParams(window.location.search);
+  const pid = params.get("post");
+  if (pid) openReader(pid, true);
+  else closeReader(true);
+});
+
+/* Automatic Website Attribution When Someone Copies Text */
+document.addEventListener("copy", function(e) {
+  const activeTag = document.activeElement ? document.activeElement.tagName : "";
+  if (activeTag === "INPUT" || activeTag === "TEXTAREA") return; // অ্যাডমিন বক্সে কপি করলে কিছু যুক্ত হবে না
+  const selectedText = window.getSelection().toString().trim();
+  if (selectedText.length > 25) {
+    const sourceUrl = currentOpenPost ? getPostShareUrl(currentOpenPost.id) : window.location.href;
+    const titleLine = currentOpenPost ? `\nশিরোনাম: ${currentOpenPost.title}` : "";
+    const creditText = `\n\n— সংগৃহীত: Make Dreams (স্বপ্নীল যাত্রার সহায়িকা)${titleLine}\nমূল লেখার লিংক: ${sourceUrl}`;
+    if (e.clipboardData) {
+      e.clipboardData.setData("text/plain", selectedText + creditText);
+      e.preventDefault();
+    }
+  }
+});
 
 /* Direct Gemini Live Links */
 function openDirectGemini() { window.open("https://gemini.google.com/app", "_blank", "noopener"); }
@@ -793,27 +898,45 @@ function toggleDark() {
   document.getElementById("darkBtn").innerText = document.body.classList.contains("dark") ? "☀️" : "🌙";
 }
 
-/* Realtime Cloud Listeners */
+/* Realtime Cloud Listeners (Optimized with Pagination Limit) */
 onAuthStateChanged(auth, (user) => {
   currentUser = user;
 });
 
-onSnapshot(query(collection(db, "posts"), orderBy("createdAt", "desc")), (snap) => {
-  if (!snap.empty) {
-    hasCloudPosts = true;
-    cloudPosts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    document.getElementById("cloudStatus").innerText = `☁️ লাইভ (${cloudPosts.length})`;
-  } else {
-    hasCloudPosts = false;
-    cloudPosts = [];
-    document.getElementById("cloudStatus").innerText = "☁️ প্রস্তুত";
+function checkInitialSharedPost() {
+  if (initialUrlPostChecked) return;
+  initialUrlPostChecked = true;
+  const params = new URLSearchParams(window.location.search);
+  const sharedPostId = params.get("post");
+  if (sharedPostId) {
+    openReader(sharedPostId, true);
   }
-  renderPosts();
-  renderAdminList();
-}, () => {
-  document.getElementById("cloudStatus").innerText = "☁️ অফলাইন মোড";
-  renderPosts();
-});
+}
+
+function subscribeToPosts() {
+  if (unsubscribePosts) unsubscribePosts();
+  const q = query(collection(db, "posts"), orderBy("createdAt", "desc"), limit(cloudQueryLimit));
+  unsubscribePosts = onSnapshot(q, (snap) => {
+    if (!snap.empty) {
+      hasCloudPosts = true;
+      cloudPosts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      document.getElementById("cloudStatus").innerText = `☁️ লাইভ (${cloudPosts.length}${cloudPosts.length >= cloudQueryLimit ? '+' : ''})`;
+    } else {
+      hasCloudPosts = false;
+      cloudPosts = [];
+      document.getElementById("cloudStatus").innerText = "☁️ প্রস্তুত";
+    }
+    renderPosts();
+    renderAdminList();
+    checkInitialSharedPost();
+  }, () => {
+    document.getElementById("cloudStatus").innerText = "☁️ অফলাইন মোড";
+    renderPosts();
+    checkInitialSharedPost();
+  });
+}
+
+subscribeToPosts();
 
 onSnapshot(doc(db, "settings", "bani"), (snap) => {
   if (snap.exists() && typeof snap.data().text === "string") {
@@ -835,7 +958,7 @@ Object.assign(window, {
   handleSecretTap, renderPosts, filterCat, toggleBookmark, openReader, closeReader,
   closeReaderOutside, changeFont, openArticleGemini, copyShareLink, openDirectGemini,
   checkPass, closeLogin, handleImageUpload, publishPost, saveBani, deleteBani,
-  editPost, deletePost, hideAdmin, logoutAdmin, addCategory, removeCategory
+  editPost, deletePost, hideAdmin, logoutAdmin, addCategory, removeCategory, loadMorePosts
 });
 
 if (location.search.includes("admin")) showLogin();
