@@ -37,33 +37,76 @@ body { font-family: 'Hind Siliguri', 'Noto Serif Bengali', sans-serif; backgroun
 .goog-te-banner-frame, .skiptranslate > iframe { display: none !important; }
 #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
 header { text-align: center; padding: 16px 12px 14px; background: var(--card); border-bottom: 3px solid var(--accent); position: relative; box-shadow: var(--shadow); }
+.menu-trigger { position: absolute; left: 12px; top: 12px; background: var(--primary); color: #fff; border: 0; width: 38px; height: 34px; border-radius: 8px; font-size: 19px; font-weight: 700; cursor: pointer; z-index: 60; display: flex; align-items: center; justify-content: center; }
 .top-controls { position: absolute; right: 12px; top: 12px; display: flex; gap: 5px; z-index: 60; }
-.icon-btn { background: var(--primary); color: #fff; border: 0; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.icon-btn { background: var(--primary); color: #fff; border: 0; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; height: 34px; }
 .t-btn { background: var(--accent); color: #111; }
-.translate-menu { display: none; position: absolute; right: 12px; top: 46px; background: var(--card); border: 1.5px solid var(--accent); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); z-index: 90; overflow: hidden; min-width: 155px; text-align: left; }
+
+/* Side Menu Drawer */
+.drawer-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 120; }
+.drawer-backdrop.open { display: block; }
+.side-drawer { position: fixed; top: 0; left: -310px; width: 290px; max-width: 84vw; height: 100vh; background: var(--card); border-right: 2px solid var(--accent); z-index: 130; transition: left 0.25s ease; overflow-y: auto; padding: 16px 14px 30px; box-shadow: 6px 0 25px rgba(0,0,0,0.25); }
+.side-drawer.open { left: 0; }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+.drawer-head span { font-family: 'Noto Serif Bengali', serif; font-weight: 700; color: var(--primary); font-size: 16px; }
+.drawer-close { background: #d32f2f; color: #fff; border: 0; padding: 4px 10px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.menu-tribute-box { background: linear-gradient(135deg, var(--primary-light), var(--pink-soft)); border: 1px solid var(--accent); border-left: 4px solid var(--accent); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; font-family: 'Noto Serif Bengali', serif; font-size: 13.5px; color: var(--text); line-height: 1.6; }
+.drawer-nav button { display: flex; align-items: center; gap: 10px; width: 100%; background: none; border: 0; border-bottom: 1px solid var(--border); padding: 11px 8px; text-align: left; font-family: inherit; font-size: 14.5px; font-weight: 600; color: var(--text); cursor: pointer; border-radius: 6px; }
+.drawer-nav button:hover, .drawer-nav button.active-nav { background: var(--primary-light); color: var(--primary); }
+
+.translate-menu { display: none; position: absolute; right: 12px; top: 50px; background: var(--card); border: 1.5px solid var(--accent); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); z-index: 90; overflow: hidden; min-width: 155px; text-align: left; }
 .translate-menu.open { display: block; }
 .translate-menu button { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid var(--border); padding: 9px 14px; text-align: left; font-family: inherit; font-size: 13.5px; font-weight: 600; color: var(--text); cursor: pointer; }
 .translate-menu button:last-child { border-bottom: 0; }
 .translate-menu button:hover { background: var(--primary-light); color: var(--primary); }
-.logo-wrap { max-width: 240px; margin: 14px auto 2px; cursor: pointer; user-select: none; }
+
+.logo-wrap { max-width: 245px; margin: 22px auto 2px; cursor: pointer; user-select: none; }
 .logo-wrap svg { width: 100%; height: auto; display: block; }
 body.dark .logo-wrap svg .logo-title { fill: #f1f5f9; }
 body.dark .logo-wrap svg .logo-sub { fill: #cbd5e1; }
 .slogan { color: var(--muted); font-family: 'Noto Serif Bengali', serif; font-size: 14px; font-weight: 600; margin-top: 2px; }
-.search-bar-wrap { background: linear-gradient(90deg, var(--primary-light), var(--pink-soft)); padding: 12px 14px 6px; }
-.search-box { max-width: 600px; margin: 0 auto; display: flex; gap: 6px; }
+
+/* Search + Category Dropdown + Notice Bar */
+.search-bar-wrap { background: linear-gradient(90deg, var(--primary-light), var(--pink-soft)); padding: 12px 14px 12px; border-bottom: 1px solid var(--border); }
+.search-box { max-width: 680px; margin: 0 auto; display: flex; gap: 6px; }
 .search-box input { flex: 1; padding: 10px 16px; border-radius: 25px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-family: inherit; font-size: 14px; outline: none; }
 .search-btn { background: var(--primary); color: #fff; border: 0; padding: 0 18px; border-radius: 25px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
-nav { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; padding: 10px 12px 14px; background: linear-gradient(90deg, var(--primary-light), var(--pink-soft)); border-bottom: 1px solid var(--border); }
-nav button { border: 1px solid var(--border); background: var(--card); color: var(--text); padding: 6px 13px; border-radius: 20px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
-nav button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.sub-bar { max-width: 680px; margin: 10px auto 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; position: relative; }
+.cat-drop-wrap { position: relative; }
+.cat-drop-btn { background: var(--card); color: var(--text); border: 1.5px solid var(--primary); padding: 7px 15px; border-radius: 22px; font-family: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.cat-drop-list { display: none; position: absolute; left: 0; top: 42px; background: var(--card); border: 1.5px solid var(--accent); border-radius: 12px; box-shadow: 0 10px 26px rgba(0,0,0,0.18); z-index: 85; min-width: 220px; max-height: 300px; overflow-y: auto; padding: 5px; }
+.cat-drop-list.open { display: block; }
+.cat-drop-list button { display: block; width: 100%; background: none; border: 0; padding: 8px 12px; text-align: left; font-family: inherit; font-size: 13.5px; font-weight: 600; color: var(--text); border-radius: 8px; cursor: pointer; }
+.cat-drop-list button:hover, .cat-drop-list button.active { background: var(--primary); color: #fff; }
+.notice-quick-btn { background: var(--primary); color: #fff; border: 1.5px solid var(--accent); padding: 7px 15px; border-radius: 22px; font-family: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+
 .bani-box { max-width: 852px; margin: 14px auto 2px; background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px; padding: 11px 15px; display: flex; align-items: flex-start; gap: 10px; box-shadow: var(--shadow); }
 .bani-badge { background: var(--accent); color: #111; font-family: 'Noto Serif Bengali', serif; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 20px; flex-shrink: 0; margin-top: 2px; }
 .bani-text { font-family: 'Noto Serif Bengali', serif; font-size: 14.5px; color: var(--text); line-height: 1.65; }
+
 .container { max-width: 880px; margin: 0 auto; padding: 14px; }
 .section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .section-head h3 { font-family: 'Noto Serif Bengali', serif; font-size: 18px; color: var(--primary); }
+
+/* Sponsor / Ad Banner */
+.ad-card { background: linear-gradient(135deg, var(--card), var(--primary-light)); border: 1.5px solid var(--accent); border-radius: 14px; padding: 12px; margin-bottom: 15px; box-shadow: var(--shadow); position: relative; }
+.ad-tag { position: absolute; top: 8px; right: 10px; background: var(--accent); color: #111; font-size: 10.5px; font-weight: 700; padding: 1px 8px; border-radius: 10px; }
+.ad-inner { display: flex; gap: 12px; align-items: center; }
+.ad-img { width: 110px; height: 82px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.ad-body { flex: 1; min-width: 0; }
+.ad-title { font-family: 'Noto Serif Bengali', serif; font-size: 15.5px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.social-pill { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; margin-top: 3px; }
+.sp-yt { background: #ff0000; }
+.sp-fb { background: #1877f2; }
+.sp-wa { background: #25d366; }
+.sp-web { background: var(--primary); }
+.smart-link { color: #1d4ed8; font-weight: 700; text-decoration: underline; }
+body.dark .smart-link { color: #60a5fa; }
+
+/* Post Cards */
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 15px; display: flex; gap: 14px; box-shadow: var(--shadow); transition: transform 0.18s; }
 .card:hover { transform: translateY(-2px); }
 .card-img { width: 115px; height: 95px; object-fit: cover; border-radius: 10px; flex-shrink: 0; cursor: pointer; background: var(--primary-light); }
@@ -77,11 +120,48 @@ nav button.active { background: var(--primary); color: #fff; border-color: var(-
 .tags span { background: var(--primary-light); color: var(--primary); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; margin-right: 4px; display: inline-block; margin-top: 3px; }
 .card-actions { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 10px; gap: 8px; }
 .read-btn { background: var(--primary); color: #fff; border: 0; padding: 5px 12px; border-radius: 6px; font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; }
-.share a, .share button { font-size: 11.5px; color: #fff; text-decoration: none; padding: 4px 9px; border-radius: 5px; margin-left: 4px; display: inline-block; border: 0; cursor: pointer; font-family: inherit; }
+.react-group { display: inline-flex; gap: 5px; align-items: center; }
+.react-btn { background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 4px 9px; border-radius: 16px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.react-btn.voted-like { background: #dcfce7; color: #166534; border-color: #22c55e; }
+.react-btn.voted-dislike { background: #fee2e2; color: #991b1b; border-color: #ef4444; }
+.share a, .share button { font-size: 11.5px; color: #fff; text-decoration: none; padding: 4px 9px; border-radius: 5px; margin-left: 3px; display: inline-block; border: 0; cursor: pointer; font-family: inherit; }
 .fb { background: #1877f2; } .wa { background: #25d366; } .cp { background: #5a6577; }
+
 .load-more-wrap { text-align: center; margin: 18px 0 8px; }
 .load-more-btn { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); padding: 9px 26px; border-radius: 25px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow); transition: all 0.2s; }
 .load-more-btn:hover { background: var(--primary); color: #fff; }
+
+/* Special Views (Notice Board, Collection, Inbox, About) */
+.view-panel { display: none; max-width: 880px; margin: 14px auto; padding: 14px; }
+.view-panel.active { display: block; }
+.panel-box { background: var(--card); border: 1.5px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); margin-bottom: 16px; }
+.panel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid var(--border); padding-bottom: 10px; margin-bottom: 14px; gap: 8px; }
+.panel-header h2 { font-family: 'Noto Serif Bengali', serif; font-size: 19px; color: var(--primary); }
+.back-home-btn { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 700; cursor: pointer; font-family: inherit; }
+
+/* Two-Column Notice & Q&A Board */
+.board-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.board-col { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+.board-col h3 { font-family: 'Noto Serif Bengali', serif; font-size: 16.5px; color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 6px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+.notice-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 10px; padding: 11px; margin-bottom: 10px; }
+.notice-item.pinned { border-left-color: var(--accent); background: var(--primary-light); }
+.pin-tag { display: inline-block; background: var(--accent); color: #111; font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 10px; margin-bottom: 4px; }
+.qa-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 11px; margin-bottom: 12px; }
+.qa-item.pinned { border: 1.5px solid var(--accent); }
+.qa-reply-list { margin-top: 8px; padding-left: 10px; border-left: 2px solid var(--accent); }
+.qa-reply { background: var(--bg); padding: 7px 9px; border-radius: 7px; margin-top: 6px; font-size: 13px; }
+.mini-form input, .mini-form textarea, .mini-form select { width: 100%; padding: 9px 11px; margin: 5px 0; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--text); font-family: inherit; font-size: 13.5px; }
+
+/* Collection Grid */
+.col-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.col-tabs button { background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 5px 12px; border-radius: 18px; font-size: 12.5px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.col-tabs button.active { background: var(--primary); color: #fff; }
+.col-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 14px; }
+.col-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.col-card img { width: 100%; height: 150px; object-fit: cover; cursor: pointer; }
+.col-card-body { padding: 12px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+
+/* Reader Modal */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.72); z-index: 100; overflow-y: auto; padding: 16px 10px; }
 .modal-overlay.open { display: block; }
 .modal-box { max-width: 740px; margin: 10px auto 30px; background: var(--card); color: var(--text); border-radius: 16px; padding: 20px; position: relative; box-shadow: 0 12px 35px rgba(0,0,0,0.3); }
@@ -109,32 +189,59 @@ nav button.active { background: var(--primary); color: #fff; border-color: var(-
 .rec-card-body { padding: 9px 10px; }
 .rec-card-title { font-family: 'Noto Serif Bengali', serif; font-size: 13.5px; font-weight: 700; line-height: 1.4; color: var(--text); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .rec-card-meta { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
 .ai-fab { position: fixed; right: 18px; bottom: 20px; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, #0d3b36, #185c54); color: #ffd97d; border: 2px solid var(--accent); font-size: 22px; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.28); z-index: 150; display: flex; align-items: center; justify-content: center; }
-#loginBox, #adminPanel { display: none; max-width: 720px; margin: 20px auto; background: var(--card); border: 2px solid var(--accent); padding: 20px; border-radius: 14px; box-shadow: var(--shadow); }
+
+/* Admin Login & Master Admin Panel */
+#loginBox, #adminPanel { display: none; max-width: 760px; margin: 20px auto; background: var(--card); border: 2px solid var(--accent); padding: 20px; border-radius: 14px; box-shadow: var(--shadow); }
 #loginBox.open, #adminPanel.open { display: block; }
 #loginBox { text-align: center; max-width: 400px; }
-#adminPanel input[type="text"], #adminPanel textarea, #loginBox input { width: 100%; padding: 11px; margin: 7px 0; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-family: inherit; font-size: 14px; }
-.upload-label { display: block; text-align: center; background: var(--primary-light); color: var(--primary); border: 1.5px dashed var(--primary); padding: 10px; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; margin: 7px 0; }
-.cat-check { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0; }
+#adminPanel input[type="text"], #adminPanel textarea, #adminPanel select, #loginBox input { width: 100%; padding: 10px; margin: 6px 0; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); font-family: inherit; font-size: 14px; }
+.admin-section { background: var(--bg); padding: 13px; border-radius: 11px; margin-top: 15px; border: 1px solid var(--border); }
+.admin-section-title { font-size: 14.5px; font-weight: 700; color: var(--primary); margin-bottom: 6px; border-bottom: 1px dashed var(--border); padding-bottom: 4px; }
+.upload-label { display: block; text-align: center; background: var(--primary-light); color: var(--primary); border: 1.5px dashed var(--primary); padding: 9px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; margin: 6px 0; }
+.cat-check { display: flex; flex-wrap: wrap; gap: 7px; margin: 8px 0; }
 .cat-check label { background: var(--primary-light); color: var(--primary); padding: 5px 11px; border-radius: 20px; font-size: 12.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; }
 .cat-manage-row { display: flex; gap: 6px; margin-top: 6px; }
 .cat-manage-row input { flex: 1; margin: 0 !important; padding: 8px 10px !important; }
 .cat-manage-row button { background: var(--primary); color: #fff; border: 0; padding: 0 14px; border-radius: 8px; font-family: inherit; font-weight: 700; cursor: pointer; }
 .cat-chip-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.cat-chip { background: var(--bg); border: 1px solid var(--border); padding: 3px 9px; border-radius: 16px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
+.cat-chip { background: var(--card); border: 1px solid var(--border); padding: 3px 9px; border-radius: 16px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
 .cat-chip button { background: #d32f2f; color: #fff; border: 0; width: 16px; height: 16px; border-radius: 50%; font-size: 10px; cursor: pointer; line-height: 1; }
-.btn-full { width: 100%; padding: 11px; border: 0; border-radius: 8px; font-family: inherit; font-size: 14.5px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+.btn-full { width: 100%; padding: 10px; border: 0; border-radius: 8px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 6px; }
 .btn-publish { background: #0d3b36; color: #fff; } .btn-close-admin { background: var(--border); color: var(--text); } .btn-logout { background: #b91c1c; color: #fff; }
-.admin-post-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; margin-top: 6px; gap: 8px; font-size: 13px; }
-.admin-post-item button { border: 0; padding: 4px 9px; border-radius: 5px; color: #fff; cursor: pointer; font-size: 12px; }
+.admin-list-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 9px 10px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-top: 7px; gap: 8px; font-size: 13px; }
+.admin-list-item button, .admin-list-item a { border: 0; padding: 4px 8px; border-radius: 5px; color: #fff; cursor: pointer; font-size: 11.5px; text-decoration: none; display: inline-block; font-family: inherit; }
 .cloud-status { font-size: 11.5px; color: var(--muted); background: var(--primary-light); padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+
 footer { background: #0b2421; color: #cbd5e1; text-align: center; padding: 30px 14px; margin-top: 36px; font-size: 13px; line-height: 1.8; }
 footer b { color: #f3c65f; font-size: 15px; }
-@media (max-width: 540px) { .card { flex-direction: column; } .card-img { width: 100%; height: 165px; } .bani-box { margin: 12px 14px 2px; } .rec-grid { grid-template-columns: 1fr; } }
+@media (max-width: 680px) { .board-grid { grid-template-columns: 1fr; } }
+@media (max-width: 540px) { .card, .ad-inner { flex-direction: column; } .card-img, .ad-img { width: 100%; height: 165px; } .bani-box { margin: 12px 14px 2px; } .rec-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+
+<!-- Side Drawer Menu (☰) -->
+<div class="drawer-backdrop notranslate" id="drawerBackdrop" onclick="closeSideMenu()"></div>
+<aside class="side-drawer notranslate" id="sideDrawer">
+  <div class="drawer-head">
+    <span>Make Dreams মেনু</span>
+    <button class="drawer-close" onclick="closeSideMenu()">✕</button>
+  </div>
+  <div id="menuTributeArea"></div>
+  <div class="drawer-nav">
+    <button onclick="switchMainView('home')" id="nav-home" class="active-nav">🏠 হোম পেজ</button>
+    <button onclick="switchMainView('board')" id="nav-board">📋 নোটিশ ও প্রশ্নোত্তর বোর্ড</button>
+    <button onclick="switchMainView('collection')" id="nav-collection">📚 প্রিয় সংগ্রহ ও গ্যালারি</button>
+    <button onclick="switchMainView('inbox')" id="nav-inbox">✉️ অ্যাডমিনকে বার্তা দিন (ইনবক্স)</button>
+    <button onclick="openBookmarksFromMenu()" id="nav-bm">🔖 সংরক্ষিত লেখা (<span id="menuBmCount">0</span>)</button>
+    <button onclick="switchMainView('about')" id="nav-about">ℹ️ আমাদের লক্ষ্য ও পরিচিতি</button>
+  </div>
+</aside>
+
 <header>
+  <button class="menu-trigger notranslate" onclick="openSideMenu()" aria-label="Menu">☰</button>
   <div class="top-controls notranslate">
     <button class="icon-btn" onclick="toggleDark()" id="darkBtn">🌙</button>
     <button class="icon-btn" onclick="toggleLang()" id="langBtn">EN</button>
@@ -149,7 +256,7 @@ footer b { color: #f3c65f; font-size: 15px; }
   </div>
   <div id="google_translate_element" style="display:none;"></div>
   <div class="logo-wrap notranslate" onclick="handleSecretTap()">
-    <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Make Dreams Mahmud Logo">
+    <svg viewBox="0 0 360 232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Make Dreams Mahmudul Hasan Muhammad Logo">
       <defs>
         <radialGradient id="sunGlow" cx="50%" cy="60%" r="50%"><stop offset="0%" stop-color="#fff3b0"/><stop offset="55%" stop-color="#f2c45a"/><stop offset="100%" stop-color="#d49b35"/></radialGradient>
         <linearGradient id="rayGrad" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#dfa944" stop-opacity="0.95"/><stop offset="100%" stop-color="#f7dc88" stop-opacity="0.1"/></linearGradient>
@@ -167,31 +274,131 @@ footer b { color: #f3c65f; font-size: 15px; }
       <line x1="180" y1="78" x2="180" y2="132" stroke="#0d3b36" stroke-width="1.8"/>
       <g transform="translate(143, 86) rotate(9)"><text x="0" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="700" fill="#0d3b36">ALLAH</text><text x="0" y="13" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="700" fill="#0d3b36">SAID</text></g>
       <g transform="translate(216, 93) rotate(-9)"><text x="0" y="0" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#0d3b36">IQRA</text></g>
-      <text x="180" y="172" text-anchor="middle" class="logo-title" font-family="Georgia, 'Times New Roman', serif" font-size="29" font-weight="700" fill="#0b192c">Make Dreams</text>
-      <line x1="88" y1="183" x2="272" y2="183" stroke="#d4a24c" stroke-width="1.6"/>
-      <text x="180" y="206" text-anchor="middle" class="logo-sub" font-family="Arial, sans-serif" font-size="13.5" font-weight="600" letter-spacing="6" fill="#1e293b">M A H M U D</text>
+      <text x="180" y="170" text-anchor="middle" class="logo-title" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#0b192c">Make Dreams</text>
+      <line x1="78" y1="180" x2="282" y2="180" stroke="#d4a24c" stroke-width="1.6"/>
+      <text x="180" y="199" text-anchor="middle" class="logo-sub" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="3.5" fill="#1e293b">MAHMUDUL HASAN</text>
+      <text x="180" y="218" text-anchor="middle" class="logo-sub" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="5.5" fill="#1e293b">MUHAMMAD</text>
     </svg>
   </div>
   <div class="slogan" id="slogan">স্বপ্নীল যাত্রার সহায়িকা</div>
 </header>
+
 <div class="search-bar-wrap">
   <div class="search-box">
-    <input type="text" id="searchInput" oninput="renderPosts()" placeholder="লেখা খুঁজুন (যেমন: বিসিএস, পড়াশোনা, ইসলাম, বৃত্তি)...">
-    <button class="search-btn" onclick="renderPosts()">খুঁজুন</button>
+    <input type="text" id="searchInput" oninput="onSearchInput()" placeholder="লেখা খুঁজুন (যেমন: বিসিএস, পড়াশোনা, ইসলাম, বৃত্তি)...">
+    <button class="search-btn" onclick="onSearchInput()">খুঁজুন</button>
+  </div>
+  <div class="sub-bar">
+    <div class="cat-drop-wrap">
+      <button class="cat-drop-btn" onclick="toggleCatDropdown(event)" id="catDropBtn">📂 ক্যাটাগরি বাছাই করুন ▼</button>
+      <div class="cat-drop-list" id="catDropList"></div>
+    </div>
+    <button class="notice-quick-btn" onclick="switchMainView('board')">📋 নোটিশ ও প্রশ্নোত্তর বোর্ড</button>
   </div>
 </div>
-<nav id="catNav"></nav>
-<div id="baniContainer"></div>
-<div class="container">
-  <div class="section-head">
-    <h3 id="latestTitle">সর্বশেষ লেখা</h3>
-    <span class="cloud-status notranslate" id="cloudStatus">☁️ লোড হচ্ছে...</span>
-  </div>
-  <div id="posts"></div>
-  <div id="loadMoreWrap" class="load-more-wrap" style="display:none;">
-    <button class="load-more-btn" id="loadMoreBtn" onclick="loadMorePosts()">আরও লেখা দেখুন ↓</button>
+
+<!-- HOME VIEW -->
+<div id="homeView">
+  <div id="baniContainer"></div>
+  <div class="container">
+    <div id="topAdsContainer"></div>
+    <div class="section-head">
+      <h3 id="latestTitle">সর্বশেষ লেখা</h3>
+      <span class="cloud-status notranslate" id="cloudStatus">☁️ লোড হচ্ছে...</span>
+    </div>
+    <div id="posts"></div>
+    <div id="loadMoreWrap" class="load-more-wrap" style="display:none;">
+      <button class="load-more-btn" id="loadMoreBtn" onclick="loadMorePosts()">আরও লেখা দেখুন ↓</button>
+    </div>
   </div>
 </div>
+
+<!-- VIEW 2: TWO-COLUMN NOTICE & Q&A BOARD -->
+<div id="boardView" class="view-panel">
+  <div class="panel-box">
+    <div class="panel-header">
+      <h2>📋 নোটিশ ও প্রশ্নোত্তর বোর্ড</h2>
+      <button class="back-home-btn" onclick="switchMainView('home')">🏠 হোম পেজ</button>
+    </div>
+    <div class="board-grid">
+      <!-- Left: Admin Announcements -->
+      <div class="board-col">
+        <h3>📢 অ্যাডমিন কর্তৃক ঘোষণা</h3>
+        <div id="boardAnnouncementsList"></div>
+      </div>
+      <!-- Right: Users Q&A -->
+      <div class="board-col">
+        <h3>
+          <span>💬 আপনাদের প্রশ্ন ও উত্তর</span>
+          <button class="read-btn" style="font-size:11.5px;" onclick="toggleAskForm()">+ প্রশ্ন করুন</button>
+        </h3>
+        <div id="askQuestionForm" class="mini-form" style="display:none;background:var(--card);padding:10px;border-radius:10px;border:1px solid var(--accent);margin-bottom:12px;">
+          <div style="font-size:12.5px;font-weight:700;color:var(--primary);margin-bottom:4px;">আপনার প্রশ্ন জমা দিন (অ্যাডমিন অনুমোদনের পর বোর্ডে প্রকাশ হবে):</div>
+          <input type="text" id="qaName" placeholder="আপনার নাম লিখুন">
+          <input type="email" id="qaEmail" placeholder="আপনার আসল @gmail.com ঠিকানা (বাধ্যতামূলক)">
+          <textarea id="qaQuestion" rows="3" placeholder="পড়াশোনা বা ক্যারিয়ার বিষয়ে আপনার প্রশ্নটি বিস্তারিত লিখুন..."></textarea>
+          <button class="btn-full btn-publish" id="qaSubmitBtn" onclick="submitUserQuestion()">প্রশ্ন জমা দিন</button>
+        </div>
+        <div id="boardQaList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW 3: CURATED COLLECTION & GALLERY -->
+<div id="collectionView" class="view-panel">
+  <div class="panel-box">
+    <div class="panel-header">
+      <h2>📚 প্রিয় সংগ্রহ ও গ্যালারি</h2>
+      <button class="back-home-btn" onclick="switchMainView('home')">🏠 হোম পেজ</button>
+    </div>
+    <div class="col-tabs" id="colFilterTabs">
+      <button class="active" onclick="filterCollection('All', this)">সব সংগ্রহ</button>
+      <button onclick="filterCollection('PDF বই / নোট', this)">📕 PDF বই / নোট</button>
+      <button onclick="filterCollection('ছবির অ্যালবাম', this)">🖼️ ছবির অ্যালবাম</button>
+      <button onclick="filterCollection('বিশেষ উপস্থাপনা', this)">✨ বিশেষ উপস্থাপনা</button>
+    </div>
+    <div class="col-grid" id="collectionGrid"></div>
+  </div>
+</div>
+
+<!-- VIEW 4: PRIVATE INBOX SYSTEM -->
+<div id="inboxView" class="view-panel">
+  <div class="panel-box" style="max-width:650px;margin:0 auto;">
+    <div class="panel-header">
+      <h2>✉️ অ্যাডমিনকে বার্তা দিন (ইনবক্স)</h2>
+      <button class="back-home-btn" onclick="switchMainView('home')">🏠 হোম পেজ</button>
+    </div>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:10px;">আপনার যেকোনো পরামর্শ, মতামত বা ব্যক্তিগত প্রশ্ন সরাসরি অ্যাডমিনকে পাঠান। এটি সম্পূর্ণ গোপন থাকবে—অন্য কোনো পাঠক তা দেখতে পাবেন না।</p>
+    <div class="mini-form">
+      <input type="text" id="inbName" placeholder="আপনার নাম লিখুন">
+      <input type="email" id="inbEmail" placeholder="আপনার @gmail.com ঠিকানা (বাধ্যতামূলক)">
+      <textarea id="inbMsg" rows="4" placeholder="আপনার বার্তাটি এখানে লিখুন..."></textarea>
+      <button class="btn-full btn-publish" id="inbSubmitBtn" onclick="sendInboxMessage()">বার্তা পাঠান</button>
+    </div>
+    <div style="margin-top:20px;border-top:1.5px solid var(--border);padding-top:14px;">
+      <h3 style="font-size:15.5px;color:var(--primary);margin-bottom:6px;">📩 আপনার পাঠানো বার্তা ও অ্যাডমিনের উত্তর দেখুন</h3>
+      <div style="display:flex;gap:6px;">
+        <input type="email" id="checkReplyEmail" placeholder="আপনার @gmail.com লিখে খুঁজুন..." style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:inherit;">
+        <button class="read-btn" onclick="loadUserInboxReplies()">উত্তর দেখুন</button>
+      </div>
+      <div id="userRepliesList" style="margin-top:10px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW 5: ABOUT & IDENTITY -->
+<div id="aboutView" class="view-panel">
+  <div class="panel-box" style="max-width:720px;margin:0 auto;">
+    <div class="panel-header">
+      <h2 id="aboutDisplayTitle">ℹ️ আমাদের লক্ষ্য ও পরিচিতি</h2>
+      <button class="back-home-btn" onclick="switchMainView('home')">🏠 হোম পেজ</button>
+    </div>
+    <div id="aboutDisplayContent" style="font-size:15.5px;line-height:1.9;"></div>
+  </div>
+</div>
+
+<!-- Article Reader Modal -->
 <div class="modal-overlay" id="readerModal" onclick="closeReaderOutside(event)">
   <div class="modal-box">
     <div class="modal-top notranslate">
@@ -208,13 +415,17 @@ footer b { color: #f3c65f; font-size: 15px; }
     <div class="tags" id="mTags"></div>
     <div class="modal-content" id="mContent"></div>
     <div class="card-actions" style="margin-top:20px;border-top:1px solid var(--border);padding-top:12px;">
-      <span style="font-size:13px;color:var(--muted);">লেখাটি শেয়ার করুন:</span>
+      <div class="react-group" id="mReactGroup"></div>
       <div class="share" id="mShare"></div>
     </div>
+    <div id="readerAdContainer" style="margin-top:16px;"></div>
     <div class="modal-rec-wrap" id="mRecommendations"></div>
   </div>
 </div>
+
 <button class="ai-fab notranslate" onclick="openDirectGemini()">✨</button>
+
+<!-- Admin Login Box -->
 <div id="loginBox" class="notranslate">
   <h3 style="font-family:'Noto Serif Bengali',serif;color:var(--primary);">Admin Login (Cloud)</h3>
   <input type="email" id="emailInput" placeholder="অ্যাডমিন ইমেইল লিখুন">
@@ -223,50 +434,134 @@ footer b { color: #f3c65f; font-size: 15px; }
   <button class="btn-full btn-close-admin" onclick="closeLogin()">বাতিল</button>
   <p id="msg" style="color:#d32f2f;font-size:13px;margin-top:8px;"></p>
 </div>
+
+<!-- Master Admin Panel -->
 <div id="adminPanel" class="notranslate">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
     <h3 id="adminFormTitle" style="font-family:'Noto Serif Bengali',serif;color:var(--primary);">নতুন লেখা যোগ করুন</h3>
-    <span style="font-size:11.5px;color:var(--primary);font-weight:700;">🟢 লাইভ ক্লাউড যুক্ত</span>
+    <span style="font-size:11.5px;color:var(--primary);font-weight:700;">🟢 মাস্টার অ্যাডমিন প্যানেল</span>
   </div>
   <input type="hidden" id="editDocId" value="">
   <input type="text" id="title" placeholder="শিরোনাম লিখুন (আবশ্যক)">
   <label class="upload-label" for="imgFile">📷 গ্যালারি থেকে ছবি নির্বাচন করুন</label>
-  <input type="file" id="imgFile" accept="image/*" style="display:none;" onchange="handleImageUpload(this)">
+  <input type="file" id="imgFile" accept="image/*" style="display:none;" onchange="handleImageUpload(this, 'post')">
   <div id="uploadStatus" style="font-size:12px;color:var(--primary);text-align:center;font-weight:600;"></div>
   <img id="imgPreview" style="display:none;max-height:110px;border-radius:8px;margin:6px auto;" alt="Preview">
   <input type="text" id="img" placeholder="অথবা ছবির লিংক দিন (ঐচ্ছিক)">
   <div style="font-size:13px;font-weight:600;margin-top:6px;">ক্যাটাগরি নির্বাচন করুন (একাধিক নির্বাচন করা যাবে):</div>
   <div class="cat-check" id="catCheck"></div>
-  <textarea id="content" rows="6" placeholder="এখানে আপনার বিস্তারিত লেখা বা প্রতিবেদন পেস্ট করুন..."></textarea>
+  <textarea id="content" rows="6" placeholder="বিস্তারিত লেখা লিখুন... (নীল লিংকের জন্য [এখানে ক্লিক করুন](https://লিংক) ব্যবহার করুন)"></textarea>
   <button class="btn-full btn-publish" id="pubBtn" onclick="publishPost()">সরাসরি পাবলিশ করুন</button>
-  <div style="background:var(--bg);padding:12px;border-radius:10px;margin-top:14px;border:1px solid var(--border);">
-    <div style="font-size:13.5px;font-weight:700;color:var(--primary);margin-bottom:4px;">বাণী বার পরিচালনা (সরাসরি লাইভ হবে):</div>
-    <textarea id="baniInput" rows="2" placeholder="এখানে বাণী লিখুন (মুছুন চাপলে বাণী বারটি বন্ধ থাকবে)..."></textarea>
+
+  <!-- 1. Bani & Menu Tribute Control -->
+  <div class="admin-section">
+    <div class="admin-section-title">১. বাণী বার ও মেনুবার ট্রিবিউট বার্তা</div>
+    <textarea id="baniInput" rows="2" placeholder="হোমপেজের বাণী লিখুন..."></textarea>
     <div style="display:flex;gap:6px;">
       <button class="btn-full btn-publish" style="margin-top:2px;" onclick="saveBani()">বাণী সেভ করুন</button>
       <button class="btn-full btn-close-admin" style="margin-top:2px;" onclick="deleteBani()">বাণী মুছুন</button>
     </div>
+    <div style="margin-top:10px;font-size:12.5px;font-weight:700;color:var(--muted);">মেনুবারের ভেতরের সংক্ষিপ্ত ট্রিবিউট/উক্তি (১৫-১৮ শব্দ):</div>
+    <textarea id="menuTributeInput" rows="2" placeholder="মেনু ড্রয়ারের ভেতরে দেখানোর জন্য ছোট বার্তা বা ট্রিবিউট লিখুন..."></textarea>
+    <div style="display:flex;gap:6px;">
+      <button class="btn-full btn-publish" style="margin-top:2px;" onclick="saveMenuTribute()">ট্রিবিউট সেভ করুন</button>
+      <button class="btn-full btn-close-admin" style="margin-top:2px;" onclick="deleteMenuTribute()">ট্রিবিউট মুছুন</button>
+    </div>
   </div>
-  <div style="background:var(--bg);padding:12px;border-radius:10px;margin-top:14px;border:1px solid var(--border);">
-    <div style="font-size:13.5px;font-weight:700;color:var(--primary);">ক্যাটাগরি পরিচালনা (যোগ বা বিয়োগ):</div>
+
+  <!-- 2. Multi-Ads Manager -->
+  <div class="admin-section">
+    <div class="admin-section-title">২. মাল্টি বিজ্ঞাপন ম্যানেজার (একসাথে একাধিক বিজ্ঞাপন)</div>
+    <input type="text" id="adTitle" placeholder="বিজ্ঞাপনের শিরোনাম বা সংক্ষিপ্ত বিবরণ">
+    <label class="upload-label" for="adImgFile">🖼️ বিজ্ঞাপনের ব্যানার ছবি নির্বাচন করুন</label>
+    <input type="file" id="adImgFile" accept="image/*" style="display:none;" onchange="handleImageUpload(this, 'ad')">
+    <div id="adUploadStatus" style="font-size:12px;color:var(--primary);text-align:center;font-weight:600;"></div>
+    <input type="text" id="adImgUrl" placeholder="অথবা ব্যানার ছবির লিংক দিন">
+    <input type="text" id="adLink" placeholder="Facebook / WhatsApp / YouTube বা ওয়েব লিংক">
+    <select id="adPosition">
+      <option value="top">অবস্থান: হোমপেজের একদম ওপরে</option>
+      <option value="feed">অবস্থান: লেখার তালিকার মাঝখানে</option>
+      <option value="reader">অবস্থান: আর্টিকেল পড়ার পাতার নিচে</option>
+    </select>
+    <button class="btn-full btn-publish" onclick="publishAd()">বিজ্ঞাপন চালু করুন</button>
+    <div id="adminAdsList" style="margin-top:8px;"></div>
+  </div>
+
+  <!-- 3. Curated Collection & Gallery Manager -->
+  <div class="admin-section">
+    <div class="admin-section-title">৩. প্রিয় সংগ্রহ ও গ্যালারি (PDF বই, অ্যালবাম ও উপস্থাপনা)</div>
+    <select id="colType">
+      <option value="PDF বই / নোট">ধরন: PDF বই / নোট</option>
+      <option value="ছবির অ্যালবাম">ধরন: ছবির অ্যালবাম</option>
+      <option value="বিশেষ উপস্থাপনা">ধরন: বিশেষ উপস্থাপনা</option>
+    </select>
+    <input type="text" id="colTitle" placeholder="সংগ্রহের শিরোনাম লিখুন">
+    <label class="upload-label" for="colImgFile">📷 কভার বা অ্যালবামের ছবি নির্বাচন করুন</label>
+    <input type="file" id="colImgFile" accept="image/*" style="display:none;" onchange="handleImageUpload(this, 'col')">
+    <div id="colUploadStatus" style="font-size:12px;color:var(--primary);text-align:center;font-weight:600;"></div>
+    <input type="text" id="colImgUrl" placeholder="অথবা ছবির লিংক দিন">
+    <input type="text" id="colLink" placeholder="Google Drive PDF / YouTube / Facebook লিংক (ঐচ্ছিক)">
+    <textarea id="colDesc" rows="2" placeholder="সংক্ষিপ্ত বিবরণ লিখুন (ঐচ্ছিক)"></textarea>
+    <button class="btn-full btn-publish" onclick="publishCollection()">সংগ্রহে যুক্ত করুন</button>
+    <div id="adminColList" style="margin-top:8px;"></div>
+  </div>
+
+  <!-- 4. Notice & Q&A Board Management -->
+  <div class="admin-section">
+    <div class="admin-section-title">৪. নোটিশ ও প্রশ্নোত্তর বোর্ড নিয়ন্ত্রণ</div>
+    <textarea id="newNoticeText" rows="2" placeholder="অ্যাডমিন কর্তৃক নতুন ঘোষণা লিখুন..."></textarea>
+    <button class="btn-full btn-publish" onclick="publishAnnouncement()">ঘোষণা প্রকাশ করুন</button>
+    <div style="margin-top:10px;font-size:13px;font-weight:700;">প্রকাশিত ঘোষণাসমূহ (পিন / মুছুন):</div>
+    <div id="adminAnnouncementsList"></div>
+    <div style="margin-top:12px;font-size:13px;font-weight:700;color:#b45309;">অপেক্ষমাণ ও প্রকাশিত প্রশ্নোত্তর (অনুমোদন / পিন / মুছুন):</div>
+    <div id="adminQaList"></div>
+  </div>
+
+  <!-- 5. Private Admin Inbox -->
+  <div class="admin-section">
+    <div class="admin-section-title" style="display:flex;justify-content:space-between;align-items:center;">
+      <span>৫. ব্যক্তিগত ইনবক্স বার্তা (<span id="adminInboxCount">0</span>)</span>
+      <button style="background:#d32f2f;color:#fff;border:0;padding:3px 9px;border-radius:6px;font-size:11.5px;cursor:pointer;" onclick="deleteAllInbox()">🗑️ সব মেসেজ মুছুন</button>
+    </div>
+    <div id="adminInboxList"></div>
+  </div>
+
+  <!-- 6. About & Identity Editor -->
+  <div class="admin-section">
+    <div class="admin-section-title">৬. আমাদের লক্ষ্য ও পরিচিতি সম্পাদনা</div>
+    <input type="text" id="aboutTitleInput" placeholder="শিরোনাম (যেমন: আমাদের লক্ষ্য ও পরিচিতি)">
+    <textarea id="aboutContentInput" rows="4" placeholder="আমাদের সম্পর্কে বিস্তারিত লিখুন..."></textarea>
+    <button class="btn-full btn-publish" onclick="saveAboutInfo()">পরিচিতি সেভ করুন</button>
+  </div>
+
+  <!-- 7. Categories Manager -->
+  <div class="admin-section">
+    <div class="admin-section-title">৭. ক্যাটাগরি পরিচালনা (যোগ বা বিয়োগ)</div>
     <div class="cat-manage-row">
       <input type="text" id="newCatInput" placeholder="নতুন ক্যাটাগরির নাম লিখুন...">
       <button onclick="addCategory()">যোগ করুন</button>
     </div>
     <div class="cat-chip-list" id="adminCatChips"></div>
   </div>
-  <div style="margin-top:14px;"><h4 style="font-size:14px;margin-bottom:6px;">ক্লাউডে প্রকাশিত লেখাসমূহ:</h4><div id="adminPostList"></div></div>
+
+  <!-- 8. Published Articles & Reactions -->
+  <div class="admin-section">
+    <div class="admin-section-title">৮. প্রকাশিত লেখাসমূহ ও পাঠক প্রতিক্রিয়া (👍 / 👎)</div>
+    <div id="adminPostList"></div>
+  </div>
+
   <div style="display:flex;gap:8px;margin-top:14px;">
     <button class="btn-full btn-close-admin" style="margin-top:0;" onclick="hideAdmin()">প্যানেল বন্ধ করুন</button>
     <button class="btn-full btn-logout" style="margin-top:0;" onclick="logoutAdmin()">লগআউট করুন</button>
   </div>
 </div>
-<footer><b>Make Dreams - স্বপ্নীল যাত্রার সহায়িকা</b><br>নিজের স্বপ্ন পূরণ করতে চাই (ইনশাআল্লাহ), পাশাপাশি অন্যের স্বপ্নযাত্রায় সহায়তা, উৎসাহ এবং পাথেয় যোগাতে চাই।<br><br>© 2026 Make Dreams by Mahmud | All Rights Reserved</footer>
+
+<footer><b>Make Dreams - স্বপ্নীল যাত্রার সহায়িকা</b><br>নিজের স্বপ্ন পূরণ করতে চাই (ইনশাআল্লাহ), পাশাপাশি অন্যের স্বপ্নযাত্রায় সহায়তা, উৎসাহ এবং পাথেয় যোগাতে চাই।<br><br>© 2026 Make Dreams by Mahmudul Hasan Muhammad | All Rights Reserved</footer>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getFirestore, collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc, query, orderBy, limit, where, onSnapshot, increment, arrayUnion } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyALJtM2GV-jcWyTYlUlWiKi3ohD-qtzuB0",
@@ -294,26 +589,8 @@ const SAMPLE_POSTS = [
     img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b4173?w=600&q=80",
     date: "১১ নভেম্বর ২০২৬",
     createdAt: 1731300000000,
-    isSample: true
-  },
-  {
-    id: "sample_2",
-    title: "মানবিক বিভাগ থেকে বিসিএস - কীভাবে শুরু করবেন?",
-    cats: ["বিসিএস-চাকরি-বাকরি", "পড়াশোনা-উচ্চশিক্ষা"],
-    content: "মানবিক বিভাগ থেকে বিসিএস ক্যাডার হওয়া কঠিন বলে অনেকের মাঝে একটি ভুল ধারণা কাজ করে। অথচ সঠিক পরিকল্পনা, নিয়মিত অনুশীলন এবং আত্মবিশ্বাস থাকলে যেকোনো বিভাগ থেকেই শীর্ষস্থান অর্জন করা সম্ভব।\n\nশুরুতেই বিগত ১০ বছরের বিসিএস প্রিলিমিনারি প্রশ্নব্যাংক ভালোভাবে বিশ্লেষণ করুন। এতে কোন বিষয় থেকে কেমন প্রশ্ন আসে সে সম্পর্কে স্পষ্ট ধারণা তৈরি হবে। বাংলা, ইংরেজি ও সাধারণ জ্ঞানে আপনার যেহেতু আগে থেকেই ভালো ভিত্তি রয়েছে, তাই গণিত ও বিজ্ঞানে প্রতিদিন অন্তত ২ ঘণ্টা করে সময় দিলে আপনি অন্যদের চেয়ে এগিয়ে থাকবেন।",
-    img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80",
-    date: "১০ নভেম্বর ২০২৬",
-    createdAt: 1731200000000,
-    isSample: true
-  },
-  {
-    id: "sample_3",
-    title: "ইসলামে পরিশ্রম ও অধ্যবসায়ের মর্যাদা",
-    cats: ["ইসলাম-দ্বীনী জিন্দেগি", "পরিশ্রম-মেধা"],
-    content: "ইসলাম কখনোই অলসতা ও কর্মবিমুখতাকে সমর্থন করে না। পবিত্র কুরআনে মহান আল্লাহ তাআলা ঘোষণা করেছেন, মানুষ তাই পায় যা সে চেষ্টা ও পরিশ্রম করে।\n\nহালাল উপায়ে জ্ঞান অর্জন করা, নিজের ও পরিবারের কল্যাণে পরিশ্রম করা এবং মানুষের উপকারে নিজেকে নিয়োজিত রাখাও ইবাদতের অংশ। তাই হতাশ না হয়ে আল্লাহর ওপর পূর্ণ ভরসা (তাওয়াক্কুল) রেখে নিজের সর্বোচ্চ চেষ্টা চালিয়ে যান—সফলতা আসবেই, ইনশাআল্লাহ।",
-    img: "https://images.unsplash.com/photo-1585036156171-4853e7eec6a3?w=600&q=80",
-    date: "৯ নভেম্বর ২০২৬",
-    createdAt: 1731100000000,
+    likes: 0,
+    dislikes: 0,
     isSample: true
   }
 ];
@@ -321,41 +598,136 @@ const SAMPLE_POSTS = [
 let categories = [...DEFAULT_CATEGORIES];
 let cloudPosts = [];
 let hasCloudPosts = false;
+let allAds = [];
+let allAnnouncements = [];
+let allQaItems = [];
+let allCollections = [];
+let allInboxMsgs = [];
 let currentBani = "পড়ো তোমার প্রতিপালকের নামে, যিনি সৃষ্টি করেছেন।";
+let currentMenuTribute = "";
+let aboutData = {
+  title: "ℹ️ আমাদের লক্ষ্য ও পরিচিতি",
+  content: "আসসালামু আলাইকুম। Make Dreams - স্বপ্নীল যাত্রার সহায়িকা একটি শিক্ষামূলক ও দিকনির্দেশনামূলক প্ল্যাটফর্ম।\n\nআমাদের মূল লক্ষ্য হলো শিক্ষার্থীদের পড়াশোনা, উচ্চশিক্ষা, বিসিএস ও চাকরি প্রস্তুতি, আন্তর্জাতিক বৃত্তি এবং নৈতিক ও দ্বীনী জীবন গঠনে নির্ভরযোগ্য তথ্য ও অনুপ্রেরণা পৌঁছে দেওয়া। নিজের স্বপ্ন পূরণের পাশাপাশি অন্যের স্বপ্নযাত্রায় পাথেয় যোগানোই আমাদের প্রচেষ্টা।"
+};
+
 let currentCat = "All";
+let currentColFilter = "All";
 let bn = true;
 let readerFontSize = 16;
-let uploadedGalleryDataUrl = "";
+let uploadedPostImg = "";
+let uploadedAdImg = "";
+let uploadedColImg = "";
 let currentOpenPost = null;
 let currentUser = null;
 let tapCount = 0;
 let tapTimer = null;
 
-/* Pagination & Load More Variables */
 const PAGE_STEP = 10;
 let visibleLimit = PAGE_STEP;
 let cloudQueryLimit = 20;
 let unsubscribePosts = null;
 let initialUrlPostChecked = false;
 
-function getActivePosts() {
-  return hasCloudPosts ? cloudPosts : SAMPLE_POSTS;
-}
-
-/* Unique Permanent Link Builder for Each Article */
+function getActivePosts() { return hasCloudPosts ? cloudPosts : SAMPLE_POSTS; }
 function getPostShareUrl(postId) {
   const base = location.origin + location.pathname;
   return postId ? `${base}?post=${encodeURIComponent(postId)}` : location.href;
 }
-
 function escapeHtml(str) {
   return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
+function isValidGmail(email) {
+  return /^[a-zA-Z0-9._%+-]+@gmail\.com$/i.test((email || "").trim());
+}
 
+/* Smart Link & Social Icon Formatter */
+function getSocialPillHtml(url, customLabel) {
+  const cleanUrl = escapeHtml(url);
+  if (/youtube\.com|youtu\.be/i.test(url)) {
+    return `<a href="${cleanUrl}" target="_blank" rel="noopener" class="social-pill sp-yt">▶ ${escapeHtml(customLabel || "YouTube ভিডিও দেখুন")}</a>`;
+  }
+  if (/facebook\.com|fb\.com|fb\.watch/i.test(url)) {
+    return `<a href="${cleanUrl}" target="_blank" rel="noopener" class="social-pill sp-fb">f ${escapeHtml(customLabel || "Facebook পেজ / পোস্ট")}</a>`;
+  }
+  if (/wa\.me|whatsapp\.com/i.test(url)) {
+    return `<a href="${cleanUrl}" target="_blank" rel="noopener" class="social-pill sp-wa">💬 ${escapeHtml(customLabel || "WhatsApp যোগাযোগ")}</a>`;
+  }
+  return `<a href="${cleanUrl}" target="_blank" rel="noopener" class="smart-link">${escapeHtml(customLabel || "এখানে ক্লিক করুন")}</a>`;
+}
+
+function formatRichParagraph(rawText) {
+  let safe = escapeHtml(rawText);
+  // 1. Parse Markdown links: [Label](https://...)
+  safe = safe.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (_, label, url) => {
+    const rawUrl = url.replace(/&amp;/g, "&");
+    if (/youtube\.com|youtu\.be|facebook\.com|fb\.com|wa\.me|whatsapp\.com/i.test(rawUrl)) {
+      return getSocialPillHtml(rawUrl, label);
+    }
+    return `<a href="${escapeHtml(rawUrl)}" target="_blank" rel="noopener" class="smart-link">${label}</a>`;
+  });
+  // 2. Parse standalone raw URLs not already inside href="..."
+  safe = safe.replace(/(^|\s)(https?:\/\/[^\s<]+)/g, (_, prefix, url) => {
+    const rawUrl = url.replace(/&amp;/g, "&");
+    return prefix + getSocialPillHtml(rawUrl, "");
+  });
+  return safe;
+}
+
+/* Side Menu (☰) & Multi-View Navigation */
+function openSideMenu() {
+  document.getElementById("sideDrawer").classList.add("open");
+  document.getElementById("drawerBackdrop").classList.add("open");
+}
+function closeSideMenu() {
+  document.getElementById("sideDrawer").classList.remove("open");
+  document.getElementById("drawerBackdrop").classList.remove("open");
+}
+function switchMainView(viewName) {
+  closeSideMenu();
+  document.getElementById("homeView").style.display = viewName === "home" ? "block" : "none";
+  ["boardView", "collectionView", "inboxView", "aboutView"].forEach(id => {
+    document.getElementById(id).classList.remove("active");
+  });
+  ["nav-home", "nav-board", "nav-collection", "nav-inbox", "nav-bm", "nav-about"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove("active-nav");
+  });
+
+  if (viewName === "home") {
+    document.getElementById("nav-home").classList.add("active-nav");
+  } else if (viewName === "board") {
+    document.getElementById("boardView").classList.add("active");
+    document.getElementById("nav-board").classList.add("active-nav");
+  } else if (viewName === "collection") {
+    document.getElementById("collectionView").classList.add("active");
+    document.getElementById("nav-collection").classList.add("active-nav");
+  } else if (viewName === "inbox") {
+    document.getElementById("inboxView").classList.add("active");
+    document.getElementById("nav-inbox").classList.add("active-nav");
+    const savedEmail = localStorage.getItem("md_user_gmail") || "";
+    if (savedEmail) {
+      document.getElementById("inbEmail").value = savedEmail;
+      document.getElementById("checkReplyEmail").value = savedEmail;
+      loadUserInboxReplies();
+    }
+  } else if (viewName === "about") {
+    document.getElementById("aboutView").classList.add("active");
+    document.getElementById("nav-about").classList.add("active-nav");
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function openBookmarksFromMenu() {
+  switchMainView("home");
+  filterCat("BOOKMARKS");
+  document.getElementById("nav-home").classList.remove("active-nav");
+  document.getElementById("nav-bm").classList.add("active-nav");
+}
+
+/* Bookmarks & Like/Dislike Reactions */
 function getBookmarks() {
   try { return JSON.parse(localStorage.getItem("md_mahmud_bm_v1") || "[]"); } catch (e) { return []; }
 }
-
 function toggleBookmark(id, e) {
   if (e) e.stopPropagation();
   let bms = getBookmarks();
@@ -366,19 +738,60 @@ function toggleBookmark(id, e) {
   renderPosts();
 }
 
-function renderBani() {
-  const q = (currentBani || "").trim();
-  const box = document.getElementById("baniContainer");
-  if (!q) { box.innerHTML = ""; return; }
-  box.innerHTML = `<div class="bani-box"><span class="bani-badge">বাণী</span><div class="bani-text">${escapeHtml(q)}</div></div>`;
+function getUserVotes() {
+  try { return JSON.parse(localStorage.getItem("md_post_votes_v1") || "{}"); } catch (e) { return {}; }
+}
+async function reactToPost(postId, type, e) {
+  if (e) e.stopPropagation();
+  if (!postId || postId.startsWith("sample_")) {
+    alert("নমুনা লেখায় ভোট সংরক্ষণ হয় না; আপনার প্রকাশিত লেখায় পাঠকরা ভোট দিতে পারবেন।");
+    return;
+  }
+  const votes = getUserVotes();
+  const prev = votes[postId];
+  const postRef = doc(db, "posts", postId);
+  try {
+    if (prev === type) {
+      delete votes[postId];
+      localStorage.setItem("md_post_votes_v1", JSON.stringify(votes));
+      await updateDoc(postRef, { [type === "like" ? "likes" : "dislikes"]: increment(-1) });
+    } else {
+      const updates = { [type === "like" ? "likes" : "dislikes"]: increment(1) };
+      if (prev) updates[prev === "like" ? "likes" : "dislikes"] = increment(-1);
+      votes[postId] = type;
+      localStorage.setItem("md_post_votes_v1", JSON.stringify(votes));
+      await updateDoc(postRef, updates);
+    }
+  } catch (err) {
+    console.warn("Reaction update info:", err.message);
+  }
 }
 
+/* Category Dropdown & Navigation */
+function toggleCatDropdown(e) {
+  if (e) e.stopPropagation();
+  document.getElementById("catDropList").classList.toggle("open");
+}
+document.addEventListener("click", () => {
+  const m = document.getElementById("translateMenu");
+  if (m) m.classList.remove("open");
+  const c = document.getElementById("catDropList");
+  if (c) c.classList.remove("open");
+});
+
 function renderNav() {
-  const nav = document.getElementById("catNav");
   const bmCount = getBookmarks().length;
-  nav.innerHTML =
-    `<button onclick="filterCat('All')" class="${currentCat === 'All' ? 'active' : ''}">${bn ? 'সব লেখা' : 'All'}</button>` +
-    `<button onclick="filterCat('BOOKMARKS')" class="${currentCat === 'BOOKMARKS' ? 'active' : ''}">🔖 ${bn ? 'সংরক্ষিত' : 'Saved'} (${bmCount})</button>` +
+  document.getElementById("menuBmCount").innerText = bmCount;
+  const dropList = document.getElementById("catDropList");
+  const dropBtn = document.getElementById("catDropBtn");
+
+  if (currentCat === "All") dropBtn.innerText = bn ? "📂 ক্যাটাগরি বাছাই করুন ▼" : "📂 Select Category ▼";
+  else if (currentCat === "BOOKMARKS") dropBtn.innerText = `🔖 সংরক্ষিত (${bmCount}) ▼`;
+  else dropBtn.innerText = `📂 ${currentCat} ▼`;
+
+  dropList.innerHTML =
+    `<button onclick="filterCat('All')" class="${currentCat === 'All' ? 'active' : ''}">${bn ? 'সব লেখা' : 'All Writings'}</button>` +
+    `<button onclick="filterCat('BOOKMARKS')" class="${currentCat === 'BOOKMARKS' ? 'active' : ''}">🔖 ${bn ? 'সংরক্ষিত লেখা' : 'Saved'} (${bmCount})</button>` +
     categories.map(c => `<button onclick="filterCat('${escapeHtml(c).replace(/'/g, "\\'")}')" class="${currentCat === c ? 'active' : ''}">${escapeHtml(c)}</button>`).join("");
 
   const prevChecked = [...document.querySelectorAll("#catCheck input:checked")].map(i => i.value);
@@ -394,8 +807,47 @@ function renderNav() {
 function filterCat(c) {
   currentCat = c;
   visibleLimit = PAGE_STEP;
+  document.getElementById("catDropList").classList.remove("open");
+  switchMainView("home");
   renderNav();
   renderPosts();
+}
+
+function onSearchInput() {
+  switchMainView("home");
+  renderPosts();
+}
+
+/* Bani & Menu Tribute Rendering */
+function renderBani() {
+  const q = (currentBani || "").trim();
+  const box = document.getElementById("baniContainer");
+  box.innerHTML = q ? `<div class="bani-box"><span class="bani-badge">বাণী</span><div class="bani-text">${escapeHtml(q)}</div></div>` : "";
+}
+function renderMenuTribute() {
+  const t = (currentMenuTribute || "").trim();
+  const area = document.getElementById("menuTributeArea");
+  area.innerHTML = t ? `<div class="menu-tribute-box">✨ ${escapeHtml(t)}</div>` : "";
+}
+
+/* Ads Rendering Helper */
+function buildAdHtml(ad) {
+  const linkBtn = ad.link ? getSocialPillHtml(ad.link, "বিস্তারিত দেখুন") : "";
+  return `
+    <div class="ad-card">
+      <span class="ad-tag">বিজ্ঞাপন</span>
+      <div class="ad-inner">
+        ${ad.img ? `<img class="ad-img" src="${escapeHtml(ad.img)}" onerror="this.style.display='none'" alt="Sponsor">` : ""}
+        <div class="ad-body">
+          ${ad.title ? `<div class="ad-title">${escapeHtml(ad.title)}</div>` : ""}
+          ${linkBtn}
+        </div>
+      </div>
+    </div>`;
+}
+function renderTopAds() {
+  const topAds = allAds.filter(a => a.position === "top");
+  document.getElementById("topAdsContainer").innerHTML = topAds.map(buildAdHtml).join("");
 }
 
 function calcReadTime(text) {
@@ -416,6 +868,8 @@ function loadMorePosts() {
 function renderPosts() {
   const posts = getActivePosts();
   const bms = getBookmarks();
+  const votes = getUserVotes();
+  const feedAds = allAds.filter(a => a.position === "feed");
   const queryText = document.getElementById("searchInput").value.trim().toLowerCase();
 
   const filtered = posts.filter(p => {
@@ -445,17 +899,21 @@ function renderPosts() {
     loadMoreWrap.style.display = "none";
   }
 
-  container.innerHTML = visiblePosts.map(p => {
+  let adIdx = 0;
+  container.innerHTML = visiblePosts.map((p, i) => {
     const isSaved = bms.includes(p.id);
+    const myVote = votes[p.id];
+    const likeCount = p.likes || 0;
+    const dislikeCount = p.dislikes || 0;
     const imgUrl = escapeHtml(p.img || DEFAULT_IMG);
     const safeTitle = escapeHtml(p.title);
-    const plainContent = (p.content || "").replace(/\s+/g, ' ');
+    const plainContent = (p.content || "").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/\s+/g, ' ');
     const excerpt = escapeHtml(plainContent.substring(0, 130)) + (plainContent.length > 130 ? "..." : "");
     const postLink = getPostShareUrl(p.id);
     const shareUrl = encodeURIComponent(postLink);
     const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + postLink);
 
-    return `
+    let html = `
       <div class="card">
         <img class="card-img" src="${imgUrl}" onerror="this.src='${DEFAULT_IMG}'" onclick="openReader('${p.id}')" alt="${safeTitle}">
         <div class="card-body">
@@ -468,6 +926,10 @@ function renderPosts() {
           <div class="tags">${(p.cats || []).map(t => `<span>#${escapeHtml(t)}</span>`).join("")}</div>
           <div class="card-actions">
             <button class="read-btn" onclick="openReader('${p.id}')">${bn ? 'বিস্তারিত পড়ুন →' : 'Read More →'}</button>
+            <div class="react-group">
+              <button class="react-btn ${myVote === 'like' ? 'voted-like' : ''}" onclick="reactToPost('${p.id}', 'like', event)">👍 ${likeCount}</button>
+              <button class="react-btn ${myVote === 'dislike' ? 'voted-dislike' : ''}" onclick="reactToPost('${p.id}', 'dislike', event)">👎 ${dislikeCount}</button>
+            </div>
             <div class="share">
               <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a>
               <a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>
@@ -476,6 +938,12 @@ function renderPosts() {
           </div>
         </div>
       </div>`;
+
+    if ((i + 1) % 3 === 0 && feedAds.length > 0) {
+      html += buildAdHtml(feedAds[adIdx % feedAds.length]);
+      adIdx++;
+    }
+    return html;
   }).join("");
 }
 
@@ -483,7 +951,7 @@ function buildArticleBodyWithInlineRelated(content, relatedPost) {
   const paragraphs = (content || "").split(/\n+/).map(s => s.trim()).filter(Boolean);
   if (paragraphs.length === 0) return "";
   return paragraphs.map((para, idx) => {
-    let html = `<p>${escapeHtml(para)}</p>`;
+    let html = `<p>${formatRichParagraph(para)}</p>`;
     if (idx === 1 && paragraphs.length >= 3 && relatedPost) {
       html += `
         <div class="inline-related" onclick="openReader('${relatedPost.id}')">
@@ -506,11 +974,19 @@ function renderRecCards(list) {
     </div>`).join("");
 }
 
+function updateModalReactionButtons(p) {
+  const votes = getUserVotes();
+  const myVote = votes[p.id];
+  const el = document.getElementById("mReactGroup");
+  if (!el) return;
+  el.innerHTML = `
+    <button class="react-btn ${myVote === 'like' ? 'voted-like' : ''}" onclick="reactToPost('${p.id}', 'like', event)">👍 উপকারী হয়েছে (${p.likes || 0})</button>
+    <button class="react-btn ${myVote === 'dislike' ? 'voted-dislike' : ''}" onclick="reactToPost('${p.id}', 'dislike', event)">👎 (${p.dislikes || 0})</button>`;
+}
+
 async function openReader(postId, skipHistory = false) {
   const allPosts = getActivePosts();
   let p = allPosts.find(item => item.id === postId);
-
-  /* যদি পুরনো কোনো লেখার লিংক হয় যা প্রথম ২০টির বাইরে, তবে সরাসরি সার্ভার থেকে নিয়ে আসবে */
   if (!p && postId && !postId.startsWith("sample_")) {
     try {
       const snap = await getDoc(doc(db, "posts", postId));
@@ -544,6 +1020,8 @@ async function openReader(postId, skipHistory = false) {
   contentEl.innerHTML = buildArticleBodyWithInlineRelated(p.content, relatedList[0]);
   contentEl.style.fontSize = readerFontSize + "px";
 
+  updateModalReactionButtons(p);
+
   const postLink = getPostShareUrl(p.id);
   const shareUrl = encodeURIComponent(postLink);
   const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + postLink);
@@ -552,6 +1030,9 @@ async function openReader(postId, skipHistory = false) {
     <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a>
     <a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>
     <button class="cp" onclick="copyShareLink('${safeTitle}', '${p.id}')">Copy</button>`;
+
+  const readerAds = allAds.filter(a => a.position === "reader");
+  document.getElementById("readerAdContainer").innerHTML = readerAds.map(buildAdHtml).join("");
 
   const recWrap = document.getElementById("mRecommendations");
   if (others.length > 0) {
@@ -584,18 +1065,13 @@ function closeReader(skipHistory = false) {
     try { history.pushState(null, "", window.location.pathname); } catch (e) {}
   }
 }
-
 function closeReaderOutside(e) { if (e.target.id === "readerModal") closeReader(); }
 function changeFont(delta) { readerFontSize = Math.min(24, Math.max(13, readerFontSize + delta)); document.getElementById("mContent").style.fontSize = readerFontSize + "px"; }
-
 function copyShareLink(title, postId) {
   const link = getPostShareUrl(postId);
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(`${title} - Make Dreams\n${link}`).then(() => alert("লেখার লিংক কপি হয়েছে!"));
-  }
+  if (navigator.clipboard) navigator.clipboard.writeText(`${title} - Make Dreams\n${link}`).then(() => alert("লেখার লিংক কপি হয়েছে!"));
 }
 
-/* Browser Back/Forward Button Support for Article Links */
 window.addEventListener("popstate", () => {
   const params = new URLSearchParams(window.location.search);
   const pid = params.get("post");
@@ -603,10 +1079,9 @@ window.addEventListener("popstate", () => {
   else closeReader(true);
 });
 
-/* Automatic Website Attribution When Someone Copies Text */
 document.addEventListener("copy", function(e) {
   const activeTag = document.activeElement ? document.activeElement.tagName : "";
-  if (activeTag === "INPUT" || activeTag === "TEXTAREA") return; // অ্যাডমিন বক্সে কপি করলে কিছু যুক্ত হবে না
+  if (activeTag === "INPUT" || activeTag === "TEXTAREA") return;
   const selectedText = window.getSelection().toString().trim();
   if (selectedText.length > 25) {
     const sourceUrl = currentOpenPost ? getPostShareUrl(currentOpenPost.id) : window.location.href;
@@ -619,7 +1094,196 @@ document.addEventListener("copy", function(e) {
   }
 });
 
-/* Direct Gemini Live Links */
+/* Two-Column Notice & Q&A Board Functions */
+function toggleAskForm() {
+  const f = document.getElementById("askQuestionForm");
+  f.style.display = f.style.display === "none" ? "block" : "none";
+}
+async function submitUserQuestion() {
+  const name = document.getElementById("qaName").value.trim();
+  const email = document.getElementById("qaEmail").value.trim();
+  const qText = document.getElementById("qaQuestion").value.trim();
+  if (!name || !qText) { alert("অনুগ্রহ করে আপনার নাম এবং প্রশ্নটি লিখুন।"); return; }
+  if (!isValidGmail(email)) { alert("সঠিক @gmail.com ঠিকানা দেওয়া বাধ্যতামূলক!"); return; }
+
+  const btn = document.getElementById("qaSubmitBtn");
+  btn.disabled = true;
+  btn.innerText = "জমা হচ্ছে...";
+  try {
+    const today = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+    await addDoc(collection(db, "qa_board"), {
+      name, email, question: qText, date: today,
+      approved: false, pinned: false, replies: [], createdAt: Date.now()
+    });
+    document.getElementById("qaName").value = "";
+    document.getElementById("qaEmail").value = "";
+    document.getElementById("qaQuestion").value = "";
+    document.getElementById("askQuestionForm").style.display = "none";
+    alert("✅ আপনার প্রশ্ন জমা হয়েছে! অ্যাডমিন অনুমোদন করলে এটি বোর্ডে দেখা যাবে।");
+  } catch (err) {
+    alert("সমস্যা হয়েছে: " + err.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerText = "প্রশ্ন জমা দিন";
+  }
+}
+
+function toggleReplyBox(qaId) {
+  const el = document.getElementById("replyBox_" + qaId);
+  if (el) el.style.display = el.style.display === "none" ? "block" : "none";
+}
+
+async function submitQaReply(qaId) {
+  const name = document.getElementById("repName_" + qaId).value.trim();
+  const email = document.getElementById("repEmail_" + qaId).value.trim();
+  const text = document.getElementById("repText_" + qaId).value.trim();
+  if (!name || !text) { alert("নাম এবং উত্তর লিখুন।"); return; }
+  if (!isValidGmail(email)) { alert("উত্তর দেওয়ার জন্য সঠিক @gmail.com ঠিকানা বাধ্যতামূলক!"); return; }
+
+  const today = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+  try {
+    await updateDoc(doc(db, "qa_board", qaId), {
+      replies: arrayUnion({
+        name, email, text, date: today, isAdmin: Boolean(currentUser), createdAt: Date.now()
+      })
+    });
+    alert("✅ আপনার উত্তর যুক্ত হয়েছে!");
+  } catch (err) {
+    alert("উত্তর যোগ করতে সমস্যা হয়েছে: " + err.message);
+  }
+}
+
+function renderBoardView() {
+  // Left Column: Admin Announcements (Pinned first)
+  const sortedNotices = [...allAnnouncements].sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || (b.createdAt || 0) - (a.createdAt || 0));
+  const annEl = document.getElementById("boardAnnouncementsList");
+  annEl.innerHTML = sortedNotices.length === 0
+    ? `<div style="font-size:13px;color:var(--muted);">এখনো কোনো ঘোষণা প্রকাশিত হয়নি।</div>`
+    : sortedNotices.map(n => `
+      <div class="notice-item ${n.pinned ? 'pinned' : ''}">
+        ${n.pinned ? `<div class="pin-tag">📌 পিন করা ঘোষণা</div>` : ""}
+        <div style="font-size:14px;line-height:1.7;">${formatRichParagraph(n.text)}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:5px;">📅 ${escapeHtml(n.date)}</div>
+      </div>`).join("");
+
+  // Right Column: Approved User Q&A (Pinned first)
+  const approvedQa = allQaItems.filter(q => q.approved).sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || (b.createdAt || 0) - (a.createdAt || 0));
+  const qaEl = document.getElementById("boardQaList");
+  qaEl.innerHTML = approvedQa.length === 0
+    ? `<div style="font-size:13px;color:var(--muted);">এখনো কোনো প্রশ্নোত্তর প্রকাশিত হয়নি। ওপরের "+ প্রশ্ন করুন" বাটনে চেপে প্রথম প্রশ্নটি করুন।</div>`
+    : approvedQa.map(q => `
+      <div class="qa-item ${q.pinned ? 'pinned' : ''}">
+        ${q.pinned ? `<div class="pin-tag">📌 পিন করা প্রশ্নোত্তর</div>` : ""}
+        <div style="font-size:11.5px;color:var(--muted);">🙋 <b>${escapeHtml(q.name)}</b> • 📅 ${escapeHtml(q.date)}</div>
+        <div style="font-size:14.5px;font-weight:700;margin:4px 0 6px;">${formatRichParagraph(q.question)}</div>
+        <div class="qa-reply-list">
+          ${(q.replies || []).map(r => `
+            <div class="qa-reply">
+              <div style="font-size:11px;color:var(--primary);font-weight:700;">💡 ${escapeHtml(r.name)} ${r.isAdmin ? '(অ্যাডমিন)' : ''} • ${escapeHtml(r.date || '')}</div>
+              <div style="margin-top:2px;">${formatRichParagraph(r.text)}</div>
+            </div>`).join("")}
+        </div>
+        <button style="background:var(--primary-light);color:var(--primary);border:0;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700;cursor:pointer;margin-top:7px;" onclick="toggleReplyBox('${q.id}')">↩ উত্তর দিন</button>
+        <div id="replyBox_${q.id}" class="mini-form" style="display:none;margin-top:7px;">
+          <input type="text" id="repName_${q.id}" placeholder="আপনার নাম">
+          <input type="email" id="repEmail_${q.id}" placeholder="আপনার @gmail.com (বাধ্যতামূলক)">
+          <textarea id="repText_${q.id}" rows="2" placeholder="আপনার উত্তর লিখুন..."></textarea>
+          <button class="read-btn" onclick="submitQaReply('${q.id}')">উত্তর প্রকাশ করুন</button>
+        </div>
+      </div>`).join("");
+}
+
+/* Curated Collection & Gallery View */
+function filterCollection(type, btn) {
+  currentColFilter = type;
+  document.querySelectorAll("#colFilterTabs button").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  renderCollectionView();
+}
+function renderCollectionView() {
+  const list = currentColFilter === "All" ? allCollections : allCollections.filter(c => c.type === currentColFilter);
+  const grid = document.getElementById("collectionGrid");
+  grid.innerHTML = list.length === 0
+    ? `<div style="grid-column:1/-1;text-align:center;padding:25px;color:var(--muted);">এই বিভাগে এখনো কোনো সংগ্রহ যুক্ত করা হয়নি।</div>`
+    : list.map(c => `
+      <div class="col-card">
+        ${c.img ? `<img src="${escapeHtml(c.img)}" onerror="this.src='${DEFAULT_IMG}'" onclick="window.open('${escapeHtml(c.img)}','_blank')" alt="${escapeHtml(c.title)}">` : ""}
+        <div class="col-card-body">
+          <div>
+            <span style="font-size:11px;background:var(--primary-light);color:var(--primary);padding:2px 8px;border-radius:10px;font-weight:700;">${escapeHtml(c.type)}</span>
+            <h4 style="font-family:'Noto Serif Bengali',serif;font-size:15.5px;margin:6px 0 4px;">${escapeHtml(c.title)}</h4>
+            ${c.desc ? `<p style="font-size:13px;color:var(--muted);margin-bottom:8px;">${escapeHtml(c.desc)}</p>` : ""}
+          </div>
+          ${c.link ? `<div>${getSocialPillHtml(c.link, "খুলুন / দেখুন")}</div>` : ""}
+        </div>
+      </div>`).join("");
+}
+
+/* Private Inbox System */
+async function sendInboxMessage() {
+  const name = document.getElementById("inbName").value.trim();
+  const email = document.getElementById("inbEmail").value.trim().toLowerCase();
+  const message = document.getElementById("inbMsg").value.trim();
+  if (!name || !message) { alert("অনুগ্রহ করে আপনার নাম ও বার্তা লিখুন।"); return; }
+  if (!isValidGmail(email)) { alert("সঠিক @gmail.com ঠিকানা দেওয়া বাধ্যতামূলক!"); return; }
+
+  const btn = document.getElementById("inbSubmitBtn");
+  btn.disabled = true;
+  btn.innerText = "পাঠানো হচ্ছে...";
+  try {
+    const today = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+    await addDoc(collection(db, "inbox"), {
+      name, email, message, reply: "", date: today, createdAt: Date.now()
+    });
+    localStorage.setItem("md_user_gmail", email);
+    document.getElementById("inbMsg").value = "";
+    document.getElementById("checkReplyEmail").value = email;
+    alert("✅ আপনার বার্তা গোপনে অ্যাডমিনের কাছে পৌঁছে গেছে!");
+    loadUserInboxReplies();
+  } catch (err) {
+    alert("বার্তা পাঠাতে সমস্যা হয়েছে: " + err.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerText = "বার্তা পাঠান";
+  }
+}
+
+async function loadUserInboxReplies() {
+  const email = document.getElementById("checkReplyEmail").value.trim().toLowerCase();
+  const box = document.getElementById("userRepliesList");
+  if (!isValidGmail(email)) {
+    box.innerHTML = `<div style="font-size:12.5px;color:#d32f2f;">সঠিক @gmail.com লিখে খুঁজুন।</div>`;
+    return;
+  }
+  box.innerHTML = `<div style="font-size:12.5px;color:var(--muted);">খোঁজা হচ্ছে...</div>`;
+  try {
+    const q = query(collection(db, "inbox"), where("email", "==", email));
+    const snap = await getDocs(q);
+    if (snap.empty) {
+      box.innerHTML = `<div style="font-size:13px;color:var(--muted);">এই জিমেইল থেকে পাঠানো কোনো বার্তা পাওয়া যায়নি।</div>`;
+      return;
+    }
+    const items = snap.docs.map(d => d.data()).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+    box.innerHTML = items.map(m => `
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px;margin-top:8px;font-size:13.5px;">
+        <div style="font-size:11px;color:var(--muted);">আপনার বার্তা (${escapeHtml(m.date)}):</div>
+        <div style="margin:3px 0 6px;">${escapeHtml(m.message)}</div>
+        ${m.reply
+          ? `<div style="background:var(--primary-light);border-left:3px solid var(--primary);padding:7px 9px;border-radius:6px;"><b>অ্যাডমিনের উত্তর:</b> ${escapeHtml(m.reply)}</div>`
+          : `<div style="font-size:12px;color:var(--muted);font-style:italic;">⏳ অ্যাডমিনের উত্তরের অপেক্ষায়...</div>`}
+      </div>`).join("");
+  } catch (err) {
+    box.innerHTML = `<div style="font-size:12.5px;color:#d32f2f;">ত্রুটি: ${escapeHtml(err.message)}</div>`;
+  }
+}
+
+function renderAboutView() {
+  document.getElementById("aboutDisplayTitle").innerText = aboutData.title || "ℹ️ আমাদের লক্ষ্য ও পরিচিতি";
+  const paras = (aboutData.content || "").split(/\n+/).filter(Boolean);
+  document.getElementById("aboutDisplayContent").innerHTML = paras.map(p => `<p style="margin-bottom:12px;">${formatRichParagraph(p)}</p>`).join("");
+}
+
+/* Direct Gemini & Google Translate */
 function openDirectGemini() { window.open("https://gemini.google.com/app", "_blank", "noopener"); }
 function openArticleGemini() {
   if (!currentOpenPost) { openDirectGemini(); return; }
@@ -632,12 +1296,7 @@ function openArticleGemini() {
   } else { openDirectGemini(); }
 }
 
-/* Online Google Translate Widget (T Button) */
 function toggleTranslateMenu(e) { if (e) e.stopPropagation(); document.getElementById("translateMenu").classList.toggle("open"); }
-document.addEventListener("click", () => {
-  const m = document.getElementById("translateMenu");
-  if (m) m.classList.remove("open");
-});
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({ pageLanguage: 'bn', includedLanguages: 'bn,en,ar,ur,hi', autoDisplay: false }, 'google_translate_element');
 }
@@ -650,16 +1309,11 @@ function applyGoogleTranslate(lang) {
     return;
   }
   const select = document.querySelector(".goog-te-combo");
-  if (select) {
-    select.value = lang;
-    select.dispatchEvent(new Event("change"));
-  } else {
-    document.cookie = `googtrans=/bn/${lang}; path=/;`;
-    location.reload();
-  }
+  if (select) { select.value = lang; select.dispatchEvent(new Event("change")); }
+  else { document.cookie = `googtrans=/bn/${lang}; path=/;`; location.reload(); }
 }
 
-/* Secret Admin & Firebase Authentication */
+/* Secret Admin Login & Master Admin Controls */
 function handleSecretTap() {
   tapCount++;
   clearTimeout(tapTimer);
@@ -688,40 +1342,33 @@ async function checkPass() {
     document.getElementById("passInput").value = "";
     openAdmin();
   } catch (err) {
-    if (err.code === "auth/invalid-credential" || err.code === "auth/wrong-password" || err.code === "auth/user-not-found") {
-      msgEl.innerText = "ইমেইল বা পাসওয়ার্ড সঠিক নয়!";
-    } else if (err.code === "auth/unauthorized-domain") {
-      msgEl.innerText = "Firebase-এ এই ডোমেইনটি অনুমোদিত নয়।";
-    } else {
-      msgEl.innerText = "ত্রুটি: " + err.message;
-    }
+    msgEl.innerText = "ইমেইল বা পাসওয়ার্ড সঠিক নয়!";
   } finally {
     btn.innerText = "প্রবেশ করুন";
     btn.disabled = false;
   }
 }
 
-async function logoutAdmin() {
-  await signOut(auth);
-  hideAdmin();
-  alert("সফলভাবে লগআউট হয়েছে।");
-}
+async function logoutAdmin() { await signOut(auth); hideAdmin(); alert("সফলভাবে লগআউট হয়েছে।"); }
 
 function openAdmin() {
   if (!currentUser) { showLogin(); return; }
   const p = document.getElementById("adminPanel");
   p.classList.add("open");
   document.getElementById("baniInput").value = currentBani;
-  renderAdminList();
+  document.getElementById("menuTributeInput").value = currentMenuTribute;
+  document.getElementById("aboutTitleInput").value = aboutData.title;
+  document.getElementById("aboutContentInput").value = aboutData.content;
+  renderAdminAllLists();
   p.scrollIntoView({ behavior: "smooth" });
 }
 function hideAdmin() { document.getElementById("adminPanel").classList.remove("open"); resetAdminForm(); }
 
-/* Gallery Image Upload (Compressed for Fast Cloud Storage) */
-function handleImageUpload(input) {
+function handleImageUpload(input, target) {
   const file = input.files && input.files[0];
   if (!file) return;
-  document.getElementById("uploadStatus").innerText = "ছবি প্রস্তুত হচ্ছে...";
+  const statusId = target === "ad" ? "adUploadStatus" : (target === "col" ? "colUploadStatus" : "uploadStatus");
+  document.getElementById(statusId).innerText = "ছবি প্রস্তুত হচ্ছে...";
   const reader = new FileReader();
   reader.onload = function(e) {
     const img = new Image();
@@ -732,13 +1379,17 @@ function handleImageUpload(input) {
       canvas.width = img.width * scale;
       canvas.height = img.height * scale;
       canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-      let dataUrl = canvas.toDataURL("image/jpeg", 0.66);
+      let dataUrl = canvas.toDataURL("image/jpeg", 0.65);
       if (dataUrl.length > 750000) dataUrl = canvas.toDataURL("image/jpeg", 0.45);
-      uploadedGalleryDataUrl = dataUrl;
-      const prev = document.getElementById("imgPreview");
-      prev.src = uploadedGalleryDataUrl;
-      prev.style.display = "block";
-      document.getElementById("uploadStatus").innerText = "✅ গ্যালারি থেকে ছবি যুক্ত হয়েছে";
+      if (target === "ad") uploadedAdImg = dataUrl;
+      else if (target === "col") uploadedColImg = dataUrl;
+      else {
+        uploadedPostImg = dataUrl;
+        const prev = document.getElementById("imgPreview");
+        prev.src = uploadedPostImg;
+        prev.style.display = "block";
+      }
+      document.getElementById(statusId).innerText = "✅ গ্যালারি থেকে ছবি যুক্ত হয়েছে";
     };
     img.src = e.target.result;
   };
@@ -752,7 +1403,7 @@ function resetAdminForm() {
   document.getElementById("title").value = "";
   document.getElementById("img").value = "";
   document.getElementById("imgFile").value = "";
-  uploadedGalleryDataUrl = "";
+  uploadedPostImg = "";
   document.getElementById("imgPreview").style.display = "none";
   document.getElementById("uploadStatus").innerText = "";
   document.getElementById("content").value = "";
@@ -760,57 +1411,32 @@ function resetAdminForm() {
 }
 
 async function publishPost() {
-  if (!currentUser) { alert("আগে অ্যাডমিন লগইন করুন।"); return; }
+  if (!currentUser) return;
   const t = document.getElementById("title").value.trim();
   const c = document.getElementById("content").value.trim();
   const imUrl = document.getElementById("img").value.trim();
   const checkedCats = [...document.querySelectorAll("#catCheck input:checked")].map(i => i.value);
   const editId = document.getElementById("editDocId").value;
-
-  if (!t || !c || checkedCats.length === 0) {
-    alert("অনুগ্রহ করে শিরোনাম, বিস্তারিত লেখা এবং অন্তত ১টি ক্যাটাগরি নির্বাচন করুন।");
-    return;
-  }
+  if (!t || !c || checkedCats.length === 0) { alert("শিরোনাম, বিস্তারিত লেখা এবং অন্তত ১টি ক্যাটাগরি নির্বাচন করুন।"); return; }
 
   const btn = document.getElementById("pubBtn");
   btn.disabled = true;
   btn.innerText = "সেভ হচ্ছে...";
-
   try {
     if (editId) {
       const existing = cloudPosts.find(x => x.id === editId);
-      const finalImg = uploadedGalleryDataUrl || imUrl || (existing && existing.img) || DEFAULT_IMG;
+      const finalImg = uploadedPostImg || imUrl || (existing && existing.img) || DEFAULT_IMG;
       await updateDoc(doc(db, "posts", editId), { title: t, cats: checkedCats, content: c, img: finalImg });
-      alert("✅ লেখাটি সফলভাবে আপডেট হয়ে সবার ফোনে লাইভ হয়েছে!");
+      alert("✅ লেখাটি আপডেট হয়ে লাইভ হয়েছে!");
     } else {
-      const finalImg = uploadedGalleryDataUrl || imUrl || DEFAULT_IMG;
+      const finalImg = uploadedPostImg || imUrl || DEFAULT_IMG;
       const today = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
-      await addDoc(collection(db, "posts"), { title: t, cats: checkedCats, content: c, img: finalImg, date: today, createdAt: Date.now() });
-      alert("✅ নতুন লেখা সরাসরি গুগল সার্ভারে সেভ হয়ে সবার ফোনে লাইভ হয়েছে!");
+      await addDoc(collection(db, "posts"), { title: t, cats: checkedCats, content: c, img: finalImg, date: today, likes: 0, dislikes: 0, createdAt: Date.now() });
+      alert("✅ নতুন লেখা সরাসরি পাবলিশ হয়েছে!");
     }
     resetAdminForm();
-  } catch (err) {
-    alert("সেভ করতে সমস্যা হয়েছে: " + err.message);
-  } finally {
-    btn.disabled = false;
-    btn.innerText = document.getElementById("editDocId").value ? "পরিবর্তন সেভ করুন" : "সরাসরি পাবলিশ করুন";
-  }
-}
-
-function renderAdminList() {
-  const listEl = document.getElementById("adminPostList");
-  if (!hasCloudPosts) {
-    listEl.innerHTML = `<div style="font-size:12.5px;color:var(--muted);padding:8px;">ক্লাউডে এখনো আপনার নিজস্ব লেখা যোগ করা হয়নি। ওপরের ফর্ম থেকে প্রথম লেখাটি পাবলিশ করুন।</div>`;
-    return;
-  }
-  listEl.innerHTML = cloudPosts.map((p, idx) => `
-    <div class="admin-post-item">
-      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${idx + 1}. ${escapeHtml(p.title)}</span>
-      <div style="display:flex;gap:5px;flex-shrink:0;">
-        <button style="background:#1976d2;" onclick="editPost('${p.id}')">এডিট</button>
-        <button style="background:#d32f2f;" onclick="deletePost('${p.id}')">মুছুন</button>
-      </div>
-    </div>`).join("");
+  } catch (err) { alert("সমস্যা হয়েছে: " + err.message); }
+  finally { btn.disabled = false; btn.innerText = document.getElementById("editDocId").value ? "পরিবর্তন সেভ করুন" : "সরাসরি পাবলিশ করুন"; }
 }
 
 function editPost(id) {
@@ -820,8 +1446,7 @@ function editPost(id) {
   document.getElementById("adminFormTitle").innerText = "লেখা সম্পাদনা (Edit) করুন";
   document.getElementById("pubBtn").innerText = "পরিবর্তন সেভ করুন";
   document.getElementById("title").value = p.title;
-  uploadedGalleryDataUrl = "";
-  document.getElementById("uploadStatus").innerText = "";
+  uploadedPostImg = "";
   if (p.img && p.img.startsWith("data:image")) {
     document.getElementById("img").value = "";
     document.getElementById("imgPreview").src = p.img;
@@ -834,53 +1459,227 @@ function editPost(id) {
   document.querySelectorAll("#catCheck input").forEach(cb => { cb.checked = (p.cats || []).includes(cb.value); });
   document.getElementById("adminPanel").scrollIntoView({ behavior: "smooth" });
 }
-
 async function deletePost(id) {
-  if (!confirm("আপনি কি নিশ্চিতভাবে এই লেখাটি ক্লাউড থেকে চিরতরে মুছে ফেলতে চান?")) return;
-  try {
-    await deleteDoc(doc(db, "posts", id));
-  } catch (err) {
-    alert("মুছতে সমস্যা হয়েছে: " + err.message);
-  }
+  if (!confirm("আপনি কি নিশ্চিতভাবে এই লেখাটি মুছে ফেলতে চান?")) return;
+  await deleteDoc(doc(db, "posts", id));
 }
 
+/* Bani, Tribute & About Admin Saves */
 async function saveBani() {
   if (!currentUser) return;
-  const val = document.getElementById("baniInput").value.trim();
-  try {
-    await setDoc(doc(db, "settings", "bani"), { text: val });
-    alert("✅ বাণী সেভ হয়ে সবার ফোনে লাইভ হয়েছে!");
-  } catch (err) { alert("ত্রুটি: " + err.message); }
+  await setDoc(doc(db, "settings", "bani"), { text: document.getElementById("baniInput").value.trim() });
+  alert("✅ বাণী সেভ হয়েছে!");
 }
-
 async function deleteBani() {
   if (!currentUser) return;
-  try {
-    await setDoc(doc(db, "settings", "bani"), { text: "" });
-    document.getElementById("baniInput").value = "";
-    alert("✅ বাণী মুছে ফেলা হয়েছে!");
-  } catch (err) { alert("ত্রুটি: " + err.message); }
+  await setDoc(doc(db, "settings", "bani"), { text: "" });
+  document.getElementById("baniInput").value = "";
+  alert("✅ বাণী মুছে ফেলা হয়েছে!");
+}
+async function saveMenuTribute() {
+  if (!currentUser) return;
+  await setDoc(doc(db, "settings", "menuTribute"), { text: document.getElementById("menuTributeInput").value.trim() });
+  alert("✅ মেনুবার ট্রিবিউট সেভ হয়েছে!");
+}
+async function deleteMenuTribute() {
+  if (!currentUser) return;
+  await setDoc(doc(db, "settings", "menuTribute"), { text: "" });
+  document.getElementById("menuTributeInput").value = "";
+  alert("✅ ট্রিবিউট মুছে ফেলা হয়েছে!");
+}
+async function saveAboutInfo() {
+  if (!currentUser) return;
+  await setDoc(doc(db, "settings", "about"), {
+    title: document.getElementById("aboutTitleInput").value.trim() || "ℹ️ আমাদের লক্ষ্য ও পরিচিতি",
+    content: document.getElementById("aboutContentInput").value.trim()
+  });
+  alert("✅ আমাদের লক্ষ্য ও পরিচিতি আপডেট হয়েছে!");
 }
 
+/* Multi-Ads Admin Functions */
+async function publishAd() {
+  if (!currentUser) return;
+  const title = document.getElementById("adTitle").value.trim();
+  const img = uploadedAdImg || document.getElementById("adImgUrl").value.trim();
+  const link = document.getElementById("adLink").value.trim();
+  const position = document.getElementById("adPosition").value;
+  if (!title && !img) { alert("বিজ্ঞাপনের শিরোনাম অথবা ব্যানার ছবি দিন।"); return; }
+  await addDoc(collection(db, "ads"), { title, img, link, position, createdAt: Date.now() });
+  document.getElementById("adTitle").value = "";
+  document.getElementById("adImgUrl").value = "";
+  document.getElementById("adImgFile").value = "";
+  document.getElementById("adLink").value = "";
+  document.getElementById("adUploadStatus").innerText = "";
+  uploadedAdImg = "";
+  alert("✅ বিজ্ঞাপন চালু হয়েছে!");
+}
+async function deleteAd(id) {
+  if (!confirm("এই বিজ্ঞাপনটি কি বন্ধ ও মুছে ফেলতে চান?")) return;
+  await deleteDoc(doc(db, "ads", id));
+}
+
+/* Collection & Gallery Admin Functions */
+async function publishCollection() {
+  if (!currentUser) return;
+  const type = document.getElementById("colType").value;
+  const title = document.getElementById("colTitle").value.trim();
+  const img = uploadedColImg || document.getElementById("colImgUrl").value.trim();
+  const link = document.getElementById("colLink").value.trim();
+  const desc = document.getElementById("colDesc").value.trim();
+  if (!title) { alert("সংগ্রহের শিরোনাম লিখুন।"); return; }
+  await addDoc(collection(db, "collections"), { type, title, img, link, desc, createdAt: Date.now() });
+  document.getElementById("colTitle").value = "";
+  document.getElementById("colImgUrl").value = "";
+  document.getElementById("colImgFile").value = "";
+  document.getElementById("colLink").value = "";
+  document.getElementById("colDesc").value = "";
+  document.getElementById("colUploadStatus").innerText = "";
+  uploadedColImg = "";
+  alert("✅ প্রিয় সংগ্রহে যুক্ত হয়েছে!");
+}
+async function deleteCollection(id) {
+  if (!confirm("এই সংগ্রহটি মুছে ফেলতে চান?")) return;
+  await deleteDoc(doc(db, "collections", id));
+}
+
+/* Notice & Q&A Board Admin Functions */
+async function publishAnnouncement() {
+  if (!currentUser) return;
+  const text = document.getElementById("newNoticeText").value.trim();
+  if (!text) return;
+  const today = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+  await addDoc(collection(db, "announcements"), { text, date: today, pinned: false, createdAt: Date.now() });
+  document.getElementById("newNoticeText").value = "";
+  alert("✅ ঘোষণা প্রকাশিত হয়েছে!");
+}
+async function togglePinAnnouncement(id, currentPin) {
+  if (!currentUser) return;
+  await updateDoc(doc(db, "announcements", id), { pinned: !currentPin });
+}
+async function deleteAnnouncement(id) {
+  if (!confirm("ঘোষণাটি মুছে ফেলতে চান?")) return;
+  await deleteDoc(doc(db, "announcements", id));
+}
+async function approveQa(id) {
+  if (!currentUser) return;
+  await updateDoc(doc(db, "qa_board", id), { approved: true });
+}
+async function togglePinQa(id, currentPin) {
+  if (!currentUser) return;
+  await updateDoc(doc(db, "qa_board", id), { pinned: !currentPin });
+}
+async function deleteQa(id) {
+  if (!confirm("এই প্রশ্ন ও এর সব উত্তর মুছে ফেলতে চান?")) return;
+  await deleteDoc(doc(db, "qa_board", id));
+}
+
+/* Private Inbox Admin Functions */
+async function replyToInbox(id) {
+  if (!currentUser) return;
+  const val = document.getElementById("inbReplyInp_" + id).value.trim();
+  if (!val) return;
+  await updateDoc(doc(db, "inbox", id), { reply: val, repliedAt: Date.now() });
+  alert("✅ উত্তর সেভ হয়েছে! প্রেরক ওয়েবসাইটের ইনবক্সে এটি দেখতে পাবেন।");
+}
+async function deleteInboxItem(id) {
+  if (!confirm("এই মেসেজটি চিরতরে মুছে ফেলতে চান?")) return;
+  await deleteDoc(doc(db, "inbox", id));
+}
+async function deleteAllInbox() {
+  if (!currentUser || allInboxMsgs.length === 0) return;
+  if (!confirm(`আপনি কি নিশ্চিতভাবে সবগুলো (${allInboxMsgs.length}টি) মেসেজ মুছে সার্ভার খালি করতে চান?`)) return;
+  for (const m of allInboxMsgs) {
+    await deleteDoc(doc(db, "inbox", m.id));
+  }
+  alert("✅ সব মেসেজ মুছে ফেলা হয়েছে!");
+}
+
+/* Category Admin Functions */
 async function addCategory() {
   if (!currentUser) return;
   const inp = document.getElementById("newCatInput");
   const name = inp.value.trim();
   if (!name || categories.includes(name)) return;
-  const updated = [...categories, name];
-  try {
-    await setDoc(doc(db, "settings", "config"), { categories: updated });
-    inp.value = "";
-  } catch (err) { alert("ত্রুটি: " + err.message); }
+  await setDoc(doc(db, "settings", "config"), { categories: [...categories, name] });
+  inp.value = "";
 }
-
 async function removeCategory(index) {
   if (!currentUser) return;
-  if (!confirm(`"${categories[index]}" ক্যাটাগরিটি কি মুছে ফেলতে চান?`)) return;
-  const updated = categories.filter((_, i) => i !== index);
-  try {
-    await setDoc(doc(db, "settings", "config"), { categories: updated });
-  } catch (err) { alert("ত্রুটি: " + err.message); }
+  if (!confirm(`"${categories[index]}" ক্যাটাগরিটি মুছে ফেলতে চান?`)) return;
+  await setDoc(doc(db, "settings", "config"), { categories: categories.filter((_, i) => i !== index) });
+}
+
+/* Render All Admin Lists */
+function renderAdminAllLists() {
+  const posLabels = { top: "হোমপেজের ওপরে", feed: "লেখার মাঝখানে", reader: "আর্টিকেলের নিচে" };
+  document.getElementById("adminAdsList").innerHTML = allAds.map(a => `
+    <div class="admin-list-item">
+      <div style="flex:1;"><b>${escapeHtml(a.title || "ব্যানার বিজ্ঞাপন")}</b> <span style="font-size:11px;color:var(--primary);">(${posLabels[a.position] || a.position})</span></div>
+      <button style="background:#d32f2f;" onclick="deleteAd('${a.id}')">মুছুন</button>
+    </div>`).join("");
+
+  document.getElementById("adminColList").innerHTML = allCollections.map(c => `
+    <div class="admin-list-item">
+      <div style="flex:1;"><b>[${escapeHtml(c.type)}]</b> ${escapeHtml(c.title)}</div>
+      <button style="background:#d32f2f;" onclick="deleteCollection('${c.id}')">মুছুন</button>
+    </div>`).join("");
+
+  document.getElementById("adminAnnouncementsList").innerHTML = allAnnouncements.map(n => `
+    <div class="admin-list-item">
+      <div style="flex:1;">${n.pinned ? "📌 " : ""}${escapeHtml(n.text)}</div>
+      <div style="display:flex;gap:4px;flex-shrink:0;">
+        <button style="background:#d97706;" onclick="togglePinAnnouncement('${n.id}', ${Boolean(n.pinned)})">${n.pinned ? "আনপিন" : "পিন"}</button>
+        <button style="background:#d32f2f;" onclick="deleteAnnouncement('${n.id}')">মুছুন</button>
+      </div>
+    </div>`).join("");
+
+  document.getElementById("adminQaList").innerHTML = allQaItems.map(q => `
+    <div class="admin-list-item" style="flex-direction:column;">
+      <div style="width:100%;display:flex;justify-content:space-between;gap:6px;">
+        <div><b>${escapeHtml(q.name)}</b> (${escapeHtml(q.email)}) ${q.approved ? "✅" : "⏳ অপেক্ষমাণ"}</div>
+        <div style="display:flex;gap:4px;flex-shrink:0;">
+          ${!q.approved ? `<button style="background:#16a34a;" onclick="approveQa('${q.id}')">প্রকাশ করুন</button>` : ""}
+          <button style="background:#d97706;" onclick="togglePinQa('${q.id}', ${Boolean(q.pinned)})">${q.pinned ? "আনপিন" : "পিন"}</button>
+          <button style="background:#d32f2f;" onclick="deleteQa('${q.id}')">মুছুন</button>
+        </div>
+      </div>
+      <div style="margin-top:4px;font-size:12.5px;">${escapeHtml(q.question)}</div>
+    </div>`).join("");
+
+  document.getElementById("adminInboxCount").innerText = allInboxMsgs.length;
+  document.getElementById("adminInboxList").innerHTML = allInboxMsgs.length === 0
+    ? `<div style="font-size:12.5px;color:var(--muted);padding:6px;">ইনবক্সে কোনো বার্তা নেই।</div>`
+    : allInboxMsgs.map(m => {
+      const mailSubject = encodeURIComponent("Make Dreams - আপনার বার্তার উত্তর");
+      const mailBody = encodeURIComponent(`আসসালামু আলাইকুম ${m.name},\n\nআপনার বার্তা: "${m.message}"\n\nউত্তর: `);
+      return `
+        <div class="admin-list-item" style="flex-direction:column;">
+          <div style="width:100%;display:flex;justify-content:space-between;gap:6px;">
+            <div><b>${escapeHtml(m.name)}</b> • <span style="color:var(--primary);">${escapeHtml(m.email)}</span></div>
+            <div style="display:flex;gap:4px;flex-shrink:0;">
+              <a style="background:#2563eb;" href="mailto:${escapeHtml(m.email)}?subject=${mailSubject}&body=${mailBody}">Gmail-এ উত্তর</a>
+              <button style="background:#d32f2f;" onclick="deleteInboxItem('${m.id}')">মুছুন</button>
+            </div>
+          </div>
+          <div style="margin:5px 0;font-size:13px;">${escapeHtml(m.message)}</div>
+          <div style="width:100%;display:flex;gap:5px;">
+            <input type="text" id="inbReplyInp_${m.id}" value="${escapeHtml(m.reply || '')}" placeholder="ওয়েবসাইট ইনবক্সে উত্তর লিখুন..." style="margin:0;padding:6px 9px;font-size:12.5px;">
+            <button style="background:#0d3b36;flex-shrink:0;" onclick="replyToInbox('${m.id}')">উত্তর সেভ</button>
+          </div>
+        </div>`;
+    }).join("");
+
+  const listEl = document.getElementById("adminPostList");
+  listEl.innerHTML = !hasCloudPosts
+    ? `<div style="font-size:12.5px;color:var(--muted);padding:6px;">ক্লাউডে এখনো আপনার নিজস্ব লেখা যোগ করা হয়নি।</div>`
+    : cloudPosts.map((p, idx) => `
+      <div class="admin-list-item">
+        <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${idx + 1}. ${escapeHtml(p.title)} <b style="color:var(--primary);font-size:11.5px;">(👍 ${p.likes || 0} | 👎 ${p.dislikes || 0})</b></span>
+        <div style="display:flex;gap:5px;flex-shrink:0;">
+          <button style="background:#1976d2;" onclick="editPost('${p.id}')">এডিট</button>
+          <button style="background:#d32f2f;" onclick="deletePost('${p.id}')">মুছুন</button>
+        </div>
+      </div>`).join("");
 }
 
 function toggleLang() {
@@ -892,15 +1691,15 @@ function toggleLang() {
   renderNav();
   renderPosts();
 }
-
 function toggleDark() {
   document.body.classList.toggle("dark");
   document.getElementById("darkBtn").innerText = document.body.classList.contains("dark") ? "☀️" : "🌙";
 }
 
-/* Realtime Cloud Listeners (Optimized with Pagination Limit) */
+/* Realtime Cloud Listeners */
 onAuthStateChanged(auth, (user) => {
   currentUser = user;
+  if (user) subscribeAdminInbox();
 });
 
 function checkInitialSharedPost() {
@@ -908,9 +1707,7 @@ function checkInitialSharedPost() {
   initialUrlPostChecked = true;
   const params = new URLSearchParams(window.location.search);
   const sharedPostId = params.get("post");
-  if (sharedPostId) {
-    openReader(sharedPostId, true);
-  }
+  if (sharedPostId) openReader(sharedPostId, true);
 }
 
 function subscribeToPosts() {
@@ -927,7 +1724,11 @@ function subscribeToPosts() {
       document.getElementById("cloudStatus").innerText = "☁️ প্রস্তুত";
     }
     renderPosts();
-    renderAdminList();
+    if (currentOpenPost) {
+      const updatedOpen = cloudPosts.find(x => x.id === currentOpenPost.id);
+      if (updatedOpen) updateModalReactionButtons(updatedOpen);
+    }
+    if (currentUser) renderAdminAllLists();
     checkInitialSharedPost();
   }, () => {
     document.getElementById("cloudStatus").innerText = "☁️ অফলাইন মোড";
@@ -935,16 +1736,22 @@ function subscribeToPosts() {
     checkInitialSharedPost();
   });
 }
-
 subscribeToPosts();
 
 onSnapshot(doc(db, "settings", "bani"), (snap) => {
-  if (snap.exists() && typeof snap.data().text === "string") {
-    currentBani = snap.data().text;
-  }
+  if (snap.exists() && typeof snap.data().text === "string") currentBani = snap.data().text;
   renderBani();
 });
-
+onSnapshot(doc(db, "settings", "menuTribute"), (snap) => {
+  if (snap.exists() && typeof snap.data().text === "string") currentMenuTribute = snap.data().text;
+  renderMenuTribute();
+});
+onSnapshot(doc(db, "settings", "about"), (snap) => {
+  if (snap.exists()) {
+    aboutData = { title: snap.data().title || aboutData.title, content: snap.data().content || aboutData.content };
+  }
+  renderAboutView();
+});
 onSnapshot(doc(db, "settings", "config"), (snap) => {
   if (snap.exists() && Array.isArray(snap.data().categories) && snap.data().categories.length > 0) {
     categories = snap.data().categories;
@@ -952,20 +1759,59 @@ onSnapshot(doc(db, "settings", "config"), (snap) => {
     renderPosts();
   }
 });
+onSnapshot(query(collection(db, "ads"), orderBy("createdAt", "desc")), (snap) => {
+  allAds = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  renderTopAds();
+  renderPosts();
+  if (currentUser) renderAdminAllLists();
+});
+onSnapshot(query(collection(db, "announcements"), orderBy("createdAt", "desc")), (snap) => {
+  allAnnouncements = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  renderBoardView();
+  if (currentUser) renderAdminAllLists();
+});
+onSnapshot(query(collection(db, "qa_board"), orderBy("createdAt", "desc")), (snap) => {
+  allQaItems = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  renderBoardView();
+  if (currentUser) renderAdminAllLists();
+});
+onSnapshot(query(collection(db, "collections"), orderBy("createdAt", "desc")), (snap) => {
+  allCollections = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  renderCollectionView();
+  if (currentUser) renderAdminAllLists();
+});
+
+let unsubInbox = null;
+function subscribeAdminInbox() {
+  if (unsubInbox) unsubInbox();
+  unsubInbox = onSnapshot(query(collection(db, "inbox"), orderBy("createdAt", "desc")), (snap) => {
+    allInboxMsgs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    if (currentUser) renderAdminAllLists();
+  });
+}
 
 Object.assign(window, {
+  openSideMenu, closeSideMenu, switchMainView, openBookmarksFromMenu,
   toggleDark, toggleLang, toggleTranslateMenu, applyGoogleTranslate, googleTranslateElementInit,
-  handleSecretTap, renderPosts, filterCat, toggleBookmark, openReader, closeReader,
-  closeReaderOutside, changeFont, openArticleGemini, copyShareLink, openDirectGemini,
-  checkPass, closeLogin, handleImageUpload, publishPost, saveBani, deleteBani,
-  editPost, deletePost, hideAdmin, logoutAdmin, addCategory, removeCategory, loadMorePosts
+  handleSecretTap, onSearchInput, toggleCatDropdown, renderPosts, filterCat,
+  toggleBookmark, reactToPost, openReader, closeReader, closeReaderOutside,
+  changeFont, openArticleGemini, copyShareLink, openDirectGemini, loadMorePosts,
+  toggleAskForm, submitUserQuestion, toggleReplyBox, submitQaReply, filterCollection,
+  sendInboxMessage, loadUserInboxReplies, checkPass, closeLogin, handleImageUpload,
+  publishPost, editPost, deletePost, saveBani, deleteBani, saveMenuTribute, deleteMenuTribute,
+  saveAboutInfo, publishAd, deleteAd, publishCollection, deleteCollection,
+  publishAnnouncement, togglePinAnnouncement, deleteAnnouncement,
+  approveQa, togglePinQa, deleteQa, replyToInbox, deleteInboxItem, deleteAllInbox,
+  hideAdmin, logoutAdmin, addCategory, removeCategory
 });
 
 if (location.search.includes("admin")) showLogin();
 renderNav();
 renderBani();
+renderMenuTribute();
+renderAboutView();
 renderPosts();
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
-</html>
+ </html>
