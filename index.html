@@ -89,7 +89,23 @@ nav button.active { background: var(--primary); color: #fff; border-color: var(-
 .close-modal { background: #d32f2f; color: #fff; border: 0; padding: 5px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; }
 .modal-banner { width: 100%; max-height: 280px; object-fit: cover; border-radius: 12px; margin-bottom: 14px; }
 .modal-title { font-family: 'Noto Serif Bengali', serif; font-size: 22px; line-height: 1.45; margin-bottom: 8px; }
-.modal-content { font-size: 16px; line-height: 1.9; white-space: pre-line; margin-top: 14px; }
+.modal-content { font-size: 16px; line-height: 1.9; margin-top: 14px; }
+.modal-content p { margin-bottom: 14px; }
+.inline-related { margin: 16px 0; padding: 11px 14px; background: var(--primary-light); border-left: 4px solid var(--accent); border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; transition: opacity 0.2s; }
+.inline-related:hover { opacity: 0.88; }
+.ir-badge { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.4px; }
+.ir-title { font-family: 'Noto Serif Bengali', serif; font-size: 15px; font-weight: 700; color: var(--text); }
+.modal-rec-wrap { margin-top: 24px; border-top: 2px solid var(--border); padding-top: 16px; }
+.rec-section { margin-bottom: 20px; }
+.rec-section:last-child { margin-bottom: 0; }
+.rec-heading { font-family: 'Noto Serif Bengali', serif; font-size: 16.5px; font-weight: 700; color: var(--primary); margin-bottom: 10px; padding-left: 9px; border-left: 3.5px solid var(--accent); }
+.rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+.rec-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: transform 0.15s; }
+.rec-card:hover { transform: translateY(-2px); }
+.rec-card img { width: 100%; height: 95px; object-fit: cover; background: var(--primary-light); }
+.rec-card-body { padding: 9px 10px; }
+.rec-card-title { font-family: 'Noto Serif Bengali', serif; font-size: 13.5px; font-weight: 700; line-height: 1.4; color: var(--text); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.rec-card-meta { font-size: 11px; color: var(--muted); margin-top: 4px; }
 .ai-fab { position: fixed; right: 18px; bottom: 20px; width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, #0d3b36, #185c54); color: #ffd97d; border: 2px solid var(--accent); font-size: 22px; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.28); z-index: 150; display: flex; align-items: center; justify-content: center; }
 #loginBox, #adminPanel { display: none; max-width: 720px; margin: 20px auto; background: var(--card); border: 2px solid var(--accent); padding: 20px; border-radius: 14px; box-shadow: var(--shadow); }
 #loginBox.open, #adminPanel.open { display: block; }
@@ -98,13 +114,20 @@ nav button.active { background: var(--primary); color: #fff; border-color: var(-
 .upload-label { display: block; text-align: center; background: var(--primary-light); color: var(--primary); border: 1.5px dashed var(--primary); padding: 10px; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; margin: 7px 0; }
 .cat-check { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0; }
 .cat-check label { background: var(--primary-light); color: var(--primary); padding: 5px 11px; border-radius: 20px; font-size: 12.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.cat-manage-row { display: flex; gap: 6px; margin-top: 6px; }
+.cat-manage-row input { flex: 1; margin: 0 !important; padding: 8px 10px !important; }
+.cat-manage-row button { background: var(--primary); color: #fff; border: 0; padding: 0 14px; border-radius: 8px; font-family: inherit; font-weight: 700; cursor: pointer; }
+.cat-chip-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.cat-chip { background: var(--bg); border: 1px solid var(--border); padding: 3px 9px; border-radius: 16px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
+.cat-chip button { background: #d32f2f; color: #fff; border: 0; width: 16px; height: 16px; border-radius: 50%; font-size: 10px; cursor: pointer; line-height: 1; }
 .btn-full { width: 100%; padding: 11px; border: 0; border-radius: 8px; font-family: inherit; font-size: 14.5px; font-weight: 700; cursor: pointer; margin-top: 8px; }
-.btn-publish { background: #0d3b36; color: #fff; } .btn-copy-code { background: #d4a24c; color: #111; } .btn-close-admin { background: var(--border); color: var(--text); }
+.btn-publish { background: #0d3b36; color: #fff; } .btn-close-admin { background: var(--border); color: var(--text); } .btn-logout { background: #b91c1c; color: #fff; }
 .admin-post-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; margin-top: 6px; gap: 8px; font-size: 13px; }
 .admin-post-item button { border: 0; padding: 4px 9px; border-radius: 5px; color: #fff; cursor: pointer; font-size: 12px; }
+.cloud-status { font-size: 11.5px; color: var(--muted); background: var(--primary-light); padding: 3px 10px; border-radius: 12px; font-weight: 600; }
 footer { background: #0b2421; color: #cbd5e1; text-align: center; padding: 30px 14px; margin-top: 36px; font-size: 13px; line-height: 1.8; }
 footer b { color: #f3c65f; font-size: 15px; }
-@media (max-width: 540px) { .card { flex-direction: column; } .card-img { width: 100%; height: 165px; } .bani-box { margin: 12px 14px 2px; } }
+@media (max-width: 540px) { .card { flex-direction: column; } .card-img { width: 100%; height: 165px; } .bani-box { margin: 12px 14px 2px; } .rec-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -157,7 +180,10 @@ footer b { color: #f3c65f; font-size: 15px; }
 <nav id="catNav"></nav>
 <div id="baniContainer"></div>
 <div class="container">
-  <div class="section-head"><h3 id="latestTitle">সর্বশেষ লেখা</h3></div>
+  <div class="section-head">
+    <h3 id="latestTitle">সর্বশেষ লেখা</h3>
+    <span class="cloud-status notranslate" id="cloudStatus">☁️ লোড হচ্ছে...</span>
+  </div>
   <div id="posts"></div>
 </div>
 <div class="modal-overlay" id="readerModal" onclick="closeReaderOutside(event)">
@@ -179,19 +205,24 @@ footer b { color: #f3c65f; font-size: 15px; }
       <span style="font-size:13px;color:var(--muted);">লেখাটি শেয়ার করুন:</span>
       <div class="share" id="mShare"></div>
     </div>
+    <div class="modal-rec-wrap" id="mRecommendations"></div>
   </div>
 </div>
 <button class="ai-fab notranslate" onclick="openDirectGemini()">✨</button>
 <div id="loginBox" class="notranslate">
-  <h3 style="font-family:'Noto Serif Bengali',serif;color:var(--primary);">Admin Login</h3>
+  <h3 style="font-family:'Noto Serif Bengali',serif;color:var(--primary);">Admin Login (Cloud)</h3>
+  <input type="email" id="emailInput" placeholder="অ্যাডমিন ইমেইল লিখুন">
   <input type="password" id="passInput" placeholder="গোপন পাসওয়ার্ড লিখুন" onkeydown="if(event.key==='Enter')checkPass()">
-  <button class="btn-full btn-publish" onclick="checkPass()">প্রবেশ করুন</button>
+  <button class="btn-full btn-publish" id="loginSubmitBtn" onclick="checkPass()">প্রবেশ করুন</button>
   <button class="btn-full btn-close-admin" onclick="closeLogin()">বাতিল</button>
   <p id="msg" style="color:#d32f2f;font-size:13px;margin-top:8px;"></p>
 </div>
 <div id="adminPanel" class="notranslate">
-  <h3 id="adminFormTitle" style="font-family:'Noto Serif Bengali',serif;color:var(--primary);margin-bottom:8px;">নতুন লেখা যোগ করুন</h3>
-  <input type="hidden" id="editIndex" value="-1">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+    <h3 id="adminFormTitle" style="font-family:'Noto Serif Bengali',serif;color:var(--primary);">নতুন লেখা যোগ করুন</h3>
+    <span style="font-size:11.5px;color:var(--primary);font-weight:700;">🟢 লাইভ ক্লাউড যুক্ত</span>
+  </div>
+  <input type="hidden" id="editDocId" value="">
   <input type="text" id="title" placeholder="শিরোনাম লিখুন (আবশ্যক)">
   <label class="upload-label" for="imgFile">📷 গ্যালারি থেকে ছবি নির্বাচন করুন</label>
   <input type="file" id="imgFile" accept="image/*" style="display:none;" onchange="handleImageUpload(this)">
@@ -201,112 +232,111 @@ footer b { color: #f3c65f; font-size: 15px; }
   <div style="font-size:13px;font-weight:600;margin-top:6px;">ক্যাটাগরি নির্বাচন করুন (একাধিক নির্বাচন করা যাবে):</div>
   <div class="cat-check" id="catCheck"></div>
   <textarea id="content" rows="6" placeholder="এখানে আপনার বিস্তারিত লেখা বা প্রতিবেদন পেস্ট করুন..."></textarea>
-  <button class="btn-full btn-publish" id="pubBtn" onclick="publishPost()">পাবলিশ করুন</button>
+  <button class="btn-full btn-publish" id="pubBtn" onclick="publishPost()">সরাসরি পাবলিশ করুন</button>
   <div style="background:var(--bg);padding:12px;border-radius:10px;margin-top:14px;border:1px solid var(--border);">
-    <div style="font-size:13.5px;font-weight:700;color:var(--primary);margin-bottom:4px;">বাণী বার পরিচালনা (যখন খুশি পরিবর্তন বা মুছুন):</div>
+    <div style="font-size:13.5px;font-weight:700;color:var(--primary);margin-bottom:4px;">বাণী বার পরিচালনা (সরাসরি লাইভ হবে):</div>
     <textarea id="baniInput" rows="2" placeholder="এখানে বাণী লিখুন (মুছুন চাপলে বাণী বারটি বন্ধ থাকবে)..."></textarea>
     <div style="display:flex;gap:6px;">
       <button class="btn-full btn-publish" style="margin-top:2px;" onclick="saveBani()">বাণী সেভ করুন</button>
       <button class="btn-full btn-close-admin" style="margin-top:2px;" onclick="deleteBani()">বাণী মুছুন</button>
     </div>
   </div>
-  <div style="background:var(--primary-light);padding:12px;border-radius:10px;margin-top:14px;border:1px solid var(--accent);">
-    <div style="font-size:12.5px;font-weight:700;color:var(--primary);margin-bottom:4px;">সব শিক্ষার্থীর জন্য লাইভ আপডেট:</div>
-    <button class="btn-full btn-copy-code" onclick="copyFullCode()">📋 GitHub-এ আপডেট করার জন্য সম্পূর্ণ কোড কপি করুন</button>
+  <div style="background:var(--bg);padding:12px;border-radius:10px;margin-top:14px;border:1px solid var(--border);">
+    <div style="font-size:13.5px;font-weight:700;color:var(--primary);">ক্যাটাগরি পরিচালনা (যোগ বা বিয়োগ):</div>
+    <div class="cat-manage-row">
+      <input type="text" id="newCatInput" placeholder="নতুন ক্যাটাগরির নাম লিখুন...">
+      <button onclick="addCategory()">যোগ করুন</button>
+    </div>
+    <div class="cat-chip-list" id="adminCatChips"></div>
   </div>
-  <div style="margin-top:14px;"><h4 style="font-size:14px;margin-bottom:6px;">প্রকাশিত লেখাসমূহ:</h4><div id="adminPostList"></div></div>
-  <button class="btn-full btn-close-admin" style="margin-top:14px;" onclick="hideAdmin()">অ্যাডমিন প্যানেল বন্ধ করুন</button>
+  <div style="margin-top:14px;"><h4 style="font-size:14px;margin-bottom:6px;">ক্লাউডে প্রকাশিত লেখাসমূহ:</h4><div id="adminPostList"></div></div>
+  <div style="display:flex;gap:8px;margin-top:14px;">
+    <button class="btn-full btn-close-admin" style="margin-top:0;" onclick="hideAdmin()">প্যানেল বন্ধ করুন</button>
+    <button class="btn-full btn-logout" style="margin-top:0;" onclick="logoutAdmin()">লগআউট করুন</button>
+  </div>
 </div>
 <footer><b>Make Dreams - স্বপ্নীল যাত্রার সহায়িকা</b><br>নিজের স্বপ্ন পূরণ করতে চাই (ইনশাআল্লাহ), পাশাপাশি অন্যের স্বপ্নযাত্রায় সহায়তা, উৎসাহ এবং পাথেয় যোগাতে চাই।<br><br>© 2026 Make Dreams by Mahmud | All Rights Reserved</footer>
-<script>
-const categories = ["পড়াশোনা-উচ্চশিক্ষা","বিসিএস-চাকরি-বাকরি","সাফল্য-স্বপ্নপূরণ","পরিশ্রম-মেধা","ইসলাম-দ্বীনী জিন্দেগি","আন্তর্জাতিক /বৃত্তি","পরীক্ষা এবং প্রতিযোগিতা"];
-const AUTH_SIG = "c337423-15839e11";
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, collection, doc, setDoc, addDoc, updateDoc, deleteDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyALJtM2GV-jcWyTYlUlWiKi3ohD-qtzuB0",
+  authDomain: "make-dreams.firebaseapp.com",
+  projectId: "make-dreams",
+  storageBucket: "make-dreams.firebasestorage.app",
+  messagingSenderId: "506710390692",
+  appId: "1:506710390692:web:2512e7845dc64c7c077331",
+  measurementId: "G-Z51R3MR2WP"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const DEFAULT_CATEGORIES = ["পড়াশোনা-উচ্চশিক্ষা","বিসিএস-চাকরি-বাকরি","সাফল্য-স্বপ্নপূরণ","পরিশ্রম-মেধা","ইসলাম-দ্বীনী জিন্দেগি","আন্তর্জাতিক /বৃত্তি","পরীক্ষা এবং প্রতিযোগিতা"];
 const DEFAULT_IMG = "https://images.unsplash.com/photo-1456513080510-7bf3a84b4173?w=600&q=80";
+
+const SAMPLE_POSTS = [
+  {
+    id: "sample_1",
+    title: "পড়াশোনায় মনোযোগ বাড়ানোর ৫টি কার্যকরী উপায়",
+    cats: ["পড়াশোনা-উচ্চশিক্ষা", "পরিশ্রম-মেধা"],
+    content: "স্বপ্ন পূরণের প্রথম এবং সবচেয়ে গুরুত্বপূর্ণ ধাপ হলো নিয়মিত ও মনোযোগী পড়াশোনা। আমাদের অনেকেরই পড়তে বসলে মোবাইল ফোন বা অপ্রয়োজনীয় চিন্তায় মনোযোগ নষ্ট হয়ে যায়।\n\n১. পড়ার টেবিল থেকে মোবাইল দূরে রাখুন অথবা ফ্লাইট মোড চালু করুন।\n২. পোমোডোরো টেকনিক অনুসরণ করুন: টানা ৪৫ মিনিট গভীর মনোযোগে পড়ে ১০ মিনিট বিরতি নিন।\n৩. প্রতিদিনের পড়ার একটি ছোট ও বাস্তবসম্মত লক্ষ্য (To-Do List) খাতায় লিখে রাখুন।\n৪. ফজরের নামাজের পরের সময়টিকে সবচেয়ে কঠিন বিষয় পড়ার জন্য বেছে নিন, কারণ তখন মস্তিষ্ক সবচেয়ে সতেজ থাকে।\n৫. আল্লাহর কাছে ইলম ও বরকতের জন্য দোয়া করুন।",
+    img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b4173?w=600&q=80",
+    date: "১১ নভেম্বর ২০২৬",
+    createdAt: 1731300000000,
+    isSample: true
+  },
+  {
+    id: "sample_2",
+    title: "মানবিক বিভাগ থেকে বিসিএস - কীভাবে শুরু করবেন?",
+    cats: ["বিসিএস-চাকরি-বাকরি", "পড়াশোনা-উচ্চশিক্ষা"],
+    content: "মানবিক বিভাগ থেকে বিসিএস ক্যাডার হওয়া কঠিন বলে অনেকের মাঝে একটি ভুল ধারণা কাজ করে। অথচ সঠিক পরিকল্পনা, নিয়মিত অনুশীলন এবং আত্মবিশ্বাস থাকলে যেকোনো বিভাগ থেকেই শীর্ষস্থান অর্জন করা সম্ভব।\n\nশুরুতেই বিগত ১০ বছরের বিসিএস প্রিলিমিনারি প্রশ্নব্যাংক ভালোভাবে বিশ্লেষণ করুন। এতে কোন বিষয় থেকে কেমন প্রশ্ন আসে সে সম্পর্কে স্পষ্ট ধারণা তৈরি হবে। বাংলা, ইংরেজি ও সাধারণ জ্ঞানে আপনার যেহেতু আগে থেকেই ভালো ভিত্তি রয়েছে, তাই গণিত ও বিজ্ঞানে প্রতিদিন অন্তত ২ ঘণ্টা করে সময় দিলে আপনি অন্যদের চেয়ে এগিয়ে থাকবেন।",
+    img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80",
+    date: "১০ নভেম্বর ২০২৬",
+    createdAt: 1731200000000,
+    isSample: true
+  },
+  {
+    id: "sample_3",
+    title: "ইসলামে পরিশ্রম ও অধ্যবসায়ের মর্যাদা",
+    cats: ["ইসলাম-দ্বীনী জিন্দেগি", "পরিশ্রম-মেধা"],
+    content: "ইসলাম কখনোই অলসতা ও কর্মবিমুখতাকে সমর্থন করে না। পবিত্র কুরআনে মহান আল্লাহ তাআলা ঘোষণা করেছেন, মানুষ তাই পায় যা সে চেষ্টা ও পরিশ্রম করে।\n\nহালাল উপায়ে জ্ঞান অর্জন করা, নিজের ও পরিবারের কল্যাণে পরিশ্রম করা এবং মানুষের উপকারে নিজেকে নিয়োজিত রাখাও ইবাদতের অংশ। তাই হতাশ না হয়ে আল্লাহর ওপর পূর্ণ ভরসা (তাওয়াক্কুল) রেখে নিজের সর্বোচ্চ চেষ্টা চালিয়ে যান—সফলতা আসবেই, ইনশাআল্লাহ।",
+    img: "https://images.unsplash.com/photo-1585036156171-4853e7eec6a3?w=600&q=80",
+    date: "৯ নভেম্বর ২০২৬",
+    createdAt: 1731100000000,
+    isSample: true
+  }
+];
+
+let categories = [...DEFAULT_CATEGORIES];
+let cloudPosts = [];
+let hasCloudPosts = false;
+let currentBani = "পড়ো তোমার প্রতিপালকের নামে, যিনি সৃষ্টি করেছেন।";
 let currentCat = "All";
 let bn = true;
 let readerFontSize = 16;
 let uploadedGalleryDataUrl = "";
 let currentOpenPost = null;
+let currentUser = null;
 let tapCount = 0;
 let tapTimer = null;
 
-const initialQuote = /*QUOTE_START*/"পড়ো তোমার প্রতিপালকের নামে, যিনি সৃষ্টি করেছেন।"/*QUOTE_END*/;
-
-const initialPosts = /*POSTS_START*/[
-  {
-    "id": "p1",
-    "title": "পড়াশোনায় মনোযোগ বাড়ানোর ৫টি কার্যকরী উপায়",
-    "cats": ["পড়াশোনা-উচ্চশিক্ষা", "পরিশ্রম-মেধা"],
-    "content": "স্বপ্ন পূরণের প্রথম এবং সবচেয়ে গুরুত্বপূর্ণ ধাপ হলো নিয়মিত ও মনোযোগী পড়াশোনা। আমাদের অনেকেরই পড়তে বসলে মোবাইল ফোন বা অপ্রয়োজনীয় চিন্তায় মনোযোগ নষ্ট হয়ে যায়।\n\n১. পড়ার টেবিল থেকে মোবাইল দূরে রাখুন অথবা ফ্লাইট মোড চালু করুন।\n২. পোমোডোরো টেকনিক অনুসরণ করুন: টানা ৪৫ মিনিট গভীর মনোযোগে পড়ে ১০ মিনিট বিরতি নিন।\n৩. প্রতিদিনের পড়ার একটি ছোট ও বাস্তবসম্মত লক্ষ্য (To-Do List) খাতায় লিখে রাখুন।\n৪. ফজরের নামাজের পরের সময়টিকে সবচেয়ে কঠিন বিষয় পড়ার জন্য বেছে নিন, কারণ তখন মস্তিষ্ক সবচেয়ে সতেজ থাকে।\n৫. আল্লাহর কাছে ইলম ও বরকতের জন্য দোয়া করুন।",
-    "img": "https://images.unsplash.com/photo-1456513080510-7bf3a84b4173?w=600&q=80",
-    "date": "১১ নভেম্বর ২০২৬"
-  },
-  {
-    "id": "p2",
-    "title": "মানবিক বিভাগ থেকে বিসিএস - কীভাবে শুরু করবেন?",
-    "cats": ["বিসিএস-চাকরি-বাকরি", "পড়াশোনা-উচ্চশিক্ষা"],
-    "content": "মানবিক বিভাগ থেকে বিসিএস ক্যাডার হওয়া কঠিন বলে অনেকের মাঝে একটি ভুল ধারণা কাজ করে। অথচ সঠিক পরিকল্পনা, নিয়মিত অনুশীলন এবং আত্মবিশ্বাস থাকলে যেকোনো বিভাগ থেকেই শীর্ষস্থান অর্জন করা সম্ভব।\n\nশুরুতেই বিগত ১০ বছরের বিসিএস প্রিলিমিনারি প্রশ্নব্যাংক ভালোভাবে বিশ্লেষণ করুন। এতে কোন বিষয় থেকে কেমন প্রশ্ন আসে সে সম্পর্কে স্পষ্ট ধারণা তৈরি হবে। বাংলা, ইংরেজি ও সাধারণ জ্ঞানে আপনার যেহেতু আগে থেকেই ভালো ভিত্তি রয়েছে, তাই গণিত ও বিজ্ঞানে প্রতিদিন অন্তত ২ ঘণ্টা করে সময় দিলে আপনি অন্যদের চেয়ে এগিয়ে থাকবেন।",
-    "img": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80",
-    "date": "১০ নভেম্বর ২০২৬"
-  },
-  {
-    "id": "p3",
-    "title": "ইসলামে পরিশ্রম ও অধ্যবসায়ের মর্যাদা",
-    "cats": ["ইসলাম-দ্বীনী জিন্দেগি", "পরিশ্রম-মেধা"],
-    "content": "ইসলাম কখনোই অলসতা ও কর্মবিমুখতাকে সমর্থন করে না। পবিত্র কুরআনে মহান আল্লাহ তাআলা ঘোষণা করেছেন, মানুষ তাই পায় যা সে চেষ্টা ও পরিশ্রম করে।\n\nহালাল উপায়ে জ্ঞান অর্জন করা, নিজের ও পরিবারের কল্যাণে পরিশ্রম করা এবং মানুষের উপকারে নিজেকে নিয়োজিত রাখাও ইবাদতের অংশ। তাই হতাশ না হয়ে আল্লাহর ওপর পূর্ণ ভরসা (তাওয়াক্কুল) রেখে নিজের সর্বোচ্চ চেষ্টা চালিয়ে যান—সফলতা আসবেই, ইনশাআল্লাহ।",
-    "img": "https://images.unsplash.com/photo-1585036156171-4853e7eec6a3?w=600&q=80",
-    "date": "৯ নভেম্বর ২০২৬"
-  }
-]/*POSTS_END*/;
-
-function verifySecret(s) {
-  let h1 = 5381, h2 = 7919;
-  for (let i = 0; i < s.length; i++) {
-    const c = s.charCodeAt(i);
-    h1 = (h1 * 33 + c) % 1000000007;
-    h2 = (h2 * 37 + c) % 1000000009;
-  }
-  return (h1.toString(16) + "-" + h2.toString(16)) === AUTH_SIG;
+function getActivePosts() {
+  return hasCloudPosts ? cloudPosts : SAMPLE_POSTS;
 }
 
-function getPosts() {
-  try {
-    const saved = localStorage.getItem("md_mahmud_posts_v3");
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed)) return parsed;
-    }
-  } catch (e) {}
-  return initialPosts;
-}
-function savePosts(posts) { localStorage.setItem("md_mahmud_posts_v3", JSON.stringify(posts)); }
-
-function getBani() {
-  const saved = localStorage.getItem("md_mahmud_bani_v1");
-  return saved !== null ? saved : initialQuote;
-}
-function renderBani() {
-  const q = getBani().trim();
-  const box = document.getElementById("baniContainer");
-  if (!q) { box.innerHTML = ""; return; }
-  box.innerHTML = `<div class="bani-box"><span class="bani-badge">বাণী</span><div class="bani-text">${escapeHtml(q)}</div></div>`;
-}
-function saveBani() {
-  const val = document.getElementById("baniInput").value.trim();
-  localStorage.setItem("md_mahmud_bani_v1", val);
-  renderBani();
-  alert("বাণী সেভ হয়েছে! সবার জন্য লাইভ করতে নিচের হলুদ বাটনে চেপে কোড কপি করে GitHub-এ সেভ করুন।");
-}
-function deleteBani() {
-  localStorage.setItem("md_mahmud_bani_v1", "");
-  document.getElementById("baniInput").value = "";
-  renderBani();
-  alert("বাণী মুছে ফেলা হয়েছে! সবার কাছ থেকে সরাতে নিচের হলুদ বাটনে চেপে কোড কপি করে GitHub-এ সেভ করুন।");
+function escapeHtml(str) {
+  return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
 function getBookmarks() {
   try { return JSON.parse(localStorage.getItem("md_mahmud_bm_v1") || "[]"); } catch (e) { return []; }
 }
+
 function toggleBookmark(id, e) {
   if (e) e.stopPropagation();
   let bms = getBookmarks();
@@ -317,8 +347,11 @@ function toggleBookmark(id, e) {
   renderPosts();
 }
 
-function escapeHtml(str) {
-  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+function renderBani() {
+  const q = (currentBani || "").trim();
+  const box = document.getElementById("baniContainer");
+  if (!q) { box.innerHTML = ""; return; }
+  box.innerHTML = `<div class="bani-box"><span class="bani-badge">বাণী</span><div class="bani-text">${escapeHtml(q)}</div></div>`;
 }
 
 function renderNav() {
@@ -327,31 +360,39 @@ function renderNav() {
   nav.innerHTML =
     `<button onclick="filterCat('All')" class="${currentCat === 'All' ? 'active' : ''}">${bn ? 'সব লেখা' : 'All'}</button>` +
     `<button onclick="filterCat('BOOKMARKS')" class="${currentCat === 'BOOKMARKS' ? 'active' : ''}">🔖 ${bn ? 'সংরক্ষিত' : 'Saved'} (${bmCount})</button>` +
-    categories.map(c => `<button onclick="filterCat('${c}')" class="${currentCat === c ? 'active' : ''}">${c}</button>`).join("");
-  document.getElementById("catCheck").innerHTML = categories.map(c => `<label><input type="checkbox" value="${c}"> ${c}</label>`).join("");
+    categories.map(c => `<button onclick="filterCat('${escapeHtml(c).replace(/'/g, "\\'")}')" class="${currentCat === c ? 'active' : ''}">${escapeHtml(c)}</button>`).join("");
+
+  const prevChecked = [...document.querySelectorAll("#catCheck input:checked")].map(i => i.value);
+  document.getElementById("catCheck").innerHTML = categories.map(c =>
+    `<label><input type="checkbox" value="${escapeHtml(c)}" ${prevChecked.includes(c) ? 'checked' : ''}> ${escapeHtml(c)}</label>`
+  ).join("");
+
+  document.getElementById("adminCatChips").innerHTML = categories.map((c, i) =>
+    `<span class="cat-chip">${escapeHtml(c)} <button onclick="removeCategory(${i})" title="মুছুন">✕</button></span>`
+  ).join("");
 }
 
 function filterCat(c) { currentCat = c; renderNav(); renderPosts(); }
 
 function calcReadTime(text) {
-  const mins = Math.max(1, Math.ceil(text.trim().split(/\s+/).length / 160));
+  const mins = Math.max(1, Math.ceil((text || "").trim().split(/\s+/).length / 160));
   return bn ? `${mins} মিনিট পাঠ` : `${mins} min read`;
 }
 
 function renderPosts() {
-  const posts = getPosts();
+  const posts = getActivePosts();
   const bms = getBookmarks();
-  const query = document.getElementById("searchInput").value.trim().toLowerCase();
+  const queryText = document.getElementById("searchInput").value.trim().toLowerCase();
 
-  const filtered = posts.map((p, idx) => ({ ...p, id: p.id || ("post_" + idx), originalIndex: idx })).filter(p => {
+  const filtered = posts.filter(p => {
     const matchCat = currentCat === "All" ? true : (currentCat === "BOOKMARKS" ? bms.includes(p.id) : (p.cats && p.cats.includes(currentCat)));
-    const matchQuery = !query || p.title.toLowerCase().includes(query) || p.content.toLowerCase().includes(query);
+    const matchQuery = !queryText || (p.title || "").toLowerCase().includes(queryText) || (p.content || "").toLowerCase().includes(queryText);
     return matchCat && matchQuery;
   });
 
   const container = document.getElementById("posts");
   if (filtered.length === 0) {
-    container.innerHTML = `<div style="text-align:center;padding:30px;color:var(--muted);">${currentCat === 'BOOKMARKS' ? 'এখনো কোনো লেখা সংরক্ষণ (বুকমার্ক) করা হয়নি।' : 'কোনো লেখা খুঁজে পাওয়া যায়নি।'}</div>`;
+    container.innerHTML = `<div style="text-align:center;padding:30px;color:var(--muted);">${currentCat === 'BOOKMARKS' ? 'এখনো কোনো লেখা সংরক্ষণ (বুকমার্ক) করা হয়নি।' : 'কোনো লেখা খুঁজে পাওয়া যায়নি।'}</div>`;
     return;
   }
 
@@ -359,23 +400,24 @@ function renderPosts() {
     const isSaved = bms.includes(p.id);
     const imgUrl = escapeHtml(p.img || DEFAULT_IMG);
     const safeTitle = escapeHtml(p.title);
-    const excerpt = escapeHtml(p.content.replace(/\s+/g, ' ').substring(0, 130)) + (p.content.length > 130 ? "..." : "");
+    const plainContent = (p.content || "").replace(/\s+/g, ' ');
+    const excerpt = escapeHtml(plainContent.substring(0, 130)) + (plainContent.length > 130 ? "..." : "");
     const shareUrl = encodeURIComponent(location.href);
     const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + location.href);
 
     return `
       <div class="card">
-        <img class="card-img" src="${imgUrl}" onerror="this.src='${DEFAULT_IMG}'" onclick="openReader(${p.originalIndex})" alt="${safeTitle}">
+        <img class="card-img" src="${imgUrl}" onerror="this.src='${DEFAULT_IMG}'" onclick="openReader('${p.id}')" alt="${safeTitle}">
         <div class="card-body">
           <div class="meta">
             <span>📅 ${escapeHtml(p.date)} • ⏱ ${calcReadTime(p.content)}</span>
             <button class="bm-btn ${isSaved ? 'saved' : ''}" onclick="toggleBookmark('${p.id}', event)">🔖 ${isSaved ? 'সংরক্ষিত' : ''}</button>
           </div>
-          <div class="card-title" onclick="openReader(${p.originalIndex})">${safeTitle}</div>
+          <div class="card-title" onclick="openReader('${p.id}')">${safeTitle}</div>
           <div class="card-excerpt">${excerpt}</div>
           <div class="tags">${(p.cats || []).map(t => `<span>#${escapeHtml(t)}</span>`).join("")}</div>
           <div class="card-actions">
-            <button class="read-btn" onclick="openReader(${p.originalIndex})">${bn ? 'বিস্তারিত পড়ুন →' : 'Read More →'}</button>
+            <button class="read-btn" onclick="openReader('${p.id}')">${bn ? 'বিস্তারিত পড়ুন →' : 'Read More →'}</button>
             <div class="share">
               <a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a>
               <a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>
@@ -387,61 +429,112 @@ function renderPosts() {
   }).join("");
 }
 
-function openReader(index) {
-  const posts = getPosts();
-  const p = posts[index];
+function buildArticleBodyWithInlineRelated(content, relatedPost) {
+  const paragraphs = (content || "").split(/\n+/).map(s => s.trim()).filter(Boolean);
+  if (paragraphs.length === 0) return "";
+  return paragraphs.map((para, idx) => {
+    let html = `<p>${escapeHtml(para)}</p>`;
+    if (idx === 1 && paragraphs.length >= 3 && relatedPost) {
+      html += `
+        <div class="inline-related" onclick="openReader('${relatedPost.id}')">
+          <span class="ir-badge">আরও পড়ুন</span>
+          <span class="ir-title">${escapeHtml(relatedPost.title)} →</span>
+        </div>`;
+    }
+    return html;
+  }).join("");
+}
+
+function renderRecCards(list) {
+  return list.map(item => `
+    <div class="rec-card" onclick="openReader('${item.id}')">
+      <img src="${escapeHtml(item.img || DEFAULT_IMG)}" onerror="this.src='${DEFAULT_IMG}'" alt="${escapeHtml(item.title)}">
+      <div class="rec-card-body">
+        <div class="rec-card-title">${escapeHtml(item.title)}</div>
+        <div class="rec-card-meta">📅 ${escapeHtml(item.date)}</div>
+      </div>
+    </div>`).join("");
+}
+
+function openReader(postId) {
+  const allPosts = getActivePosts();
+  const p = allPosts.find(item => item.id === postId);
   if (!p) return;
   currentOpenPost = p;
+
+  const others = allPosts.filter(item => item.id !== p.id);
+  const latestList = others.slice(0, 3);
+  const pCats = p.cats || [];
+  let relatedList = others.filter(item => (item.cats || []).some(c => pCats.includes(c)));
+  if (relatedList.length < 2) {
+    const extra = others.filter(item => !relatedList.some(r => r.id === item.id));
+    relatedList = [...relatedList, ...extra].slice(0, 3);
+  } else {
+    relatedList = relatedList.slice(0, 3);
+  }
+
   document.getElementById("mImg").src = p.img || DEFAULT_IMG;
   document.getElementById("mMeta").innerHTML = `<span>📅 ${escapeHtml(p.date)} • ⏱ ${calcReadTime(p.content)}</span>`;
   document.getElementById("mTitle").innerText = p.title;
-  document.getElementById("mTags").innerHTML = (p.cats || []).map(t => `<span>#${escapeHtml(t)}</span>`).join("");
+  document.getElementById("mTags").innerHTML = pCats.map(t => `<span>#${escapeHtml(t)}</span>`).join("");
+
   const contentEl = document.getElementById("mContent");
-  contentEl.innerText = p.content;
+  contentEl.innerHTML = buildArticleBodyWithInlineRelated(p.content, relatedList[0]);
   contentEl.style.fontSize = readerFontSize + "px";
+
   const shareUrl = encodeURIComponent(location.href);
   const shareText = encodeURIComponent(p.title + " - Make Dreams\n" + location.href);
   document.getElementById("mShare").innerHTML = `<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" rel="noopener">Facebook</a><a class="wa" href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>`;
-  document.getElementById("readerModal").classList.add("open");
+
+  const recWrap = document.getElementById("mRecommendations");
+  if (others.length > 0) {
+    recWrap.style.display = "block";
+    recWrap.innerHTML = `
+      <div class="rec-section">
+        <div class="rec-heading">সর্বশেষ লেখা</div>
+        <div class="rec-grid">${renderRecCards(latestList)}</div>
+      </div>
+      <div class="rec-section">
+        <div class="rec-heading">এ সম্পর্কিত আরও লেখা</div>
+        <div class="rec-grid">${renderRecCards(relatedList)}</div>
+      </div>`;
+  } else {
+    recWrap.style.display = "none";
+    recWrap.innerHTML = "";
+  }
+
+  const overlay = document.getElementById("readerModal");
+  overlay.classList.add("open");
+  overlay.scrollTop = 0;
   document.body.style.overflow = "hidden";
 }
+
 function closeReader() { document.getElementById("readerModal").classList.remove("open"); document.body.style.overflow = ""; }
 function closeReaderOutside(e) { if (e.target.id === "readerModal") closeReader(); }
 function changeFont(delta) { readerFontSize = Math.min(24, Math.max(13, readerFontSize + delta)); document.getElementById("mContent").style.fontSize = readerFontSize + "px"; }
-function copyShareLink(title) { if (navigator.clipboard) navigator.clipboard.writeText(`${title} - Make Dreams\n${location.href}`).then(() => alert("লিংক কপি হয়েছে!")); }
+function copyShareLink(title) { if (navigator.clipboard) navigator.clipboard.writeText(`${title} - Make Dreams\n${location.href}`).then(() => alert("লিংক কপি হয়েছে!")); }
 
-/* Direct Gemini Live Links (No API Key Needed) */
-function openDirectGemini() {
-  window.open("https://gemini.google.com/app", "_blank", "noopener");
-}
+/* Direct Gemini Live Links */
+function openDirectGemini() { window.open("https://gemini.google.com/app", "_blank", "noopener"); }
 function openArticleGemini() {
   if (!currentOpenPost) { openDirectGemini(); return; }
-  const promptToCopy = `নিচের আর্টিকেলটি পড়ে আমাকে সহজভাবে বুঝিয়ে বলো এবং এ বিষয়ে আমার পরবর্তী প্রশ্নগুলোর উত্তর দাও:\n\nশিরোনাম: ${currentOpenPost.title}\nবিস্তারিত: ${currentOpenPost.content}`;
+  const promptToCopy = `নিচের আর্টিকেলটি পড়ে আমাকে সহজভাবে বুঝিয়ে বলো এবং এ বিষয়ে আমার পরবর্তী প্রশ্নগুলোর উত্তর দাও:\n\nশিরোনাম: ${currentOpenPost.title}\nবিস্তারিত: ${currentOpenPost.content}`;
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(promptToCopy).then(() => {
-      alert("লেখাটি কপি হয়েছে! এখন Gemini পেজ খুলবে—সেখানে গিয়ে শুধু Paste চাপুন।");
+      alert("লেখাটি কপি হয়েছে! এখন Gemini পেজ খুলবে—সেখানে গিয়ে শুধু Paste চাপুন।");
       openDirectGemini();
     }).catch(() => openDirectGemini());
-  } else {
-    openDirectGemini();
-  }
+  } else { openDirectGemini(); }
 }
 
 /* Online Google Translate Widget (T Button) */
-function toggleTranslateMenu(e) {
-  if (e) e.stopPropagation();
-  document.getElementById("translateMenu").classList.toggle("open");
-}
-document.addEventListener("click", function() {
+function toggleTranslateMenu(e) { if (e) e.stopPropagation(); document.getElementById("translateMenu").classList.toggle("open"); }
+document.addEventListener("click", () => {
   const m = document.getElementById("translateMenu");
   if (m) m.classList.remove("open");
 });
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'bn',
-    includedLanguages: 'bn,en,ar,ur,hi',
-    autoDisplay: false
-  }, 'google_translate_element');
+  new google.translate.TranslateElement({ pageLanguage: 'bn', includedLanguages: 'bn,en,ar,ur,hi', autoDisplay: false }, 'google_translate_element');
 }
 function applyGoogleTranslate(lang) {
   document.getElementById("translateMenu").classList.remove("open");
@@ -461,32 +554,65 @@ function applyGoogleTranslate(lang) {
   }
 }
 
-/* Secret Admin & Gallery Upload */
+/* Secret Admin & Firebase Authentication */
 function handleSecretTap() {
   tapCount++;
   clearTimeout(tapTimer);
   tapTimer = setTimeout(() => { tapCount = 0; }, 2000);
-  if (tapCount >= 3) { tapCount = 0; showLogin(); }
+  if (tapCount >= 3) {
+    tapCount = 0;
+    if (currentUser) openAdmin();
+    else showLogin();
+  }
 }
 function showLogin() { const b = document.getElementById("loginBox"); b.classList.add("open"); b.scrollIntoView({ behavior: "smooth" }); }
 function closeLogin() { document.getElementById("loginBox").classList.remove("open"); document.getElementById("msg").innerText = ""; }
-function checkPass() {
-  if (verifySecret(document.getElementById("passInput").value)) {
+
+async function checkPass() {
+  const email = document.getElementById("emailInput").value.trim();
+  const pass = document.getElementById("passInput").value;
+  const msgEl = document.getElementById("msg");
+  const btn = document.getElementById("loginSubmitBtn");
+  if (!email || !pass) { msgEl.innerText = "ইমেইল এবং পাসওয়ার্ড উভয়ই লিখুন।"; return; }
+  btn.innerText = "যাচাই হচ্ছে...";
+  btn.disabled = true;
+  msgEl.innerText = "";
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
     document.getElementById("loginBox").classList.remove("open");
     document.getElementById("passInput").value = "";
-    document.getElementById("msg").innerText = "";
     openAdmin();
-  } else { document.getElementById("msg").innerText = "ভুল পাসওয়ার্ড!"; }
+  } catch (err) {
+    if (err.code === "auth/invalid-credential" || err.code === "auth/wrong-password" || err.code === "auth/user-not-found") {
+      msgEl.innerText = "ইমেইল বা পাসওয়ার্ড সঠিক নয়!";
+    } else if (err.code === "auth/unauthorized-domain") {
+      msgEl.innerText = "Firebase-এ এই ডোমেইনটি অনুমোদিত নয়।";
+    } else {
+      msgEl.innerText = "ত্রুটি: " + err.message;
+    }
+  } finally {
+    btn.innerText = "প্রবেশ করুন";
+    btn.disabled = false;
+  }
 }
+
+async function logoutAdmin() {
+  await signOut(auth);
+  hideAdmin();
+  alert("সফলভাবে লগআউট হয়েছে।");
+}
+
 function openAdmin() {
+  if (!currentUser) { showLogin(); return; }
   const p = document.getElementById("adminPanel");
   p.classList.add("open");
-  document.getElementById("baniInput").value = getBani();
+  document.getElementById("baniInput").value = currentBani;
   renderAdminList();
   p.scrollIntoView({ behavior: "smooth" });
 }
 function hideAdmin() { document.getElementById("adminPanel").classList.remove("open"); resetAdminForm(); }
 
+/* Gallery Image Upload (Compressed for Fast Cloud Storage) */
 function handleImageUpload(input) {
   const file = input.files && input.files[0];
   if (!file) return;
@@ -495,17 +621,19 @@ function handleImageUpload(input) {
   reader.onload = function(e) {
     const img = new Image();
     img.onload = function() {
-      const maxW = 720;
+      const maxW = 640;
       const scale = Math.min(1, maxW / img.width);
       const canvas = document.createElement("canvas");
       canvas.width = img.width * scale;
       canvas.height = img.height * scale;
       canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-      uploadedGalleryDataUrl = canvas.toDataURL("image/jpeg", 0.72);
+      let dataUrl = canvas.toDataURL("image/jpeg", 0.66);
+      if (dataUrl.length > 750000) dataUrl = canvas.toDataURL("image/jpeg", 0.45);
+      uploadedGalleryDataUrl = dataUrl;
       const prev = document.getElementById("imgPreview");
       prev.src = uploadedGalleryDataUrl;
       prev.style.display = "block";
-      document.getElementById("uploadStatus").innerText = "✅ গ্যালারি থেকে ছবি যুক্ত হয়েছে";
+      document.getElementById("uploadStatus").innerText = "✅ গ্যালারি থেকে ছবি যুক্ত হয়েছে";
     };
     img.src = e.target.result;
   };
@@ -513,9 +641,9 @@ function handleImageUpload(input) {
 }
 
 function resetAdminForm() {
-  document.getElementById("editIndex").value = "-1";
+  document.getElementById("editDocId").value = "";
   document.getElementById("adminFormTitle").innerText = "নতুন লেখা যোগ করুন";
-  document.getElementById("pubBtn").innerText = "পাবলিশ করুন";
+  document.getElementById("pubBtn").innerText = "সরাসরি পাবলিশ করুন";
   document.getElementById("title").value = "";
   document.getElementById("img").value = "";
   document.getElementById("imgFile").value = "";
@@ -526,51 +654,64 @@ function resetAdminForm() {
   document.querySelectorAll("#catCheck input").forEach(cb => cb.checked = false);
 }
 
-function publishPost() {
+async function publishPost() {
+  if (!currentUser) { alert("আগে অ্যাডমিন লগইন করুন।"); return; }
   const t = document.getElementById("title").value.trim();
   const c = document.getElementById("content").value.trim();
   const imUrl = document.getElementById("img").value.trim();
   const checkedCats = [...document.querySelectorAll("#catCheck input:checked")].map(i => i.value);
-  const editIdx = parseInt(document.getElementById("editIndex").value, 10);
+  const editId = document.getElementById("editDocId").value;
 
   if (!t || !c || checkedCats.length === 0) {
     alert("অনুগ্রহ করে শিরোনাম, বিস্তারিত লেখা এবং অন্তত ১টি ক্যাটাগরি নির্বাচন করুন।");
     return;
   }
 
-  const posts = getPosts();
-  if (editIdx >= 0 && editIdx < posts.length) {
-    const finalImg = uploadedGalleryDataUrl || imUrl || posts[editIdx].img || DEFAULT_IMG;
-    posts[editIdx] = { ...posts[editIdx], title: t, cats: checkedCats, content: c, img: finalImg };
-    alert("লেখাটি আপডেট হয়েছে! সবার জন্য লাইভ করতে নিচের হলুদ বাটনে চেপে কোড কপি করে GitHub-এ সেভ করুন।");
-  } else {
-    const finalImg = uploadedGalleryDataUrl || imUrl || DEFAULT_IMG;
-    const today = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
-    posts.unshift({ id: "p_" + Date.now(), title: t, cats: checkedCats, content: c, img: finalImg, date: today });
-    alert("নতুন লেখা যোগ হয়েছে! সবার জন্য লাইভ করতে নিচের হলুদ বাটনে চেপে কোড কপি করে GitHub-এ সেভ করুন।");
+  const btn = document.getElementById("pubBtn");
+  btn.disabled = true;
+  btn.innerText = "সেভ হচ্ছে...";
+
+  try {
+    if (editId) {
+      const existing = cloudPosts.find(x => x.id === editId);
+      const finalImg = uploadedGalleryDataUrl || imUrl || (existing && existing.img) || DEFAULT_IMG;
+      await updateDoc(doc(db, "posts", editId), { title: t, cats: checkedCats, content: c, img: finalImg });
+      alert("✅ লেখাটি সফলভাবে আপডেট হয়ে সবার ফোনে লাইভ হয়েছে!");
+    } else {
+      const finalImg = uploadedGalleryDataUrl || imUrl || DEFAULT_IMG;
+      const today = new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+      await addDoc(collection(db, "posts"), { title: t, cats: checkedCats, content: c, img: finalImg, date: today, createdAt: Date.now() });
+      alert("✅ নতুন লেখা সরাসরি গুগল সার্ভারে সেভ হয়ে সবার ফোনে লাইভ হয়েছে!");
+    }
+    resetAdminForm();
+  } catch (err) {
+    alert("সেভ করতে সমস্যা হয়েছে: " + err.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerText = document.getElementById("editDocId").value ? "পরিবর্তন সেভ করুন" : "সরাসরি পাবলিশ করুন";
   }
-  savePosts(posts);
-  resetAdminForm();
-  renderPosts();
-  renderAdminList();
 }
 
 function renderAdminList() {
-  const posts = getPosts();
-  document.getElementById("adminPostList").innerHTML = posts.map((p, idx) => `
+  const listEl = document.getElementById("adminPostList");
+  if (!hasCloudPosts) {
+    listEl.innerHTML = `<div style="font-size:12.5px;color:var(--muted);padding:8px;">ক্লাউডে এখনো আপনার নিজস্ব লেখা যোগ করা হয়নি। ওপরের ফর্ম থেকে প্রথম লেখাটি পাবলিশ করুন।</div>`;
+    return;
+  }
+  listEl.innerHTML = cloudPosts.map((p, idx) => `
     <div class="admin-post-item">
       <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${idx + 1}. ${escapeHtml(p.title)}</span>
       <div style="display:flex;gap:5px;flex-shrink:0;">
-        <button style="background:#1976d2;" onclick="editPost(${idx})">এডিট</button>
-        <button style="background:#d32f2f;" onclick="deletePost(${idx})">মুছুন</button>
+        <button style="background:#1976d2;" onclick="editPost('${p.id}')">এডিট</button>
+        <button style="background:#d32f2f;" onclick="deletePost('${p.id}')">মুছুন</button>
       </div>
     </div>`).join("");
 }
 
-function editPost(idx) {
-  const p = getPosts()[idx];
+function editPost(id) {
+  const p = cloudPosts.find(x => x.id === id);
   if (!p) return;
-  document.getElementById("editIndex").value = idx;
+  document.getElementById("editDocId").value = id;
   document.getElementById("adminFormTitle").innerText = "লেখা সম্পাদনা (Edit) করুন";
   document.getElementById("pubBtn").innerText = "পরিবর্তন সেভ করুন";
   document.getElementById("title").value = p.title;
@@ -589,66 +730,52 @@ function editPost(idx) {
   document.getElementById("adminPanel").scrollIntoView({ behavior: "smooth" });
 }
 
-function deletePost(idx) {
-  if (!confirm("আপনি কি নিশ্চিতভাবে এই লেখাটি মুছে ফেলতে চান?")) return;
-  const posts = getPosts();
-  posts.splice(idx, 1);
-  savePosts(posts);
-  renderPosts();
-  renderAdminList();
+async function deletePost(id) {
+  if (!confirm("আপনি কি নিশ্চিতভাবে এই লেখাটি ক্লাউড থেকে চিরতরে মুছে ফেলতে চান?")) return;
+  try {
+    await deleteDoc(doc(db, "posts", id));
+  } catch (err) {
+    alert("মুছতে সমস্যা হয়েছে: " + err.message);
+  }
 }
 
-function copyFullCode() {
-  const posts = getPosts();
-  const quote = getBani();
-  const adminPanel = document.getElementById("adminPanel");
-  const loginBox = document.getElementById("loginBox");
-  const readerModal = document.getElementById("readerModal");
-  const translateMenu = document.getElementById("translateMenu");
-
-  adminPanel.classList.remove("open");
-  loginBox.classList.remove("open");
-  readerModal.classList.remove("open");
-  translateMenu.classList.remove("open");
-  document.body.classList.remove("dark");
-  document.getElementById("catNav").innerHTML = "";
-  document.getElementById("baniContainer").innerHTML = "";
-  document.getElementById("posts").innerHTML = "";
-
-  const clone = document.documentElement.cloneNode(true);
-  clone.removeAttribute("class");
-  clone.removeAttribute("style");
-  clone.querySelectorAll(".skiptranslate, #goog-gt-tt, .goog-te-spinner-pos").forEach(el => el.remove());
-  const gtEl = clone.querySelector("#google_translate_element");
-  if (gtEl) gtEl.innerHTML = "";
-
-  let fullHtml = "<!DOCTYPE html>\n" + clone.outerHTML;
-
-  adminPanel.classList.add("open");
-  renderNav();
-  renderBani();
-  renderPosts();
-
-  const safePostsJson = JSON.stringify(posts, null, 2).replace(/<\//g, "<\\/");
-  const safeQuoteJson = JSON.stringify(quote).replace(/<\//g, "<\\/");
-  fullHtml = fullHtml.replace(/\/\*POSTS_START\*\/[\s\S]*?\/\*POSTS_END\*\//, () => `/*POSTS_START*/${safePostsJson}/*POSTS_END*/`);
-  fullHtml = fullHtml.replace(/\/\*QUOTE_START\*\/[\s\S]*?\/\*QUOTE_END\*\//, () => `/*QUOTE_START*/${safeQuoteJson}/*QUOTE_END*/`);
-
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(fullHtml).then(() => {
-      alert("সম্পূর্ণ আপডেটেড কোড কপি হয়েছে! এখন GitHub-এ আপনার index.html ফাইল এডিট করে আগের সব কোড মুছে এটি পেস্ট করে Commit changes দিন।");
-    }).catch(() => fallbackCopy(fullHtml));
-  } else { fallbackCopy(fullHtml); }
+async function saveBani() {
+  if (!currentUser) return;
+  const val = document.getElementById("baniInput").value.trim();
+  try {
+    await setDoc(doc(db, "settings", "bani"), { text: val });
+    alert("✅ বাণী সেভ হয়ে সবার ফোনে লাইভ হয়েছে!");
+  } catch (err) { alert("ত্রুটি: " + err.message); }
 }
 
-function fallbackCopy(text) {
-  const ta = document.createElement("textarea");
-  ta.value = text;
-  document.body.appendChild(ta);
-  ta.select();
-  document.execCommand("copy");
-  document.body.removeChild(ta);
-  alert("সম্পূর্ণ আপডেটেড কোড কপি হয়েছে! এখন GitHub-এ গিয়ে আগের কোডের জায়গায় পেস্ট করে সেভ করুন।");
+async function deleteBani() {
+  if (!currentUser) return;
+  try {
+    await setDoc(doc(db, "settings", "bani"), { text: "" });
+    document.getElementById("baniInput").value = "";
+    alert("✅ বাণী মুছে ফেলা হয়েছে!");
+  } catch (err) { alert("ত্রুটি: " + err.message); }
+}
+
+async function addCategory() {
+  if (!currentUser) return;
+  const inp = document.getElementById("newCatInput");
+  const name = inp.value.trim();
+  if (!name || categories.includes(name)) return;
+  const updated = [...categories, name];
+  try {
+    await setDoc(doc(db, "settings", "config"), { categories: updated });
+    inp.value = "";
+  } catch (err) { alert("ত্রুটি: " + err.message); }
+}
+
+async function removeCategory(index) {
+  if (!currentUser) return;
+  if (!confirm(`"${categories[index]}" ক্যাটাগরিটি কি মুছে ফেলতে চান?`)) return;
+  const updated = categories.filter((_, i) => i !== index);
+  try {
+    await setDoc(doc(db, "settings", "config"), { categories: updated });
+  } catch (err) { alert("ত্রুটি: " + err.message); }
 }
 
 function toggleLang() {
@@ -660,10 +787,56 @@ function toggleLang() {
   renderNav();
   renderPosts();
 }
+
 function toggleDark() {
   document.body.classList.toggle("dark");
   document.getElementById("darkBtn").innerText = document.body.classList.contains("dark") ? "☀️" : "🌙";
 }
+
+/* Realtime Cloud Listeners */
+onAuthStateChanged(auth, (user) => {
+  currentUser = user;
+});
+
+onSnapshot(query(collection(db, "posts"), orderBy("createdAt", "desc")), (snap) => {
+  if (!snap.empty) {
+    hasCloudPosts = true;
+    cloudPosts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    document.getElementById("cloudStatus").innerText = `☁️ লাইভ (${cloudPosts.length})`;
+  } else {
+    hasCloudPosts = false;
+    cloudPosts = [];
+    document.getElementById("cloudStatus").innerText = "☁️ প্রস্তুত";
+  }
+  renderPosts();
+  renderAdminList();
+}, () => {
+  document.getElementById("cloudStatus").innerText = "☁️ অফলাইন মোড";
+  renderPosts();
+});
+
+onSnapshot(doc(db, "settings", "bani"), (snap) => {
+  if (snap.exists() && typeof snap.data().text === "string") {
+    currentBani = snap.data().text;
+  }
+  renderBani();
+});
+
+onSnapshot(doc(db, "settings", "config"), (snap) => {
+  if (snap.exists() && Array.isArray(snap.data().categories) && snap.data().categories.length > 0) {
+    categories = snap.data().categories;
+    renderNav();
+    renderPosts();
+  }
+});
+
+Object.assign(window, {
+  toggleDark, toggleLang, toggleTranslateMenu, applyGoogleTranslate, googleTranslateElementInit,
+  handleSecretTap, renderPosts, filterCat, toggleBookmark, openReader, closeReader,
+  closeReaderOutside, changeFont, openArticleGemini, copyShareLink, openDirectGemini,
+  checkPass, closeLogin, handleImageUpload, publishPost, saveBani, deleteBani,
+  editPost, deletePost, hideAdmin, logoutAdmin, addCategory, removeCategory
+});
 
 if (location.search.includes("admin")) showLogin();
 renderNav();
